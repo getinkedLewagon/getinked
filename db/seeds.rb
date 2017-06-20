@@ -4,12 +4,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+Photo.destroy_all
 Style.destroy_all
 Artist.destroy_all
 ArtistStyle.destroy_all
 User.destroy_all
-Photo.destroy_all
+
 
 
 a_array = []
