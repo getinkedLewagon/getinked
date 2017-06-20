@@ -13,5 +13,11 @@ class PagesController < ApplicationController
     else
       @appointments = current_artist.appointments
     end
+    @locations = Artist.all.map {|a| a.address}.uniq
+  end
+
+  def dashboard
+    @locations = Artist.all.map {|a| a.address}.uniq
+    @appointments = current_user.appointments
   end
 end
