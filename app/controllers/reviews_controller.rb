@@ -1,14 +1,15 @@
 class ReviewsController < ApplicationController
   def new
-    @appointment = Appointment.find(params[:appointment_id])
+    @artist = Artist.find(params[:artist_id])
     @review = Review.new
   end
 
   def create
-    @review = review.new(review_params)
-    @review.appointment = Appointment.find(params[:appointment_id])
+    @artist = Artist.find(params[:artist_id])
+    @review = Review.new(review_params)
+    @review.artist = Artist.find(params[:artist_id])
     if @review.save
-      redirect_to artists_path(@artist.find(params[:id]))
+      redirect_to artist_path(@artist)
     else
       render :new
     end
@@ -19,6 +20,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:description, :rating)
   end
 end
