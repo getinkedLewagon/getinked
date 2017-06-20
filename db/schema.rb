@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620102608) do
+ActiveRecord::Schema.define(version: 20170620150746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,11 +24,11 @@ ActiveRecord::Schema.define(version: 20170620102608) do
   end
 
   create_table "artist_styles", force: :cascade do |t|
-    t.integer  "styles_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["styles_id"], name: "index_artist_styles_on_styles_id", using: :btree
+    t.integer  "style_id"
+    t.index ["style_id"], name: "index_artist_styles_on_style_id", using: :btree
     t.index ["user_id"], name: "index_artist_styles_on_user_id", using: :btree
   end
 
@@ -67,10 +67,10 @@ ActiveRecord::Schema.define(version: 20170620102608) do
 
   create_table "photos", force: :cascade do |t|
     t.string   "url"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
+    t.integer  "artist_id"
+    t.index ["artist_id"], name: "index_photos_on_artist_id", using: :btree
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -107,10 +107,10 @@ ActiveRecord::Schema.define(version: 20170620102608) do
   end
 
   add_foreign_key "appointments", "users"
-  add_foreign_key "artist_styles", "styles", column: "styles_id"
+  add_foreign_key "artist_styles", "styles"
   add_foreign_key "artist_styles", "users"
   add_foreign_key "messages", "appointments", column: "appointments_id"
   add_foreign_key "messages", "users"
-  add_foreign_key "photos", "users"
+  add_foreign_key "photos", "artists"
   add_foreign_key "reviews", "appointments", column: "appointments_id"
 end

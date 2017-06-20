@@ -14,16 +14,19 @@ Photo.destroy_all
 
 a_array = []
 
-a_array << Artist.create({
+    a = Artist.create({
     name: "Rob Kelly",
     info: "I do out of this world tattoos specializing in rocketships and birds",
     start_fee: 100,
     rating: nil,
     city: "Barcelona",
     email: "first@gmail.com",
-    encrypted_password: "password1",
+    password: "password1",
     address: "Carrer Tallers, 29, 08001 Barcelona"
     })
+
+ a_array << a
+
 a_array << Artist.create({
     name: "Doug Hardy",
     info: "I have been tattooing for over a decade. During that time, I have mastered and refined my own take on classic American street-shop styles",
@@ -31,7 +34,7 @@ a_array << Artist.create({
     rating: nil,
     city: "Rome",
     email: "second@gmail.com",
-    encrypted_password: "password2",
+    password: "password2",
     address: "Via del Moro, 12, 00153 Rome"
     })
 a_array << Artist.create({
@@ -41,11 +44,13 @@ a_array << Artist.create({
     rating: nil,
     city: "Barcelona",
     email: "third@gmail.com",
-    encrypted_password: "password3",
+    password: "password3",
     address: "Carrer del Comte d'Urgell, 82, 08036 Barcelona"
     })
 
+p "Artists Created"
 
+p a_array
 
 # u_array = []
 
@@ -70,7 +75,10 @@ a_array << Artist.create({
 
 styles = []
 
-styles << Style.create({
+
+
+
+styles << Style.create!({
   name: "Traditional"
   })
 styles << Style.create({
@@ -105,45 +113,53 @@ styles << Style.create({
   })
 
 
+
+style_id = styles.sample
+
+ArtistStyle.create({
+  style_id: style_id.id,
+  user_id: a_array[0].id
+  })
+
+ArtistStyle.create({
+  style_id: style_id.id,
+  user_id: a_array[1].id
+  })
+
+ArtistStyle.create({
+  style_id: style_id.id,
+  user_id: a_array[2].id
+  })
+
+
 Photo.create({
   url: "https://68.media.tumblr.com/7be6d31baa529a275d17f2fea9c37ea7/tumblr_oomf7lm9um1r4vezwo1_500.jpg",
-  user_id: a_array[1]
+  artist_id: a_array[1].id
   })
 
 Photo.create({
   url: "https://68.media.tumblr.com/b0670ae6949ddc4230370c02c59a2976/tumblr_oa9zu5nOO41v34nkno1_500.jpg",
-  user_id: a_array[1]
+  artist_id: a_array[1].id
   })
 
 Photo.create({
   url: "https://68.media.tumblr.com/fbf63393b31e6f479ef65c67f469217e/tumblr_o5u692nWHV1v34nkno1_500.jpg",
-  user_id: a_array[0]
+  artist_id: a_array[0].id
   })
 
 Photo.create({
   url: "https://s-media-cache-ak0.pinimg.com/originals/b7/97/31/b7973143d630156af17f9eb823ca26d6.jpg",
-  user_id: a_array[2]
+  artist_id: a_array[2].id
   })
 
 Photo.create({
   url: "https://68.media.tumblr.com/943a3b217dde91527df77bc77a466971/tumblr_ok4ost40hv1r4vezwo1_500.jpg",
-  user_id: a_array[2]
+  artist_id: a_array[2].id
   })
 
+p "Photos Created"
 
-styles_id = styles.sample
 
-ArtistStyle.create({
-  styles_id: styles_id,
-  user_id: a_array[0]
-  })
 
-ArtistStyle.create({
-  styles_id: styles_id,
-  user_id: a_array[1]
-  })
 
-ArtistStyle.create({
-  styles_id: styles_id,
-  user_id: a_array[2]
-  })
+p "Styles Created"
