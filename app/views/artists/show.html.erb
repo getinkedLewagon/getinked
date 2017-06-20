@@ -2,5 +2,12 @@
 <h3><%= @artist.address %></h3>
 <h3><%= @artist.city %></h3>
 
+<%= link_to "Leave a review", new_artist_review_path(@artist) %>
+<h5>Reviews of <%= @artist.name %></h5>
+<% @artist.reviews.each do |review| %>
+<%= review.description %>
+<%= review.rating %>
+<% end %>
+
 
 
