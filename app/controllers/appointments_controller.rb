@@ -7,7 +7,7 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
-    # @appointment.artist = Artist.find(params[:artist_id])
+    @appointment.artist = Artist.find(params[:artist_id])
 
     @appointment.save
 
