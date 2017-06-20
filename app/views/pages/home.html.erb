@@ -1,2 +1,14 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<% if current_artist %>
+  <h1> Hello <%= current_artist.email %>, you're artist</h1>
+  <%= link_to "logout",destroy_artist_session_path, method: :delete %>
+<% end %>
+
+
+<% if current_user%>
+  <h1> Hello <%= current_user.email %>, you're user</h1>
+  <%= link_to "logout", destroy_user_session_path, method: :delete %>
+<% end %>
+
