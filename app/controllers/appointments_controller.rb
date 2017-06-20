@@ -1,5 +1,4 @@
 class AppointmentsController < ApplicationController
-
   def new
     @appointment = Appointment.new(appointment_params)
     @appointment.user = current_user
@@ -9,17 +8,18 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.save
-      if @appointment.save
-        redirect_to root_path
-      else
-        render :new
+    if @appointment.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
 
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-      redirect_to root_path
+    redirect_to root_path
   end
 
   def show
