@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620150746) do
+ActiveRecord::Schema.define(version: 20170620160714) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20170620150746) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "artist_id"
+    t.index ["artist_id"], name: "index_appointments_on_artist_id", using: :btree
     t.index ["user_id"], name: "index_appointments_on_user_id", using: :btree
   end
 
@@ -76,10 +78,10 @@ ActiveRecord::Schema.define(version: 20170620150746) do
   create_table "reviews", force: :cascade do |t|
     t.string   "description"
     t.integer  "rating"
-    t.integer  "appointments_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["appointments_id"], name: "index_reviews_on_appointments_id", using: :btree
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "artist_id"
+    t.index ["artist_id"], name: "index_reviews_on_artist_id", using: :btree
   end
 
   create_table "styles", force: :cascade do |t|
@@ -106,11 +108,12 @@ ActiveRecord::Schema.define(version: 20170620150746) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "appointments", "artists"
   add_foreign_key "appointments", "users"
   add_foreign_key "artist_styles", "styles"
   add_foreign_key "artist_styles", "users"
   add_foreign_key "messages", "appointments", column: "appointments_id"
   add_foreign_key "messages", "users"
   add_foreign_key "photos", "artists"
-  add_foreign_key "reviews", "appointments", column: "appointments_id"
+  add_foreign_key "reviews", "artists"
 end

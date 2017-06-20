@@ -1,5 +1,4 @@
 class AppointmentsController < ApplicationController
-
   def new
     @appointment = Appointment.new
     @artist = Artist.find(params[:artist_id])
@@ -11,11 +10,11 @@ class AppointmentsController < ApplicationController
     # @appointment.artist = Artist.find(params[:artist_id])
 
     @appointment.save
-      if @appointment.save
-        redirect_to root_path
-      else
-        @error = "You did not save mate"
-        render :new
+
+    if @appointment.save
+      redirect_to root_path
+    else
+      render :new
     end
   end
 
@@ -23,7 +22,7 @@ class AppointmentsController < ApplicationController
   def destroy
     @appointment = Appointment.find(params[:id])
     @appointment.destroy
-      redirect_to root_path
+    redirect_to root_path
   end
 
   def show

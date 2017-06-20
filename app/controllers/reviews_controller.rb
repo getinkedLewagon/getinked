@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     @review = review.new(review_params)
     @review.appointment = Appointment.find(params[:appointment_id])
     if @review.save
-      redirect_to artists_path(@artist)
+      redirect_to artists_path(@artist.find(params[:id]))
     else
       render :new
     end
