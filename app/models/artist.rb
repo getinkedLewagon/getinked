@@ -3,4 +3,10 @@ class Artist < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  has_many :reviews, through: :appointments
+  has_many :photos
+  has_many :styles, through: :artist_styles
+  has_many :appointments
+  has_many :messages
 end
