@@ -1,15 +1,16 @@
 // Graphical variables
 @import "config/variables";
-@import "config/bootstrap_variables";
+@import "config/small_rules";
 
 // External libraries
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
 @import "vendor/index";
 
 // Your CSS
-@import "layout/index";
 @import "components/index";
 @import "pages/index";
+
+// Materialize gem
+@import "materialize/components/color";
+$primary-color: color("red", "darken-2") !default;
+$secondary-color: color("red", "darken-3") !default;
+@import "materialize";
