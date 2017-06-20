@@ -1,3 +1,3 @@
 class Style < ApplicationRecord
-  belongs_to :artist_style
+  has_many :artists, through: :artist_styles
 end
