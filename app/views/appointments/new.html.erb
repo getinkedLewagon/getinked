@@ -1,0 +1,13 @@
+
+
+<div class="container center">
+  <h4> Create a New Appointments </h4>
+
+  <%= simple_form_for [@artist, @appointment], url: artist_appointments_path, method: :post do |f| %>
+  <%= f.input :status %>
+  <%= f.button :submit %>
+<% end %>
+
+<%= @error %>
+
+</div>

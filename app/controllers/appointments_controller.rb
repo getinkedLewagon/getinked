@@ -1,18 +1,22 @@
 class AppointmentsController < ApplicationController
 
   def new
-    @appointment = Appointment.new(appointment_params)
-    @appointment.user = current_user
-    @appointment.artist = Artist.find(params[:artist_id])
+    @appointment = Appointment.new
+    @artist = Artist.find(params[:artist_id])
   end
 
   def create
     @appointment = Appointment.new(appointment_params)
+    @appointment.user = current_user
+    # @appointment.artist = Artist.find(params[:artist_id])
+
     @appointment.save
       if @appointment.save
         redirect_to root_path
       else
+        @error = "You did not save mate"
         render :new
+    end
   end
 
 
