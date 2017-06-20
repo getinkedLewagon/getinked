@@ -6,4 +6,11 @@ class User < ApplicationRecord
 
   has_many :appointments
   has_many :messages
+  before_validation :check_email
+
+  private
+
+  def check_email
+    super(Artist)
+  end
 end
