@@ -4,10 +4,37 @@
   <%= link_to "logout", destroy_artist_session_path, method: :delete %>
 <% end %>
 
+
+
+
+
+
+
+
+<% @l_array = ["Barcelona", "Rome"]  %>
+
+
+
+
+
 <% if current_user%>
   <h1> Hello <%= current_user.email %>, you're user</h1>
   <%= link_to "logout", destroy_user_session_path, method: :delete %>
   <%= link_to "explore our artist", artists_path %>
+
+ <div>
+
+    <%= form_tag "/artists", method: "get", class: 'form-banner' do %>
+    <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
+    <%= submit_tag "Discover Art", class: 'btn-landing' %>
+    <% end %>
+
+
+  </div>
+
+
+
+
 <% end %>
 
 
@@ -21,6 +48,20 @@
 <%= link_to "user sign in", user_session_path %>
 </p>
 <%= link_to "explore our artist", artists_path %>
+
+
+
+
+
+ <div>
+
+    <%= form_tag "/artists", method: "get", class: 'form-banner' do %>
+    <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
+    <%= submit_tag "Discover Art", class: 'btn-landing' %>
+    <% end %>
+
+
+  </div>
 
 <% end %>
 
