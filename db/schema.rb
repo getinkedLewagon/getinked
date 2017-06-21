@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20170621153310) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "artist_id"
+    t.string   "start_time"
+    t.string   "end_time"
     t.index ["artist_id"], name: "index_appointments_on_artist_id", using: :btree
     t.index ["user_id"], name: "index_appointments_on_user_id", using: :btree
   end

@@ -1,13 +1,20 @@
 
 
-<div class="container center">
-  <h4> Create a New Appointment </h4>
+<h4 class="text-center"> Create a New Appointment </h4>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
 
-  <%= simple_form_for [@artist, @appointment], url: artist_appointments_path, method: :post do |f| %>
-  <%= f.input :status, collection: ["Pending"] %>
-  <%= f.button :submit %>
-<% end %>
+     <%= simple_form_for [@artist, @appointment], url: artist_appointments_path, method: :post do |f| %>
 
-<%= @error %>
 
+     <%= f.input :start_time, input_html: {id: 'datetimepicker'} %>
+     <%= f.input :end_time, input_html: {id: 'datetimepicker2'} %>
+
+
+     <%= f.button :submit %>
+     <% end %>
+
+   </div>
+ </div>
 </div>
