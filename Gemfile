@@ -22,6 +22,8 @@ gem 'turbolinks'
 gem 'omniauth-instagram'
 gem 'instagram'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 
 group :development, :test do
   gem 'better_errors'
