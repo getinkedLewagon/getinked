@@ -28,8 +28,9 @@ class Artist < ApplicationRecord
 
       config.hours.delete(day_off)
     end
-    
-    
+  end
+
+
   def self.find_for_instagram_oauth(auth)
     artist_params = auth.slice(:provider, :uid)
     # artist_params.merge! auth.info.slice(:email)
