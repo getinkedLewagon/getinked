@@ -10,9 +10,6 @@ gem 'rails', '5.0.3'
 gem 'redis'
 gem 'coffee-rails'
 gem 'autoprefixer-rails'
-gem 'materialize-sass'
-gem 'material_icons'
-gem 'materialize-form'
 gem 'jquery-rails'
 gem 'sass-rails'
 gem 'simple_form'
@@ -22,6 +19,9 @@ gem "geocoder"
 gem "gmaps4rails"
 gem 'omniauth-facebook'
 gem 'turbolinks'
+gem 'omniauth-instagram'
+gem 'instagram'
+gem 'bootstrap-sass', '~> 3.3.6'
 
 group :development, :test do
   gem 'better_errors'
