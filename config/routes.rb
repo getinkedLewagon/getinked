@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :artists, controllers: { registrations: "artists/registrations" }
+  devise_for :artists, controllers: { registrations: "artists/registrations",
+    omniauth_callbacks: 'artists/omniauth_callbacks' }
   devise_for :users
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
