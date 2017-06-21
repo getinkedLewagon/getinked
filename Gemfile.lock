@@ -246,7 +246,6 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   momentjs-rails (>= 2.9.0)
-
   omniauth
   omniauth-facebook
   omniauth-instagram
