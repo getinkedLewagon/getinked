@@ -19,6 +19,7 @@ gem "geocoder"
 gem "gmaps4rails"
 gem 'omniauth-facebook'
 gem 'turbolinks'
+gem 'omniauth'
 gem 'omniauth-instagram'
 gem 'instagram'
 gem 'bootstrap-sass', '~> 3.3.6'

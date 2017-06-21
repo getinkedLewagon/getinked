@@ -3,7 +3,7 @@ class Artist < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable,
-         :omniauthable
+         :omniauthable, :validatable
 
   has_many :reviews
   has_many :photos
