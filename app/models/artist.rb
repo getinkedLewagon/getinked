@@ -33,6 +33,8 @@ class Artist < ApplicationRecord
     return artist
   end
 
+
+
   private
 
   def check_email
