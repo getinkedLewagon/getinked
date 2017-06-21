@@ -1,7 +1,7 @@
 <!-- Checking who is loggined for dev purposes -->
 <% if current_artist %>
   <h1> Hello <%= current_artist.email %>, you're artist</h1>
-  <%= link_to "logout",destroy_artist_session_path, method: :delete %>
+  <%= link_to "logout", destroy_artist_session_path, method: :delete %>
 <% end %>
 
 <% if current_user%>
@@ -20,7 +20,7 @@
 <p>
 <%= link_to "user sign in", user_session_path %>
 </p>
-  <%= link_to "explore our artist", artists_path %>
+<%= link_to "explore our artist", artists_path %>
 
 <% end %>
 
