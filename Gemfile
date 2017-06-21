@@ -22,6 +22,8 @@ gem "geocoder"
 gem "gmaps4rails"
 gem 'omniauth-facebook'
 gem 'turbolinks'
+gem 'omniauth-instagram'
+gem 'instagram'
 
 group :development, :test do
   gem 'better_errors'
