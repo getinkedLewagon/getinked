@@ -7,6 +7,26 @@
 <% if current_user%>
   <h1> Hello <%= current_user.email %>, you're user</h1>
   <%= link_to "logout", destroy_user_session_path, method: :delete %>
+  <%= link_to "explore our artist", artists_path %>
 <% end %>
 
-hello.
+
+<% if  (user_signed_in? == false)  && (artist_signed_in? == false)   %>
+<p>
+<%= link_to "artist log in", artist_session_path  %>
+</p>
+<p>
+<%= link_to "user sign in", user_session_path %>
+</p>
+  <%= link_to "explore our artist", artists_path %>
+
+<% end %>
+
+
+
+<p>
+
+</p>
+
+
+
