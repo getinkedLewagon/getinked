@@ -13,8 +13,6 @@
 
 
 
- <input type="date" class="datetimepicker">
-
 <% if  (user_signed_in? == false)  && (artist_signed_in? == false)   %>
 <p>
 <%= link_to "artist log in", artist_session_path  %>
@@ -25,12 +23,5 @@
   <%= link_to "explore our artist", artists_path %>
 
 <% end %>
-
-
-
-<p>
-
-</p>
-
 
 
