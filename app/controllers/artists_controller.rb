@@ -15,7 +15,7 @@ class ArtistsController < ApplicationController
 
     @artists = Artist.where.not(latitude: nil, longitude: nil)
 
-    @hash = Gmaps4rails.build_markers(@artists) do |artist, marker|
+    @hash = Gmaps4rails.build_markers(@artist) do |artist, marker|
       marker.lat artist.latitude
       marker.lng artist.longitude
     end
