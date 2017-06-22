@@ -18,6 +18,7 @@ class AppointmentsController < ApplicationController
     @appointment.status = "pending"
     if @appointment.save
       redirect_to dashboard_path
+
     else
       render :new
     end

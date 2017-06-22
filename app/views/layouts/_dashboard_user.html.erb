@@ -1,7 +1,9 @@
-<h1>This is user dashboard!</h1>
 
-<h3>Appointments of current user:</h3>
+<h1>This is user dashboard!</h1>
+<h1>Welcome, <%= current_user.username %>!</h1>
+
+<h3>Your upcoming appointments:</h3>
 <% @appointments.each do |appointment| %>
-  <p>You're having an appointment with <%= appointment.artist.name %></p>
+  <p>You have an upcoming appointment with <%= appointment.artist.name %> on <%= appointment.start_time %></p>
   <p>Status: <%= appointment.status %></p>
 <% end %>
