@@ -8,9 +8,13 @@ class Artist < ApplicationRecord
   has_many :reviews
   has_many :photos
   has_many :styles, through: :artist_styles
-  has_many :appointments
+  has_many :appointments, dependent: :destroy
   has_many :messages
   before_validation :check_email
+
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   def business_hours(day_off, start_time, end_time)
 
