@@ -3,3 +3,18 @@
 <h3>Appointments of current user:</h3>
 
 
+
+
+
+
+schedule = "0,0930,1800;1,0930,1800"
+
+<%= simple_form_for current_artist, url: artist_path(current_artist), method: :post do |f| %>
+
+  <% (0..6).each do |number| %>
+      <%= f.input :schedule, input_html: {id: 'timepicker'} %>
+      <%= f.input :schedule, input_html: {id: 'timepicker'} %>
+  <% end %>
+
+  <%= f.button :submit %>
+<% end %>
