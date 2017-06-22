@@ -1,0 +1,21 @@
+
+
+<h4 class="text-center"> Edit your availability </h4>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+     <%= simple_form_for @availability do |f| %>
+
+        <%= f.input :day, collection: @days %>
+       <%= f.input :start_time, collection: @hours %>
+       <%= f.input :end_time, collection: @hours %>
+
+
+     <%= f.button :submit %>
+     <% end %>
+
+   </div>
+ </div>
+</div>
+

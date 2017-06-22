@@ -10,4 +10,7 @@ class ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     @appointment = Appointment.new
   end
+
+  def artist_dashboard
+  end
 end

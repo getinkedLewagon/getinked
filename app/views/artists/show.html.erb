@@ -1,44 +1,52 @@
 <h1><%= @artist.name %></h1>
 <h3><%= @artist.address %></h3>
 <h3><%= @artist.city %></h3>
+<p>Availabilty:</p>
+<% @artist.availabilities.each do |availability|%>
+  <ul>
+    <%= availability.day %>
+    <%= availability.start_time %> -
+    <%= availability.end_time %>
+  </ul>
+  <% end %>
 
-<%= link_to "Leave a review", new_artist_review_path(@artist) %>
-<h5>Reviews of <%= @artist.name %></h5>
-<% @artist.reviews.each do |review| %>
-<%= review.description %>
-<%= review.rating %>
-<% end %>
+  <%= link_to "Leave a review", new_artist_review_path(@artist) %>
+  <h5>Reviews of <%= @artist.name %></h5>
+  <% @artist.reviews.each do |review| %>
+    <%= review.description %>
+    <%= review.rating %>
+    <% end %>
 
-<%= link_to "book me!", new_artist_appointment_path(@artist) %>
-
-
-
-
-
-
-
-
-
-
-<% content_for(:after_js) do %>
-<script>
-  $(document).ready(function() {
-    var handler = Gmaps.build('Google');
-    handler.buildMap({ internal: { id: 'map' } }, function() {
-      markers = handler.addMarkers(<%= raw @hash.to_json %>);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-      if (markers.length == 0) {
-        handler.getMap().setZoom(2);
-      } else if (markers.length == 1) {
-        handler.getMap().setZoom(14);
-      }
-    });
-  });
-</script>
+    <%= link_to "book me!", new_artist_appointment_path(@artist) %>
 
 
-<% end %>
+
+
+
+
+
+
+
+
+    <% content_for(:after_js) do %>
+      <script>
+        $(document).ready(function() {
+          var handler = Gmaps.build('Google');
+          handler.buildMap({ internal: { id: 'map' } }, function() {
+            markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        </script>
+
+
+        <% end %>
 
 
 

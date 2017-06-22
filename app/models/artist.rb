@@ -10,6 +10,7 @@ class Artist < ApplicationRecord
   has_many :styles, through: :artist_styles
   has_many :appointments
   has_many :messages
+  has_many :availabilities
   before_validation :check_email
 
   def business_hours(day_off, start_time, end_time)
