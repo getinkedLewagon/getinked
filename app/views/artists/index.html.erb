@@ -14,9 +14,10 @@
 <br>
 <% @artists.each do |artist| %>
     <% if artist.city == params[:city] %>
- <%= image_tag artist.avatar_image, class: "profile-image img-circle" %>
+ <%= image_tag artist.image, class: "profile-image img-circle" %>
+
  <h4> <%= link_to artist.name, artist_path(artist) %> </h4>
- <h5> <%= artist.artist_bio %> </h5>
+ <h5> <%= artist.bio %> </h5>
  <p> Followed by <%= artist.followers %> mutherfuckin people </p>
  <p> Check some sick tattoos </p>
 
