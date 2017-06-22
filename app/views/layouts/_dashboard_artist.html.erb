@@ -1,10 +1,24 @@
 <h1>This is artist dashboard!</h1>
 
 <h3>Appointments of current user:</h3>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 5ccc4a8cf18d85d49466d5333939a5bc93570cee
 
 
-<%= simple_form_for @artist, url: artist_path, method: :post do |f| %>
-<%= f.input :start_time, input_html: {id: 'datetimepicker'} %>
-<%= f.input :end_time, input_html: {id: 'datetimepicker2'} %>
-<%= f.button :submit %>
+
+
+
+
+schedule = "0,0930,1800;1,0930,1800"
+
+<%= simple_form_for current_artist, url: artist_path(current_artist), method: :post do |f| %>
+
+  <% (0..6).each do |number| %>
+      <%= f.input :schedule, input_html: {id: 'timepicker'} %>
+      <%= f.input :schedule, input_html: {id: 'timepicker'} %>
+  <% end %>
+
+  <%= f.button :submit %>
 <% end %>

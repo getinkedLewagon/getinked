@@ -1,5 +1,29 @@
+
+
+
+
+ <div>
+
+    <%= form_tag "/artists", method: "get", class: 'form-banner' do %>
+    <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
+    <%= submit_tag "Discover Art", class: 'btn-landing' %>
+    <% end %>
+
+
+  </div>
+
+
+
+
+
+
+
 <% @artists.each do |artist| %>
-<%= link_to artist.name, artist_path(artist) %>
+
+  <% if artist.city == params[:city] %>
+
+    <%= link_to artist.name, artist_path(artist) %>
+    <% end %>
  <br>
  <% end %>
 
