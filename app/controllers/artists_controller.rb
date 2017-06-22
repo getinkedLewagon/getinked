@@ -18,8 +18,6 @@ class ArtistsController < ApplicationController
       marker.lat artist.latitude
       marker.lng artist.longitude
     end
-
-
   end
 
 
@@ -31,8 +29,26 @@ class ArtistsController < ApplicationController
       photo.save
     end
     redirect_to root_path
+  end
+
+  def update
+    @artist = Artist.find(params[:id])
+    @artist.email = update_params["email"]
+    @artist.address = update_params["address"]
+    @artist.city = update_params["city"]
+    @artist.info = update_params["info"]
+    @artist.save
+    redirect_to dashboard_path
+  end
+
+
+
+  private
+
+  def update_params
+    params.require(:artist).permit(:email, :address, :city, :info)
 
   end
 
-  end
+end
 
