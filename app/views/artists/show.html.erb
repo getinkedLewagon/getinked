@@ -10,6 +10,14 @@
   </ul>
   <% end %>
 
+<% @artist.photos.each do |photo| %>
+<%= image_tag src="#{photo.url}", class: "profile-photos"  %>
+<% end  %>
+
+
+
+
+
   <%= link_to "Leave a review", new_artist_review_path(@artist) %>
   <h5>Reviews of <%= @artist.name %></h5>
   <% @artist.reviews.each do |review| %>
