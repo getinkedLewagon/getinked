@@ -11,6 +11,7 @@
 //= require bootstrap-datetimepicker
 
 //= require datepicker
+//= require swipebox
 //= require_tree .
 
 
