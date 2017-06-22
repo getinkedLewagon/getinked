@@ -12,6 +12,10 @@ class Artist < ApplicationRecord
   has_many :messages
   before_validation :check_email
 
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   def business_hours(day_off, start_time, end_time)
 
     Biz::Schedule.new do |config|
