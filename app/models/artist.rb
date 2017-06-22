@@ -52,6 +52,47 @@ class Artist < ApplicationRecord
     return artist
   end
 
+  # All Instagram related methods come over here
+
+
+
+  def artist_name
+  # fetches instagram user name from instagram
+    url = "https://api.instagram.com/v1/users/self/?access_token=#{self.token}"
+    parse = JSON.parse(open(url).read)
+    parse["data"]["username"]
+  end
+
+  def artist_bio
+    url = "https://api.instagram.com/v1/users/self/?access_token=#{self.token}"
+    parse = JSON.parse(open(url).read)
+    parse["data"]["bio"]
+  end
+
+  def avatar_image
+  # fetches artist's profile picture from instagram
+    url = "https://api.instagram.com/v1/users/self/?access_token=#{self.token}"
+    parse = JSON.parse(open(url).read)
+    parse["data"]["profile_picture"]
+  end
+
+  def recent_media
+  #fetches artist_'s recent media from instagram
+  url = "https://api.instagram.com/v1/users/self/media/recent/?access_token=#{self.token}"
+  parse = JSON.parse(open(url).read)
+  parse["data"]
+  # append ["images"]["low_resolution"]["url"] in view to get image url
+  end
+
+  def followers
+  # fetches artist's profile picture from instagram
+    url = "https://api.instagram.com/v1/users/self/?access_token=#{self.token}"
+    parse = JSON.parse(open(url).read)
+    parse["data"]["counts"]["followed_by"]
+  end
+
+
+
   private
 
   def check_email
