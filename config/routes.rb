@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/dashboard', to: 'pages#dashboard'
   resources :artists, only: [:index, :show] do
+    member do
+      post "upload_pictures", to: "artists#upload"
+    end
     resources :reviews, only: [:new, :create]
     resources :appointments, only: [:new, :create, :destroy, :show]
   end
+
 end
