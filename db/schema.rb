@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621153310) do
+ActiveRecord::Schema.define(version: 20170622100355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,11 +66,14 @@ ActiveRecord::Schema.define(version: 20170621153310) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "content"
-    t.integer  "appointments_id"
+    t.integer  "appointment_id"
     t.integer  "user_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["appointments_id"], name: "index_messages_on_appointments_id", using: :btree
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "artist_id"
+    t.string   "from"
+    t.index ["appointment_id"], name: "index_messages_on_appointment_id", using: :btree
+    t.index ["artist_id"], name: "index_messages_on_artist_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
@@ -119,7 +122,8 @@ ActiveRecord::Schema.define(version: 20170621153310) do
   add_foreign_key "appointments", "users"
   add_foreign_key "artist_styles", "styles"
   add_foreign_key "artist_styles", "users"
-  add_foreign_key "messages", "appointments", column: "appointments_id"
+  add_foreign_key "messages", "appointments"
+  add_foreign_key "messages", "artists"
   add_foreign_key "messages", "users"
   add_foreign_key "photos", "artists"
   add_foreign_key "reviews", "artists"

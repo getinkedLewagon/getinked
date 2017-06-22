@@ -4,6 +4,7 @@ class AppointmentsController < ApplicationController
   def new
     @appointment = Appointment.new
     @artist = Artist.find(params[:artist_id])
+    @message = Message.new
   end
 
   def create
@@ -13,9 +14,11 @@ class AppointmentsController < ApplicationController
     @appointment.start_time = params[:appointment][:start_time]
     @appointment.end_time = params[:appointment][:end_time]
     @appointment.status = "pending"
+
     if @appointment.save
-      raise
-      redirect_to root_path
+      @appointment.messages.create(content: params[:content],
+        user: current_user, artist: @appointment.artist, from: 'user')
+      redirect_to dashboard_path
     else
       render :new
     end

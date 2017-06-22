@@ -1,0 +1,20 @@
+// Create a paragraph for the new review. But hide it.
+var new_message = $("<%= j render 'layouts/user_messages',user: @message.user.email, message: @message.content, position: 'left' %>").hide();
+// Add it to the DOM, at the end of the existing reviews. It's still hidden.
+$('.user-messages').last().append(new_message);
+// Show the new review with an animation!
+new_message.slideDown();
+// Reset the form
+//$('#new_message').html("<%= j render 'layouts/dashboard_user', message: Message.new %>");
+
+
+  // $.ajax({
+  //      type: "GET",
+  //      url: "/dashboard/refresh",
+  //     success: function(data) {
+
+  //      },
+  //      error: function(jqXHR) {
+  //        console.error(jqXHR.responseText);
+  //      }
+  //   });
