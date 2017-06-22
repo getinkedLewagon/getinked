@@ -18,8 +18,7 @@ class ArtistsController < ApplicationController
       marker.lat artist.latitude
       marker.lng artist.longitude
     end
-
-
+    p @hash
   end
 
 
