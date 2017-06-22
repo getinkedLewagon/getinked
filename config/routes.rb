@@ -15,6 +15,6 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
     resources :appointments, only: [:new, :create, :destroy, :show]
   end
-    resources :availabilities, only: [:new, :create]
+    resources :availabilities, only: [:new, :create, :destroy]
 
 end
