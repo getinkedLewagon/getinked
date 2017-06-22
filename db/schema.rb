@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20170622091358) do
     t.string   "uid"
     t.string   "token"
     t.datetime "token_expiry"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["email"], name: "index_artists_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true, using: :btree
   end

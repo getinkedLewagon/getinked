@@ -3,6 +3,9 @@ class PagesController < ApplicationController
 
   def home
     @addresses = Artist.all.map {|a| a.city}.uniq
+    @artist = Artist.first
+
+
   end
 
   def dashboard

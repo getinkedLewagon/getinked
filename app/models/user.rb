@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :appointments
   has_many :messages
   before_validation :check_email
+  # stupid change for push
 
   private
 
