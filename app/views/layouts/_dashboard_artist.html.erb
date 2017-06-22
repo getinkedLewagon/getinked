@@ -1,13 +1,5 @@
 <h1>This is artist dashboard!</h1>
 
 <h3>Appointments of current user:</h3>
-<% @appointments.each do |appointment| %>
-  <p>You're having an appointment with <%= appointment.user %></p>
-  <p>Status: <%= appointment.status %></p>
-<% end %>
 
-<%= simple_form_for @artist, url: artist_path, method: :post do |f| %>
-<%= f.input :start_time, input_html: {id: 'datetimepicker'} %>
-<%= f.input :end_time, input_html: {id: 'datetimepicker2'} %>
-<%= f.button :submit %>
-<% end %>
+
