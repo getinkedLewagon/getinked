@@ -7,5 +7,5 @@ $( document ).ready(function() {
 
     });
 
-    // $('#datetimepicker2').datetimepicker();
+     $('#datetimepicker2').datetimepicker();
 });
