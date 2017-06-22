@@ -8,9 +8,14 @@ class Artist < ApplicationRecord
   has_many :reviews
   has_many :photos
   has_many :styles, through: :artist_styles
-  has_many :appointments
+  has_many :appointments, dependent: :destroy
   has_many :messages
+  has_many :availabilities
   before_validation :check_email
+
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   def business_hours(day_off, start_time, end_time)
 
@@ -52,7 +57,60 @@ class Artist < ApplicationRecord
     return artist
   end
 
-  private
+  # All Instagram related methods come over here
+
+  def extract_from_instagram
+    return @_extract_from_instagram if defined?(@_extract_from_instagram)
+    result = {}
+    url = "https://api.instagram.com/v1/users/self/?access_token=2903877096.988f7c8.15ad9ca4f6d94cad901f8836f68b1822"
+    parse = JSON.parse(open(url).read)
+    result[:artist_name] = artist_name(parse)
+    result[:artist_bio] = artist_bio(parse)
+    result[:avatar_image] = avatar_image(parse)
+    result[:raw] = parse
+    @_extract_from_instagram = result
+  end
+  def recent_media
+    extract_recent_media
+  end
+
+  def artist_name(parse)
+  # fetches instagram user name from instagram
+    parse["data"]["username"]
+  end
+
+  def artist_bio(parse)
+    parse["data"]["bio"]
+  end
+
+  def image
+    extract_from_instagram[:avatar_image]
+  end
+
+  def bio
+    extract_from_instagram[:bio]
+  end
+
+  def avatar_image(parse)
+  # fetches artist's profile picture from instagram
+    parse["data"]["profile_picture"]
+  end
+
+  def extract_recent_media
+  #fetches artist_'s recent media from instagram
+  url = "https://api.instagram.com/v1/users/self/media/recent/?access_token=2903877096.988f7c8.15ad9ca4f6d94cad901f8836f68b1822"
+
+  parse = JSON.parse(open(url).read)
+  parse["data"]
+  # append ["images"]["low_resolution"]["url"] in view to get image url
+  end
+
+  def followers
+    extract_from_instagram[:raw]["data"]["counts"]["followed_by"]
+  end
+
+
+
 
   def check_email
     super(User)

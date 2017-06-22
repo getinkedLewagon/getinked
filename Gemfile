@@ -25,7 +25,6 @@ gem 'instagram'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
-gem 'biz'
 
 
 group :development, :test do
@@ -37,3 +36,19 @@ group :development, :test do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+
+
+
+
+
+
+
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
+
+
+
+

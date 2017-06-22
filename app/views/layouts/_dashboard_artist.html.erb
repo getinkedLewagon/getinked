@@ -1,3 +1,4 @@
+<h2>Hello <%= current_artist.name %></h2>
 <h1>This is artist dashboard!</h1>
 
 <h3>Your appointments:</h3>
@@ -34,4 +35,15 @@
      <%= f.button :submit %>
      <% end %>
 <% end %>
+
+<h3>Your current availability:</h3>
+<% current_artist.availabilities.each do |availability| %>
+<ul>
+  <%= availability.day %>
+  <%= availability.start_time %> -
+  <%= availability.end_time %>
+</ul>
+<% end %>
+<%= link_to 'Edit Availability', new_availability_path %>
+
 

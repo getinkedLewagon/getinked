@@ -3,6 +3,9 @@ class AppointmentsController < ApplicationController
 
   def new
     @appointment = Appointment.new
+
+    @disabled_days = [Time.now]
+
     @artist = Artist.find(params[:artist_id])
     @message = Message.new
   end

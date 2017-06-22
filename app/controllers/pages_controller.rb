@@ -1,10 +1,13 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!
-
+  
   before_action :prepare, only: [:dashboard, :create_message]
-
+  
   def home
     @addresses = Artist.all.map {|a| a.city}.uniq
+    @artist = Artist.first
+
+
   end
 
   def dashboard

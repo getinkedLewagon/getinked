@@ -1,0 +1,7 @@
+<% current_artist.availabilities.each do |availability| %>
+  <%= availability.day %>
+  <%= availability.start_time %>
+  <%= availability.end_time %>
+<% end %>
+
+<%= link_to 'Create Availability', new_availability_path %>

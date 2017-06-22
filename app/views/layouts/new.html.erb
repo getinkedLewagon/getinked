@@ -1,0 +1,16 @@
+<h4 class="text-center"> Create a Schedule </h4>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+
+     <%= simple_form_for @schedule do |f| %>
+       <%= f.input :start_time, multiple:true, input_html: {id: 'datetimepicker'} %>
+       <%= f.input :end_time, input_html: {id: 'datetimepicker2'} %>
+
+
+       <%= f.button :submit %>
+     <% end %>
+
+   </div>
+ </div>
+</div>
