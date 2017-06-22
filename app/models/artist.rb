@@ -61,7 +61,7 @@ class Artist < ApplicationRecord
 
   def extract_from_instagram
     result = {}
-    url = "https://api.instagram.com/v1/users/self/?access_token=#{self.token}"
+    url = "https://api.instagram.com/v1/users/self/?access_token=#{"2903877096.988f7c8.15ad9ca4f6d94cad901f8836f68b1822"}"
     parse = JSON.parse(open(url).read)
     result[:artist_name] = artist_name(parse)
     result[:artist_bio] = artist_bio(parse)
@@ -90,7 +90,7 @@ class Artist < ApplicationRecord
 
   def extract_recent_media
   #fetches artist_'s recent media from instagram
-  url = "https://api.instagram.com/v1/users/self/media/recent/?access_token=#{self.token}"
+  url = "https://api.instagram.com/v1/users/self/media/recent/?access_token=#{"2903877096.988f7c8.15ad9ca4f6d94cad901f8836f68b1822"}"
 
   parse = JSON.parse(open(url).read)
   parse["data"]
