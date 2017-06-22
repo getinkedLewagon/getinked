@@ -17,11 +17,8 @@ class AppointmentsController < ApplicationController
     @appointment.end_time = params[:appointment][:end_time]
     @appointment.status = "pending"
     if @appointment.save
-<<<<<<< HEAD
-      redirect_to root_path
-=======
       redirect_to dashboard_path
->>>>>>> e50c993b89993872c51cecec483b5018e4987f99
+
     else
       render :new
     end
