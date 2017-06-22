@@ -10,6 +10,7 @@ class Artist < ApplicationRecord
   has_many :styles, through: :artist_styles
   has_many :appointments, dependent: :destroy
   has_many :messages
+  has_many :availabilities
   before_validation :check_email
 
 

@@ -22,6 +22,7 @@ class ArtistsController < ApplicationController
 
   end
 
+
   def upload
     pictures = params[:select_pictures][:pictures_url].reject(&:empty?)
     pictures.each do |pic|
