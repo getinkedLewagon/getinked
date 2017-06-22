@@ -14,10 +14,10 @@
 <br>
 <% @artists.each do |artist| %>
     <% if artist.city == params[:city] %>
- <%= image_tag artist.avatar_image, class: "profile-image img-circle" %>
+ <%= image_tag artist.extract_from_instagram[:avatar_image], class: "profile-image img-circle" %>
  <h4> <%= link_to artist.name, artist_path(artist) %> </h4>
- <h5> <%= artist.artist_bio %> </h5>
- <p> Followed by <%= artist.followers %> mutherfuckin people </p>
+ <h5> <%= artist.extract_from_instagram[:bio] %> </h5>
+ <p> Followed by <%= artist.extract_from_instagram[:followers] %> mutherfuckin people </p>
  <p> Check some sick tattoos </p>
 
 
@@ -46,13 +46,13 @@
 <!-- Wrapper for slides imported -->
    <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src= <%= artist.recent_media[0]["images"]["low_resolution"]["url"] %> alt="">
+      <img src= <%= artist.photos[0].url %> alt="">
       <div class="carousel-caption">
       </div>
     </div>
-    <%  artist.recent_media.each do |media_item| %>
+    <%  artist.photos.each do |photo| %>
     <div class="item">
-      <img src= <%=  media_item["images"]["low_resolution"]["url"] %> alt="">
+      <img src= <%=  photo.url %> alt="">
       <div class="carousel-caption">
 
       </div>
