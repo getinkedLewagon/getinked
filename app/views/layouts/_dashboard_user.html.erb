@@ -7,8 +7,12 @@
 
 <p>You're having an appointment with <%= appointment.artist.email %></p>
 <p>Status: <%= appointment.status %></p>
-<p>Messages:</p>
 
+
+  <p>Your Sketch: </p>
+  <%= cl_image_tag appointment.photo, height: 300, width: 400, crop: :fill %>
+
+<p>Messages:</p>
 <div class="container">
 <span id="messageslist">
 

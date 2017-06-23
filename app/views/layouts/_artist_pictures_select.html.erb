@@ -1,7 +1,7 @@
 <div class="wrapper text-center">
   <h3> Go Select your work, <%= current_artist %> </h3>
 <%= simple_form_for :select_pictures, url: upload_pictures_artist_path(current_artist), method: :post do |f|%>
-  <%= f.input_field :pictures_url,
+    <%= f.input_field :pictures_url,
      :collection => current_artist.recent_media.map {|img| [image_tag(img["images"]["low_resolution"]["url"]).html_safe,img["images"]["low_resolution"]["url"]] },
      as: :check_boxes
   %>

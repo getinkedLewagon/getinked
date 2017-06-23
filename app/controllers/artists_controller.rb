@@ -1,10 +1,15 @@
 class ArtistsController < ApplicationController
   skip_before_action :authenticate_user!
-  
+
   def index
     @artists = Artist.all
-    #@cities = Artist.all.map { |a| a.city }.uniq
-     @l_array = ["Barcelona", "Rome"]
+
+     @l_array = ["choose a city"]
+     @artists.each do |artist|
+      @l_array << artist.city
+    end
+    @l_array = @l_array.uniq
+
   end
 
   def show
@@ -18,6 +23,9 @@ class ArtistsController < ApplicationController
       marker.lat artist.latitude
       marker.lng artist.longitude
     end
+
+    p @hash
+
   end
 
 
@@ -28,7 +36,7 @@ class ArtistsController < ApplicationController
       photo.artist = current_artist
       photo.save
     end
-    redirect_to root_path
+    redirect_to dashboard_path
   end
 
   def update

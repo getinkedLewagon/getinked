@@ -5,6 +5,7 @@
 
 <% @appointments.each do |appointment| %>
 
+
 <p>You're having an appointment with <%= appointment.user %></p>
 <p>Status: <%= appointment.status %></p>
 <p>Messages:</p>
@@ -12,6 +13,7 @@
 
 <div class="container">
  <span id="messageslist">
+
   <% appointment.messages.each do |message| %>
 
   <% if message.from == 'artist' %>
