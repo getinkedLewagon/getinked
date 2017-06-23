@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170622100355) do
 
-
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -135,9 +134,9 @@ ActiveRecord::Schema.define(version: 20170622100355) do
   add_foreign_key "appointments", "users"
   add_foreign_key "artist_styles", "styles"
   add_foreign_key "artist_styles", "users"
-  add_foreign_key "messages", "artists"
   add_foreign_key "availabilities", "artists"
-  add_foreign_key "messages", "appointments", column: "appointments_id"
+  add_foreign_key "messages", "appointments"
+  add_foreign_key "messages", "artists"
   add_foreign_key "messages", "users"
   add_foreign_key "photos", "artists"
   add_foreign_key "reviews", "artists"
