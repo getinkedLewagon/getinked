@@ -8,9 +8,14 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/about', to: 'pages#about'
   get '/dashboard', to: 'pages#dashboard'
+
+  get '/edit_profile', to: 'pages#edit_profile'
+  resources :artists, only: [:index, :show, :edit, :update] do
+
    get '/dashboard/refresh', to: 'pages#refresh'
   post '/dashboard', to: 'pages#create_message', as: "post_message"
-  resources :artists, only: [:index, :show] do
+
+
     member do
       post "upload_pictures", to: "artists#upload"
     end
