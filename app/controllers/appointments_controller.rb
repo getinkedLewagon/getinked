@@ -36,19 +36,24 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.find[params[:id]]
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def confirm
+    @appointment = Appointment.find(params[:id])
+    @appointment.status_confirmed
+    @appointment.save
+    redirect_to dashboard_path
+  end
+
+  def deny
+    @appointment = Appointment.find(params[:id])
+    @appointment.status_denied
+    @appointment.save
+    redirect_to dashboard_path
   end
 
   private
-
-
-
-  def overlap?(start_time, end_time)
-    start_time = string_into_date(start_time)
-    end_time = string_into_date(end_time)
-    (string_into_date(appointment.start_time)...string_into_date(appointment.end_time)).overlaps?(start_time...end_time)
-  end
-
 
   def appointment_params
     #Add Strong Params
