@@ -28,12 +28,12 @@ ActiveRecord::Schema.define(version: 20170622100355) do
   end
 
   create_table "artist_styles", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "style_id"
+    t.index ["artist_id"], name: "index_artist_styles_on_artist_id", using: :btree
     t.index ["style_id"], name: "index_artist_styles_on_style_id", using: :btree
-    t.index ["user_id"], name: "index_artist_styles_on_user_id", using: :btree
   end
 
   create_table "artists", force: :cascade do |t|
@@ -132,8 +132,9 @@ ActiveRecord::Schema.define(version: 20170622100355) do
 
   add_foreign_key "appointments", "artists"
   add_foreign_key "appointments", "users"
+  add_foreign_key "artist_styles", "artists"
   add_foreign_key "artist_styles", "styles"
-  add_foreign_key "artist_styles", "users"
+
   add_foreign_key "availabilities", "artists"
   add_foreign_key "messages", "appointments"
   add_foreign_key "messages", "artists"
