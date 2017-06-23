@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :appointments
-  has_many :messages
+  has_many :appointments, dependent: :destroy
+  has_many :messages, dependent: :destroy
   before_validation :check_email
   # stupid change for push
 
