@@ -26,8 +26,23 @@
 
 <% if current_user%>
 <h1> Hello <%= current_user.email %>, you're user</h1>
-<%= link_to "logout", destroy_user_session_path, method: :delete %>
-<%= link_to "explore our artist", artists_path %>
+<%#= link_to "logout", destroy_user_session_path, method: :delete %>
+<%#= link_to "explore our artist", artists_path %>
+
+<div class="banner-landing-page">
+  <h1>Get Inked by top local artists</h1>
+  <h2>Discover new works and book an appointment</h2>
+ <div>
+
+  <%= form_tag "/artists", method: "get", class: 'form-banner' do |f| %>
+  <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
+  <%= select_tag 'style', options_for_select(@style_array), multiple: true, class: 'multiselectuser select-pages-home' %>
+  <%= submit_tag "Discover Art", class: 'btn-landing' %>
+  <% end %>
+
+</div>
+</div>
+
 <% end %>
 
 
@@ -48,6 +63,11 @@
 
 </div>
 </div>
+
+
+
+
+
 
 <% end %>
 
