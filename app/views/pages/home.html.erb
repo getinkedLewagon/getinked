@@ -16,13 +16,13 @@
 
 
 <% if current_artist %>
-  <h1> Hello <%= current_artist.email %>, you're artist</h1>
-  <%= link_to "logout", destroy_artist_session_path, method: :delete %>
-  <%#= render 'layouts/dashboard_artist' %>
+<h1> Hello <%= current_artist.email %>, you're artist</h1>
+<%= link_to "logout", destroy_artist_session_path, method: :delete %>
+
 <% if current_artist.photos.count == 0 %>
 <%= render 'layouts/artist_pictures_select' %>
 
-  <% end %>
+<% end %>
 <% end %>
 
 
@@ -35,26 +35,12 @@
 
 
 
-
-
 <% if current_user%>
-  <h1> Hello <%= current_user.email %>, you're user</h1>
-  <%= link_to "logout", destroy_user_session_path, method: :delete %>
-  <%= link_to "explore our artist", artists_path %>
-
- <div>
-
-    <%= form_tag "/artists", method: "get", class: 'form-banner' do %>
-    <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
-    <%= select_tag 'style', options_for_select(@style_array), class: 'select-pages-home' %>
-    <%= submit_tag "Discover Art", class: 'btn-landing' %>
-    <% end %>
+<h1> Hello <%= current_user.email %>, you're user</h1>
+<%= link_to "logout", destroy_user_session_path, method: :delete %>
+<%= link_to "explore our artist", artists_path %>
 
 
-
-
-
-  </div>
 
 
 
@@ -62,6 +48,29 @@
 <% end %>
 
 
+<div>
+
+  <%= form_tag "/artists", method: "get", class: 'form-banner' do |f| %>
+  <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
+  <%= select_tag 'style', options_for_select(@style_array), multiple: true, class: 'multiselectuser select-pages-home' %>
+  <%= submit_tag "Discover Art", class: 'btn-landing' %>
+  <% end %>
+
+
+
+  <%#= simple_form_for @artist do |f| %>
+  <%#= f.input :city, collection: @l_array %>
+  <%#= f.input :style, collection: @style_array, input_html: { multiple: true } %>
+  <%#= f.button :submit %>
+  <%# end %>
+
+
+
+
+
+
+
+</div>
 
 
 <% if  (user_signed_in? == false)  && (artist_signed_in? == false)   %>
