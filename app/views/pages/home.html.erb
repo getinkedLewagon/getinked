@@ -7,9 +7,18 @@
 
 
 
+<% @artists = Artist.all %>
+     <% @l_array = ["choose a city"]  %>
+    <%  @artists.each do |artist|  %>
+     <%  @l_array << artist.city  %>
+    <% end %>
+    <% @l_array = @l_array.uniq  %>
+
+
 <% if current_artist %>
 <h1> Hello <%= current_artist.email %>, you're artist</h1>
 <%= link_to "logout", destroy_artist_session_path, method: :delete %>
+
 <% if current_artist.photos.count == 0 %>
 <%= render 'layouts/artist_pictures_select' %>
 
@@ -22,7 +31,6 @@
 
 
 
-<% @l_array = ["Barcelona", "Rome", "kek"]  %>
 <% @style_array = ["Traditional", "Watercolor", "Realism", "Tribal", "New School", "Neo Traditional", "Japanese", "Dotwork", "Geometric", "Script", "Illustrative"] %>
 
 
@@ -66,17 +74,27 @@
 
 
 <% if  (user_signed_in? == false)  && (artist_signed_in? == false)   %>
-<p>
-  <%= link_to "artist log in", artist_session_path  %>
-</p>
-<p>
-  <%= link_to "user sign in", user_session_path %>
-</p>
+
+ <div style="text-align: center;">
 <%= link_to "explore our artist", artists_path %>
+    <%= form_tag "/artists", method: "get", class: 'form-banner' do %>
+    <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
+    <%= submit_tag "Discover Art", class: 'btn-landing' %>
+    <% end %>
 
 
+<% @artists.each do |artist| %>
+<%= image_tag artist.image, class: "profile-image img-circle" %>
+
+ <h4> <%= link_to artist.name, artist_path(artist) %> </h4>
+ <h5> <%= artist.bio %> </h5>
+ <p> Followed by <%= artist.followers %> mutherfuckin people </p>
+ <p> Check some sick tattoos </p>
+
+  <% end %>
 
 
+  </div>
 
 <% end %>
 

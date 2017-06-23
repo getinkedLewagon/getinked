@@ -5,7 +5,7 @@ class Artist < ApplicationRecord
   :recoverable, :rememberable, :trackable,
   :omniauthable, omniauth_providers: [:instagram]
 
-  has_many :reviews
+  has_many :reviews , dependent: :destroy
   has_many :photos
   has_many :styles, through: :artist_styles
   has_many :artist_styles

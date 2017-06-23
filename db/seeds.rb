@@ -28,6 +28,18 @@ a_array = []
 
  a_array << a
 
+        a_array << Artist.create({
+    name: "John Smith",
+    info: "I do out of this world tattoos specializing in people faces",
+    start_fee: 100,
+    rating: nil,
+    city: "Paris",
+    email: "john@gmail.com",
+    password: "john@gmail.com",
+    address: "Carrer Tallers, 29, 08001 Barcelona"
+    })
+
+
 a_array << Artist.create({
     name: "Doug Hardy",
     info: "I have been tattooing for over a decade. During that time, I have mastered and refined my own take on classic American street-shop styles",
@@ -155,7 +167,7 @@ Photo.create({
 
 Photo.create({
   url: "https://68.media.tumblr.com/943a3b217dde91527df77bc77a466971/tumblr_ok4ost40hv1r4vezwo1_500.jpg",
-  artist_id: a_array[2].id
+  artist_id: a_array[3].id
   })
 
 p "Photos Created"
