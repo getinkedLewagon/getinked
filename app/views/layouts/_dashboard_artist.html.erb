@@ -1,5 +1,40 @@
+<h2>Hello <%= current_artist.name %></h2>
 <h1>This is artist dashboard!</h1>
 
+<h3>Your appointments:</h3>
+<% @appointments.each do |appointment| %>
+  <p>You're having an appointment with <%= appointment.user %></p>
+  <p>Status: <%= appointment.status %></p>
+  <p>Messages:
+  <% appointment.messages.each do |message| %>
+  <div class="container ">
+    <% if message.from == 'artist' %>
+    <div class="row">
+      <div class="col-xs-12 text-left">
+        <strong>You(<%= message.artist.email%>): </strong><%= message.content %>
+      </div>
+    </div>
+    <% end %>
+    <% if message.from == 'user' %>
+    <div class="row">
+      <div class="col-xs-12 text-right">
+        <strong><%= message.user.email%>: </strong> <%= message.content %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+    <%= simple_form_for :message, remote: true, method: :post do |f| %>
+
+     <%= hidden_field_tag "artist", appointment.artist.id %>
+     <%= hidden_field_tag "user", appointment.user.id %>
+     <%= hidden_field_tag "appointment", appointment.id %>
+     <%= hidden_field_tag "from", 'artist' %>
+     <%= text_area_tag :content %>
+
+     <%= f.button :submit %>
+     <% end %>
+<% end %>
 
 <h3>Your current availability:</h3>
 <% current_artist.availabilities.each do |availability| %>
@@ -9,11 +44,7 @@
   <%= availability.end_time %>
 </ul>
 <% end %>
+
 <%= link_to 'Edit Availability', new_availability_path %>
-
-
-<h3>Your upcoming appointments:</h3>
-
-
 
 

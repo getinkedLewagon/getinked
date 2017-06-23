@@ -1,4 +1,6 @@
 class AvailabilitiesController < ApplicationController
+    skip_before_action :authenticate_user!
+
 
   def new
     @availability = Availability.new
@@ -10,7 +12,7 @@ class AvailabilitiesController < ApplicationController
     @availability = Availability.new(availability_params)
     @availability.artist_id = current_artist.id
     if @availability.save
-      redirect_to dashboard_path
+      redirect_to new_availability_path
     else
       render :new
     end
@@ -23,6 +25,9 @@ class AvailabilitiesController < ApplicationController
   end
 
   def destroy
+    @availability = Availability.find(params[:id])
+    @availability.destroy
+    redirect_to dashboard_path
   end
 
   private
