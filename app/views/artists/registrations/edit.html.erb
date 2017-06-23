@@ -8,6 +8,7 @@
     <%= f.input :address, required: true, autofocus: true %>
     <%= f.input :city, required: true, autofocus: true %>
     <%= f.input :info, required: true, autofocus: true %>
+    <%= f.input :style, collection: @style_array, input_html: {class: 'multiselectuser', multiple: true}, required: true, autofocus: true %>
 
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
