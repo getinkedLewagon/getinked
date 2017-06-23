@@ -24,6 +24,7 @@
 
 
 <% @l_array = ["Barcelona", "Rome", "kek"]  %>
+<% @style_array = ["Traditional", "Watercolor", "Realism", "Tribal", "New School", "Neo Traditional", "Japanese", "Dotwork", "Geometric", "Script", "Illustrative"] %>
 
 
 
@@ -38,8 +39,12 @@
 
     <%= form_tag "/artists", method: "get", class: 'form-banner' do %>
     <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
+    <%= select_tag 'style', options_for_select(@style_array), class: 'select-pages-home' %>
     <%= submit_tag "Discover Art", class: 'btn-landing' %>
     <% end %>
+
+
+
 
 
   </div>

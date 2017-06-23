@@ -118,17 +118,17 @@ style_id = styles.sample
 
 ArtistStyle.create({
   style_id: style_id.id,
-  user_id: a_array[0].id
+  artist_id: a_array[0].id
   })
 
 ArtistStyle.create({
   style_id: style_id.id,
-  user_id: a_array[1].id
+  artist_id: a_array[1].id
   })
 
 ArtistStyle.create({
   style_id: style_id.id,
-  user_id: a_array[2].id
+  artist_id: a_array[2].id
   })
 
 
