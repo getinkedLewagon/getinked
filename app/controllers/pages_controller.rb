@@ -1,13 +1,11 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!
-  
+
   before_action :prepare, only: [:dashboard, :create_message]
-  
+
   def home
     @addresses = Artist.all.map {|a| a.city}.uniq
-    @artist = Artist.first
-
-
+    # @artist = Artist.first
   end
 
   def dashboard
@@ -22,6 +20,7 @@ class PagesController < ApplicationController
     @message = Message.new(content: @content, appointment_id: @appointment, artist_id: @artist,
      user_id: @user, from: params[:from])
     @message.save
+
     respond_to do |format|
       format.js
     end
