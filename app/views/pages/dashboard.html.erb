@@ -1,10 +1,10 @@
 <% if current_artist %>
 <div id="dashboard-artist">
-<%= render 'layouts/dashboard_artist'  %>
+<%= render 'layouts/dashboard_artist', appointments: @appointments, current_artist: current_artist  %>
 </div>
 <% else %>
 <div id="dashboard-user">
-  <%= render 'layouts/dashboard_user', appointments: @appointments %>
+  <%= render 'layouts/dashboard_user', appointments: @appointments, current_user: current_user %>
 </div>
 <% end %>
 

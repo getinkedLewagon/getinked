@@ -1,34 +1,43 @@
-
 <h1>This is user dashboard!</h1>
 <h1>Welcome, <%= current_user.username %>!</h1>
 
 <h3>Your upcoming appointments:</h3>
 <% @appointments.each do |appointment| %>
+
+
 <p>You're having an appointment with <%= appointment.artist.email %></p>
 <p>Status: <%= appointment.status %></p>
-<p>Messages:
+<p>Messages:</p>
+
 <div class="container">
+<span id="messageslist">
+
   <% appointment.messages.each do |message| %>
-    <% if message.from == 'user' %>
-    <div class="user-messages">
-      <%= render 'layouts/user_messages', user: message.user.email, message: message.content, position: "left" %>
-    </div>
-    <% end %>
-    <% if message.from == 'artist' %>
-      <div class="artist-messages">
-      <%= render 'layouts/user_messages', user: message.artist.email, message: message.content, position: "right" %>
-    </div>
-    <% end %>
-  <% end %>
+  <% if message.from == 'user' %>
+  <div class="user-messages">
+    <%= render 'layouts/user_messages', user: message.user.email, message: message.content, position: "left" %>
   </div>
-    <%= simple_form_for :message, remote: true, method: :post do |f| %>
+  <% end %>
 
-     <%= hidden_field_tag "artist", appointment.artist.id %>
-     <%= hidden_field_tag "user", appointment.user.id %>
-     <%= hidden_field_tag "appointment", appointment.id %>
-     <%= hidden_field_tag "from", 'user' %>
-     <%= text_area_tag :content %>
 
-     <%= f.button :submit %>
-     <% end %>
+  <% if message.from == 'artist' %>
+  <div class="artist-messages">
+    <%= render 'layouts/user_messages', user: message.artist.email, message: message.content, position: "right" %>
+  </div>
+  <% end %>
+
+  <% end %>
+</span>
+</div>
+
+<%= simple_form_for :message, remote: true, method: :post do |f| %>
+
+<%= hidden_field_tag "artist", appointment.artist.id %>
+<%= hidden_field_tag "user", appointment.user.id %>
+<%= hidden_field_tag "appointment", appointment.id %>
+<%= hidden_field_tag "from", 'user' %>
+<%= text_area_tag :content %>
+
+<%= f.button :submit %>
+<% end %>
 <% end %>
