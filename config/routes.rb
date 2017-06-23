@@ -24,6 +24,6 @@ Rails.application.routes.draw do
       resources :messages, only: [:new, :create, :show]
     end
   end
-    resources :availabilities, only: [:new, :create]
+    resources :availabilities, only: [:new, :create, :destroy]
 
 end

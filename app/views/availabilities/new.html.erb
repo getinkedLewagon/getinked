@@ -1,21 +1,33 @@
 
 
-<h4 class="text-center"> Edit your availability </h4>
+<h3 class="text-center"> Edit your availability </h3>
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4 col-md-offset-4">
 
      <%= simple_form_for @availability do |f| %>
 
-        <%= f.input :day, collection: @days %>
-       <%= f.input :start_time, collection: @hours %>
-       <%= f.input :end_time, collection: @hours %>
+     <%= f.input :day, collection: @days %>
+     <%= f.input :start_time, collection: @hours %>
+     <%= f.input :end_time, collection: @hours %>
 
 
      <%= f.button :submit %>
      <% end %>
 
-   </div>
- </div>
+     <%= link_to "Back to artist dashboard", dashboard_path %>
+
+     <h3>Your current availability:</h3>
+     <% current_artist.availabilities.each do |availability| %>
+     <ul>
+      <%= availability.day %>
+      <%= availability.start_time %> -
+      <%= availability.end_time %>
+      <%= link_to 'Remove', availability_path(availability), method: :delete %>
+    </ul>
+    <% end %>
+
+  </div>
+</div>
 </div>
 
