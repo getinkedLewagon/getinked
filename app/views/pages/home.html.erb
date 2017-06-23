@@ -16,8 +16,10 @@
 
 
 <% if current_artist %>
+
 <h1> Hello <%= current_artist.email %>, you're artist</h1>
 <%= link_to "logout", destroy_artist_session_path, method: :delete %>
+
 
 <% if current_artist.photos.count == 0 %>
 <%= render 'layouts/artist_pictures_select' %>
