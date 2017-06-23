@@ -48,7 +48,9 @@
 <!-- Wrapper for slides imported -->
    <div class="carousel-inner" role="listbox">
     <div class="item active">
+    <% if !artist.photos[0].nil? %>
       <img src= <%= artist.photos[0].url %> alt="">
+    <% end %>
       <div class="carousel-caption">
       </div>
     </div>
