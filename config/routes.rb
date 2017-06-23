@@ -9,25 +9,30 @@ Rails.application.routes.draw do
   get '/about', to: 'pages#about'
   get '/dashboard', to: 'pages#dashboard'
 
-  get '/edit_profile', to: 'pages#edit_profile'
-  resources :artists, only: [:index, :show, :edit, :update] do
-
    get '/dashboard/refresh', to: 'pages#refresh'
    post '/dashboard', to: 'pages#create_message', as: "post_message"
 
+    get '/edit_profile', to: 'pages#edit_profile'
 
-   member do
-    post "upload_pictures", to: "artists#upload"
-  end
-  resources :reviews, only: [:new, :create]
-  resources :appointments, only: [:new, :create, :destroy, :show] do
-    member do
-      get 'confirm'
-      get 'deny'
+
+    resources :artists, only: [:index, :show, :edit, :update] do
+
+
+
+     member do
+      post "upload_pictures", to: "artists#upload"
     end
+
+    resources :reviews, only: [:new, :create]
+    resources :appointments, only: [:new, :create, :destroy, :show] do
+      member do
+        get 'confirm'
+        get 'deny'
+      end
       resources :messages, only: [:new, :create, :show]
     end
   end
+
   resources :availabilities, only: [:new, :create, :destroy]
 
 end

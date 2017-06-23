@@ -1,14 +1,21 @@
  $(function(){
 
 
+
+
+
 setInterval(function(){
 
+  var messagesDiv = $('#messageslist');
 
 
   $.ajax({
        type: "GET",
-       url: "/dashboard/refresh",
+       url: "/dashboard",
       success: function(data) {
+
+
+        messagesDiv.html($(data).find('#messageslist'));
 
        },
        error: function(jqXHR) {
@@ -17,15 +24,7 @@ setInterval(function(){
     });
 
 
-
-
-
-}, 15000);
-
-
-
-// //$( "#dashboard-user" ).load( "/dashboard" );
-
+}, 2000);
 
 
 
