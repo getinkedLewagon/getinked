@@ -7,10 +7,18 @@
 
 
 
+<% @artists = Artist.all %>
+     <% @l_array = ["choose a city"]  %>
+    <%  @artists.each do |artist|  %>
+     <%  @l_array << artist.city  %>
+    <% end %>
+    <% @l_array = @l_array.uniq  %>
+
+
 <% if current_artist %>
   <h1> Hello <%= current_artist.email %>, you're artist</h1>
   <%= link_to "logout", destroy_artist_session_path, method: :delete %>
-  <%= render 'layouts/dashboard_artist' %>
+  <%#= render 'layouts/dashboard_artist' %>
 <% if current_artist.photos.count == 0 %>
 <%= render 'layouts/artist_pictures_select' %>
 
@@ -23,7 +31,6 @@
 
 
 
-<% @l_array = ["Barcelona", "Rome", "kek"]  %>
 <% @style_array = ["Traditional", "Watercolor", "Realism", "Tribal", "New School", "Neo Traditional", "Japanese", "Dotwork", "Geometric", "Script", "Illustrative"] %>
 
 

@@ -166,7 +166,7 @@ Photo.create({
 
 Photo.create({
   url: "https://68.media.tumblr.com/943a3b217dde91527df77bc77a466971/tumblr_ok4ost40hv1r4vezwo1_500.jpg",
-  artist_id: a_array[2].id
+  artist_id: a_array[3].id
   })
 
 p "Photos Created"
