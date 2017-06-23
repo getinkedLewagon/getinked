@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(version: 20170622100355) do
   add_foreign_key "appointments", "users"
   add_foreign_key "artist_styles", "artists"
   add_foreign_key "artist_styles", "styles"
+
   add_foreign_key "availabilities", "artists"
   add_foreign_key "messages", "appointments"
   add_foreign_key "messages", "artists"
