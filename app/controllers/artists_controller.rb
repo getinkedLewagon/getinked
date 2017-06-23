@@ -3,12 +3,13 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
-    #@cities = Artist.all.map { |a| a.city }.uniq
+
      @l_array = ["choose a city"]
      @artists.each do |artist|
       @l_array << artist.city
     end
     @l_array = @l_array.uniq
+
   end
 
   def show
@@ -35,7 +36,7 @@ class ArtistsController < ApplicationController
       photo.artist = current_artist
       photo.save
     end
-    redirect_to root_path
+    redirect_to dashboard_path
   end
 
   def update
