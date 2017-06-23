@@ -4,7 +4,11 @@ class ArtistsController < ApplicationController
   def index
     @artists = Artist.all
     #@cities = Artist.all.map { |a| a.city }.uniq
-     @l_array = ["Barcelona", "Rome"]
+     @l_array = []
+     @artists.each do |artist|
+      @l_array << artist.city
+    end
+    @l_array = @l_array.uniq
   end
 
   def show
