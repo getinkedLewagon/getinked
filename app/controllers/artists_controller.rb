@@ -3,7 +3,6 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
-    #@cities = Artist.all.map { |a| a.city }.uniq
      @l_array = ["choose a city"]
      @artists.each do |artist|
       @l_array << artist.city
