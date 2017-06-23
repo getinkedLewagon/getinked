@@ -16,6 +16,7 @@ class AppointmentsController < ApplicationController
     @appointment.artist = Artist.find(params[:artist_id])
     @appointment.start_time = params[:appointment][:start_time]
     @appointment.end_time = params[:appointment][:end_time]
+    @appointment.photo = params[:appointment][:photo]
     @appointment.status = "pending"
 
     if @appointment.save
@@ -51,7 +52,7 @@ class AppointmentsController < ApplicationController
 
   def appointment_params
     #Add Strong Params
-    params.require(:appointment).permit(:status)
+    params.require(:appointment).permit(:status, :photo, :photo_cache)
   end
   private
 

@@ -6,6 +6,8 @@
 <% @appointments.each do |appointment| %>
 <p>You're having an appointment with <%= appointment.artist.email %></p>
 <p>Status: <%= appointment.status %></p>
+  <p>Your Sketch: </p>
+  <%= cl_image_tag appointment.photo, height: 300, width: 400, crop: :fill %>
 <p>Messages:
 <div class="container">
   <% appointment.messages.each do |message| %>

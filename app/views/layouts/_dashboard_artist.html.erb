@@ -5,6 +5,7 @@
 <% @appointments.each do |appointment| %>
   <p>You're having an appointment with <%= appointment.user %></p>
   <p>Status: <%= appointment.status %></p>
+
   <p>Messages:
   <% appointment.messages.each do |message| %>
   <div class="container ">
