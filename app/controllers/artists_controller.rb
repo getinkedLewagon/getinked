@@ -1,6 +1,6 @@
 class ArtistsController < ApplicationController
-   skip_before_action :authenticate_user!
-
+  skip_before_action :authenticate_user!
+  
   def index
     @artists = Artist.all
     #@cities = Artist.all.map { |a| a.city }.uniq
