@@ -1,7 +1,7 @@
 <div class="wrapper text-center">
 
-<div>
-  Browse our Database of curated artists
+  <div>
+    Browse our Database of curated artists
     <%= form_tag "/artists", method: "get", class: 'form-banner' do %>
     <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
     <%= submit_tag "Discover Art", class: 'btn-landing' %>
@@ -10,28 +10,29 @@
 
   </div>
 
-<br>
-<br>
-<% @artists.each do |artist| %>
+  <br>
+  <br>
+
+  <% @artists.each do |artist| %>
   <% if artist.city == params[:city]%>
 
- <%= image_tag artist.image, class: "profile-image img-circle" %>
+  <div class="row">
+    <div class="col-sm-4 text-center">
 
- <h4> <%= link_to artist.name, artist_path(artist) %> </h4>
- <h5> <%= artist.bio %> </h5>
- <p> Followed by <%= artist.followers %> mutherfuckin people </p>
- <p> Check some sick tattoos </p>
+     <%= image_tag artist.image, class: "profile-image img-circle" %>
+
+     <h4> <%= link_to artist.name, artist_path(artist) %> </h4>
+     <h5> <%= artist.bio %> </h5>
+     <p> Followed by <%= artist.followers %> people </p>
+     <p> Artwork </p>
+
+   </div>
+
+   <div class="col-sm-4 text-center">
 
 
-
-<div class="row">
-  <div class="col-sm-4 col-sm-offset-4">
-
-
-
-
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
  <!--  <ol class="carousel-indicators">
     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -45,12 +46,12 @@
 
 
 
-<!-- Wrapper for slides imported -->
-   <div class="carousel-inner" role="listbox">
+  <!-- Wrapper for slides imported -->
+  <div class="carousel-inner" role="listbox">
     <div class="item active">
-    <% if !artist.photos[0].nil? %>
+      <% if !artist.photos[0].nil? %>
       <img src= <%= artist.photos[0].url %> alt="">
-    <% end %>
+      <% end %>
       <div class="carousel-caption">
       </div>
     </div>
@@ -63,31 +64,27 @@
     </div>
     <% end %>
 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 
+  </div>
 
-
-
-
-
-
-
-<% end %>
 
 
   </div>
 </div>
+  <% end %>
+<% end %>
 </div>
-    <% end %>
+
 
 
 
