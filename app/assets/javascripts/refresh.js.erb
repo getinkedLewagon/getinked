@@ -1,0 +1,32 @@
+ $(function(){
+
+
+setInterval(function(){
+
+
+
+  $.ajax({
+       type: "GET",
+       url: "/dashboard/refresh",
+      success: function(data) {
+
+       },
+       error: function(jqXHR) {
+         console.error(jqXHR.responseText);
+       }
+    });
+
+
+
+
+
+}, 15000);
+
+
+
+// //$( "#dashboard-user" ).load( "/dashboard" );
+
+
+
+
+ });
