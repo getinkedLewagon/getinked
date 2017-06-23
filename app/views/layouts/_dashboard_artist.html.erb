@@ -6,8 +6,10 @@
 <% @appointments.each do |appointment| %>
 
 
-<p>You're having an appointment with <%= appointment.user %></p>
+<p>You're having an appointment with <%= appointment.user.username %></p>
 <p>Status: <%= appointment.status %></p>
+ <p><%= appointment.user.username %> sketch: </p>
+  <%= cl_image_tag appointment.photo, height: 300, width: 400, crop: :fill %>
 <p>Messages:</p>
 
 
