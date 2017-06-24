@@ -49,9 +49,42 @@ User.destroy_all
 #   })
 
 
-# Arrays for random assignment
-def cities_array
-  cities_array = ["Barcelona", "Rome", "Berlin", "Paris", "London"]
+# Hash for random assignment
+def cities_hash
+ cities_hash = { barcelona: { name: "Barcelona",
+                             addresses: ["Travessera de Gracia, 33",
+                                        "Travessera de Dalt", "Via Augusta, 65",
+                                        "Carrer del Bruc", "Carrer de Bailen",
+                                         "Carrer del Rosello",
+                                         "Carrer de Sant Pau",
+                                         "Carrer Ample", "Carrer d'Avinyo",
+                                         "Via Laietana"]
+                },
+
+                 rome: { name: "Rome",
+                        addresses: ["Via Ipponio", "Via Sannio", "Via Etruria",
+                                    "Via Segesta", "Via Centuripe", "Via Latina",
+                                    "Via Baccina", "Via Nazionale", "Via Palermo",
+                                    "Via Sicilia", "Via Abruzzi"]
+                 },
+
+                 berlin: { name: "Berlin",
+                        addresses: ["Torstrasse", "Palisadenstrasse", "Ohmstrasse"          ,"Annenstrasse", "Stralauerstrasse",
+                                    "Moritzplatz", "Wassertorstrasse",
+                                    "Briesestrasse"]
+                 },
+
+                 paris: { name: "Paris",
+                        addresses: ["Rue de Rivoli", "Rue de Louvre",
+                                    "Rue Etienne Mercel", "Rue Tiquetonne",
+                                    "Rue Greneta", "Rue Chapon" ]
+                 },
+
+                 london: { name: "London",
+                        addresses: ["Orange Street", "Hop Gardens",
+                                    "Bainbridge St", "Catherine Street",
+                                    "Henrietta St" ]}
+                  }
 end
 
 def start_fee_array
@@ -59,34 +92,38 @@ def start_fee_array
 end
 # Generate Traditional Tattooers from Instagram (9)
 traditional_artist_hash = { style: Style.find_by(name: "Traditional"),
-                          artists: ['dennis_gutierrez', 'fabriziomele', 'gordoncombs',
+                          artists: ['dennis_gutierrez', 'fabriziomele',
+                                    'gordoncombs',
                                     'joeellistattoo', 'pauldobleman',
                                     'rafadecraneo', 'vinzflag', 'xcyrx'] }
 
 # Generate Traditional Tattooers from Instagram (8)
 
-realism_artist_array = { style: Style.find_by(name: "Realism"),
-                         artists: ['megan_massacre', 'sununala', 'rafaramostattoo',
-                                  'mills06', 'trashcore', 'zakkhanattattoo', 'lizvnenom',
-                                  'mariotoloza_'] }
+realism_artist_hash = { style: Style.find_by(name: "Realism"),
+                         artists: ['megan_massacre', 'sununala',
+                                   'rafaramostattoo','mills06', 'trashcore',
+                                   'zakkhanattattoo', 'lizvnenom',
+                                   'mariotoloza_'] }
 
 # Fetch New School Tattooers from Instagram (5)
 
-new_school_artist_array = { style: Style.find_by(name: "New School")
-                          artists: ['laurent_lajeunesse', 'debbieripper_tattoo', 'loxiput_tattoo',
-                                    'wendellyap', 'austinzfoo']
+new_school_artist_hash = { style: Style.find_by(name: "New School"),
+                          artists: ['laurent_lajeunesse', 'debbieripper_tattoo',
+                                    'loxiput_tattoo','wendellyap', 'austinzfoo'] }
 
 # F }etch Neo Traditional Tattooers from Instagram (7)
 
-neo_traditional_artist_array = { style: Style.find_by(name: "Neo Traditional")
-                                 artists: ['shio1red', 'carlykroll', 'haydntattoo', 'samanthamoth13',
-                                           'causalitytattoo', 'motar_ink', 'jpta }ttooartist']
+neo_traditional_artist_hash = { style: Style.find_by(name: "Neo Traditional"),
+                                 artists: ['shio1red', 'carlykroll',
+                                           'haydntattoo', 'samanthamoth13',
+                                           'causalitytattoo', 'motar_ink'] }
 
 # Fetch Japanese Tattooers from Instagram (7)
 
-japanese_artist_array = { style: Style.find_by(name: "Japanese")
-                          artists: ['japanesetattoo', 'horishige_5', 'elliottwells666', 'brinditattoo',
-                                    'larascotton', 'stueysingh', ] }
+japanese_artist_hash = { style: Style.find_by(name: "Japanese"),
+                          artists: ['japanesetattoo', 'horishige_5',
+                                    'elliottwells666', 'brinditattoo',
+                                    'larascotton', 'stueysingh'] }
 
 # dotwork_artist_array = []
 
@@ -115,20 +152,23 @@ end
 
 def populate_style(style_hash)
   style_hash[:artists].each do |username|
-    binding.pry
     full_info = artist_full(username)
 
     profile = artist_data(full_info)
     pictures = artist_pictures(full_info)
 
     new_artist = Artist.new
-    new_artist.city = cities_array.sample
     new_artist.name = profile["full_name"]
     new_artist.info = profile["biography"]
+    new_artist.avatar = profile["profile_pic_url"]
     new_artist.email = "#{username}@getinked.com"
-    new_artist.styles = style_hash[:style]
+    new_artist.styles = [style_hash[:style]]
     new_artist.start_fee = start_fee_array.sample
-    new_artist.save
+
+    city = cities_hash.keys.sample
+
+    new_artist.city = cities_hash[city][:name]
+    new_artist.address = "#{cities_hash[city][:addresses].sample}, #{new_artist.city}"
 
     puts "#{username} saved as an artist!"
 
@@ -143,6 +183,7 @@ def populate_style(style_hash)
 end
 
 populate_style(traditional_artist_hash)
+populate_style(japanese_artist_hash)
 
 
 
