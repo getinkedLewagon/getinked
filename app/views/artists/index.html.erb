@@ -14,13 +14,16 @@
   <br>
 
 
+
+ <%= image_tag artist.avatar, class: "profile-image img-circle" %>
+
   <% @artists.each do |artist| %>
   <% if artist.city == params[:city]%>
 
  <h4> <%= link_to artist.name, artist_path(artist) %> </h4>
- <h5> <%= artist.bio %> </h5>
+ <h5> <%= artist.info %> </h5>
  <p> Followed by <%= artist.followers %> people </p>
- <p> Check some sick tattoos </p>
+ <p> See more </p>
 
 
   <div class="row">
