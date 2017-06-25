@@ -13,8 +13,15 @@
   <br>
   <br>
 
+
   <% @artists.each do |artist| %>
   <% if artist.city == params[:city]%>
+
+ <h4> <%= link_to artist.name, artist_path(artist) %> </h4>
+ <h5> <%= artist.bio %> </h5>
+ <p> Followed by <%= artist.followers %> people </p>
+ <p> Check some sick tattoos </p>
+
 
   <div class="row">
     <div class="col-sm-4 text-center">
