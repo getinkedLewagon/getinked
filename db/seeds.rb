@@ -34,10 +34,9 @@ User.destroy_all
     name: "Japanese"
     })
 
-
-# styles << Style.create({
-#   name: "Dotwork"
-#   })
+    styles << Style.create({
+      name: "Dotwork"
+      })
 # styles << Style.create({
 #   name: "Geometric"
 #   })
@@ -125,9 +124,16 @@ japanese_artist_hash = { style: Style.find_by(name: "Japanese"),
                                     'elliottwells666', 'brinditattoo',
                                     'larascotton', 'stueysingh'] }
 
-# dotwork_artist_array = []
+dotwork_artist_hash = { style: Style.find_by(name: "Dotwork"),
+                        artists: ['mowgli_artist', 'vivian_ferreiraartist',
+                                  'phoenix.mendoza.tattoo','artsc0re',
+                                  'carloroffare','john_trad_tattoo',
+                                  'alchemistsvalley']
 
-# geometric_artist_array = []
+watercolor_artist_hash = { style: Style.find_by(name: "Watercolor"),
+                           artists: ['rodrigotas', 'streettatoo', 'sashaunisex',
+                                     'findyoursmile', 'jayfreestyle', 'carballocandelaria',
+                                      'tattoojune']
 
 # script_artist_array = []
 
