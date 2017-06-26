@@ -1,24 +1,53 @@
 
-<h2>Welcome to the site <%= current_artist.extract_from_instagram[:artist_name] %>! </h2>
+<div class="wrapper">
+  <div class="row">
+    <div-col-xs-12>
+      <div class="artist-edit-background">
+        <div class="artist-edit-welcome">
+          <h3>Welcome to GetInked, <%= current_artist.extract_from_instagram[:artist_name] %>! </h3>
 
-Please take a couple of seconds to finish your profile
-This will help you become searchable in our platform
-and get new jobs!
+          <p> Finish your profile to become searchable </p>
+        </div>
+      </div>
+      <%#= image_tag  %>
+    </div-col-xs-12>
+
+    <div class="container-fluid artist-edit-data">
+
+    <%= simple_form_for current_artist, method: :put do |f| %>
+
+    <div class="form-inputs submit-edit-profile">
+      <%= f.input :email, label: false, required: true, autofocus: true, placeholder: "Your email", input_html: {class: 'edit-profile-input'} %>
+      <%= f.input :address, label: false, required: true, autofocus: true, placeholder: "Your Address" %>
+      <%= f.input :city, label: false, required: true, autofocus: true, placeholder: "Your city" %>
+
+      <%= f.input :styles, label: false, collection: @styles, selected: @artist.styles.map(&:id),  input_html: {class: 'multiselectuser' }, required:true, autofocus: true, as: :check_boxes %>
 
 
-<%= simple_form_for current_artist, method: :put do |f| %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :address, required: true, autofocus: true %>
-    <%= f.input :city, required: true, autofocus: true %>
-    <%= f.input :info, required: true, autofocus: true %>
+      <%= f.input :info, required: true, autofocus: true, placeholder: "Tell us about you" %>
+      <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+
+    </div>
+
+
+
+    <% end %>
+
+    </div>
+
+    <div-col-xs-12>
+
+
+    </div-col-xs-12>
+    <div-col-xs-12>
+
+
+    </div-col-xs-12>
   </div>
+</div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
+
 
 
 

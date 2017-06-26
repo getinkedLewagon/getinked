@@ -1,0 +1,34 @@
+
+
+.artist-edit-background {
+  background-image: url('badass_oldie.png');
+  background-size: cover;
+  background-position: center;
+  height: 30vh;
+  position: relative;
+  margin-bottom: 3vh;
+}
+
+.artist-edit-welcome {
+  color: white;
+  position: absolute;
+  top: 12vh;
+  left: 5vh;
+}
+
+.artist-edit-data {
+  width: 90%;
+}
+
+.submit-edit-profile .btn {
+  width: 100%;
+  background-color: $primary;
+}
+
+
+.submit-edit-profile .edit-profile-input {
+
+  border-top: none;
+  border-shadow: none;
+  color: pink;
+}

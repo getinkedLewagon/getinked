@@ -30,6 +30,7 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'money-rails'
 gem 'stripe'
+gem "bootstrap-switch-rails"
 
 
 group :development, :test do
