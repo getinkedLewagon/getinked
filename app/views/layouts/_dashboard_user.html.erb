@@ -6,8 +6,20 @@
 
 
 <p>You're having an appointment with <%= appointment.artist.email %></p>
-<p>Status: <%= appointment.status %></p>
+<% if appointment.status == "pending" %>
+  <p>Status: <%= appointment.status %></p>
 
+<% elsif appointment.status == "confirmed" %>
+
+  <p>Deposit: <%= humanized_money_with_symbol(appointment.price) %></p>
+  <%= form_tag orders_path do %>
+  <%= hidden_field_tag 'appointment_id', appointment.id %>
+  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+  <% end %>
+
+<% elsif appointment.status == "paid" %>
+  <p> This Appointment has already been paid </p>
+<% end %>
 
   <p>Your Sketch: </p>
   <% if appointment.photo %><%= cl_image_tag appointment.photo, height: 300, width: 400, crop: :fill %>

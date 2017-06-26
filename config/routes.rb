@@ -7,14 +7,16 @@ Rails.application.routes.draw do
     mount ActionCable.server => '/cable'
 
     root to: 'pages#home'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/about', to: 'pages#about'
+  get '/dashboard', to: 'pages#dashboard'
 
-    get '/about', to: 'pages#about'
-    get '/dashboard', to: 'pages#dashboard'
+  get '/dashboard/refresh', to: 'pages#refresh'
+  post '/dashboard', to: 'pages#create_message', as: "post_message"
 
-    get '/edit_profile', to: 'pages#edit_profile'
+  get '/edit_profile', to: 'pages#edit_profile'
 
-    get '/dashboard/refresh', to: 'pages#refresh'
-    post '/dashboard', to: 'pages#create_message', as: "post_message"
+
 
     resources :messages, only: [:new, :create, :show]
 
@@ -32,7 +34,16 @@ Rails.application.routes.draw do
       resources :reviews, only: [:new, :create]
       resources :appointments, only: [:new, :create, :destroy, :show] do
         resources :chatrooms, only: [:show]
+        member do
+      get 'confirm'
+      get 'deny'
       end
+      end
+
+ resources :orders, only: [:create] do
+ resources :payments, only: [:new, :create]
+
+    end
 
 
 

@@ -4,6 +4,9 @@ class PagesController < ApplicationController
   def home
     @addresses = Artist.all.map {|a| a.city}.uniq
     # @artist = Artist.first
+    @artists = Artist.all
+    @cities = get_cities
+    @styles = ["Traditional", "Watercolor", "Realism", "Tribal", "New School", "Neo Traditional", "Japanese", "Dotwork", "Geometric", "Script", "Illustrative"]
   end
 
   def dashboard
@@ -13,5 +16,15 @@ class PagesController < ApplicationController
     else
       @appointments = current_artist.appointments
     end
+  end
+
+  private
+
+  def get_cities
+    cities = []
+    @artists.each do |artist|
+      cities << artist.city
+    end
+    cities.uniq
   end
 end

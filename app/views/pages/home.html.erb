@@ -1,103 +1,18 @@
-<!-- Checking who is loggined for dev purposes -->
-
-
-
-
 <% render 'shared/navbar' %>
 
 
-
-<% @artists = Artist.all %>
-     <% @l_array = ["choose a city"]  %>
-    <%  @artists.each do |artist|  %>
-     <%  @l_array << artist.city  %>
-    <% end %>
-    <% @l_array = @l_array.uniq  %>
-
-
-<% if current_artist %>
-
-<h1> Hello <%= current_artist.email %>, you're artist</h1>
-<%= link_to "logout", destroy_artist_session_path, method: :delete %>
-
-
-<% if current_artist.photos.count == 0 %>
+<% if  user_signed_in? %>
+  <h1> Hello <%= current_user.email %>, you're user</h1>
+<% elsif artist_signed_in? %>
+  <h1> Hello <%= current_artist.email %>, you're user</h1>
+  <% if current_artist.photos.count == 0 %>
 <%= render 'layouts/artist_pictures_select' %>
 
 <% end %>
+  <% else %>
+  <h1>
+    Please make an account
+  </h1>
 <% end %>
 
-
-
-
-
-
-
-<% @style_array = ["Traditional", "Watercolor", "Realism", "Tribal", "New School", "Neo Traditional", "Japanese", "Dotwork", "Geometric", "Script", "Illustrative"] %>
-
-
-
-<% if current_user%>
-<h1> Hello <%= current_user.email %>, you're user</h1>
-<%= link_to "logout", destroy_user_session_path, method: :delete %>
-<%= link_to "explore our artist", artists_path %>
-
-
-
-
-
-
-<% end %>
-
-
-<div>
-
-  <%= form_tag "/artists", method: "get", class: 'form-banner' do |f| %>
-  <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
-  <%= select_tag 'style', options_for_select(@style_array), multiple: true, class: 'multiselectuser select-pages-home' %>
-  <%= submit_tag "Discover Art", class: 'btn-landing' %>
-  <% end %>
-
-
-
-  <%#= simple_form_for @artist do |f| %>
-  <%#= f.input :city, collection: @l_array %>
-  <%#= f.input :style, collection: @style_array, input_html: { multiple: true } %>
-  <%#= f.button :submit %>
-  <%# end %>
-
-
-
-
-
-
-
-</div>
-
-
-<% if  (user_signed_in? == false)  && (artist_signed_in? == false)   %>
-
- <div style="text-align: center;">
-<%= link_to "explore our artist", artists_path %>
-    <%= form_tag "/artists", method: "get", class: 'form-banner' do %>
-    <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
-    <%= submit_tag "Discover Art", class: 'btn-landing' %>
-    <% end %>
-
-
-<% @artists.each do |artist| %>
-<%= image_tag artist.image, class: "profile-image img-circle" %>
-
- <h4> <%= link_to artist.name, artist_path(artist) %> </h4>
- <h5> <%= artist.bio %> </h5>
- <p> Followed by <%= artist.followers %> mutherfuckin people </p>
- <p> Check some sick tattoos </p>
-
-  <% end %>
-
-
-  </div>
-
-<% end %>
-
-
+  <%= render partial: 'banner', locals: { cities: @cities, styles: @styles } %>

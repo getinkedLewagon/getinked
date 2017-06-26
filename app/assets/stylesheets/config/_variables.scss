@@ -1,10 +1,15 @@
 /* -------------------------------------
+ * Bootstrap sass variable
+ * (see http://getbootstrap.com/customize/#less-variables)
+ * ------------------------------------- */
+
+/* -------------------------------------
  * Fonts
  * ------------------------------------- */
 // Google fonts
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Raleway:400,100,300,700,500");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300,700|Bree+Serif");
 $base-font: "Open Sans", "Helvetica", "sans-serif";
-$header-font: "Raleway", "Helvetica", "sans-serif";
+$header-font: "Bree Serif", "Helvetica", "sans-serif";
 
 // Local fonts (uncomment following lines)
 // @font-face {
@@ -32,3 +37,26 @@ $yellow: #FDB631;
 $orange: #E67E22;
 $green: #32B796;
 $gray: #000000;
+
+
+
+// General style
+$font-family-sans-serif:  $base-font;
+$body-bg:                 white;
+$font-size-base:          $base-size;
+$line-height-base:        $base-height;
+$headings-font-family:    $header-font;
+
+// Semantic color scheme
+// => http://getbootstrap.com/customize/#colors
+// $gray-base:       $gray;
+// $brand-primary:   $blue;
+// $brand-success:   $green;
+// $brand-info:      $yellow;
+// $brand-danger:    $red;
+// $brand-warning:   $orange;
+
+// Buttons / inputs radius
+$border-radius-base:  2px;
+$border-radius-large: 2px;
+$border-radius-small: 2px;

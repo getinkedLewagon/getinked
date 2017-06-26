@@ -5,6 +5,12 @@
 
 <% @appointments.each do |appointment| %>
 
+  <p>You have an upcoming appointment with <%= appointment.user %></p>
+  <p>Status: <%= appointment.status %></p>
+  <%= link_to "Confirm",  confirm_artist_appointment_path(current_artist, appointment) %>
+  <%= link_to "Deny", deny_artist_appointment_path(current_artist, appointment) %>
+
+
 
 <p>You're having an appointment with <%= appointment.user.username %></p>
 <p>Status: <%= appointment.status %></p>

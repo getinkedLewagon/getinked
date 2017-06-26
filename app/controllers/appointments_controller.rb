@@ -1,5 +1,6 @@
 class AppointmentsController < ApplicationController
 
+  skip_before_action :authenticate_user!
 
   def new
     @appointment = Appointment.new
@@ -19,6 +20,7 @@ class AppointmentsController < ApplicationController
     @appointment.photo = params[:appointment][:photo]
     @appointment.status = "pending"
     @appointment.message = params[:appointment][:message]
+    @appointment.price_cents = @appointment.artist.start_fee * 100
 
     if @appointment.save
       @chatroom = Chatroom.create(appointment_id: @appointment.id,
@@ -37,19 +39,24 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.find[params[:id]]
+    @appointment = Appointment.find(params[:id])
+  end
+
+  def confirm
+    @appointment = Appointment.find(params[:id])
+    @appointment.status_confirmed
+    @appointment.save
+    redirect_to dashboard_path
+  end
+
+  def deny
+    @appointment = Appointment.find(params[:id])
+    @appointment.status_denied
+    @appointment.save
+    redirect_to dashboard_path
   end
 
   private
-
-
-
-  def overlap?(start_time, end_time)
-    start_time = string_into_date(start_time)
-    end_time = string_into_date(end_time)
-    (string_into_date(appointment.start_time)...string_into_date(appointment.end_time)).overlaps?(start_time...end_time)
-  end
-
 
   def appointment_params
     #Add Strong Params
