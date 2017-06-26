@@ -4,12 +4,12 @@
   <h3><%= @artist.name %></h3>
   <ul class="list-inline">
     <% if @artist.rating  %>
-      <% @artist.rating.times do  %>
-        <li><i class="fa fa-star" aria-hidden="true" style="color: black"></i></li>
-      <% end %>
-      <% (5 - @artist.rating).times do %>
-        <li><i class="fa fa-star-o" aria-hidden="true" style="color: black"></i></li>
-      <% end %>
+    <% @artist.rating.times do  %>
+    <li><i class="fa fa-star" aria-hidden="true" style="color: black"></i></li>
+    <% end %>
+    <% (5 - @artist.rating).times do %>
+    <li><i class="fa fa-star-o" aria-hidden="true" style="color: black"></i></li>
+    <% end %>
     <% end %>
   </ul>
   <h4><%= @artist.city %></h4>
@@ -51,7 +51,7 @@
 <div class="text-center" id="reviews">
   <h4>Reviews of <%=@artist.name  %></h4>
   <%= link_to "Leave a Review", new_artist_review_path(@artist) %>
-<div>
+  <div>
     <% @artist.reviews.each do |review| %>
     <%= review.description %>
     <ul class="list-inline">
