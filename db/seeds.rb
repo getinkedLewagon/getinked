@@ -128,12 +128,12 @@ dotwork_artist_hash = { style: Style.find_by(name: "Dotwork"),
                         artists: ['mowgli_artist', 'vivian_ferreiraartist',
                                   'phoenix.mendoza.tattoo','artsc0re',
                                   'carloroffare','john_trad_tattoo',
-                                  'alchemistsvalley']
+                                  'alchemistsvalley'] }
 
 watercolor_artist_hash = { style: Style.find_by(name: "Watercolor"),
                            artists: ['rodrigotas', 'streettatoo', 'sashaunisex',
                                      'findyoursmile', 'jayfreestyle', 'carballocandelaria',
-                                      'tattoojune']
+                                      'tattoojune'] }
 
 # script_artist_array = []
 
