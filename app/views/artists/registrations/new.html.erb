@@ -9,7 +9,7 @@
   <%= f.input :city, required: true, autofocus: true %>
   <%= f.input :info, required: true, autofocus: true %>
   <%= f.input :email, required: true, autofocus: true %>
-  <%= f.input :style, collection: @styles, input_html: {class: 'multiselectuser', multiple: true}, required: true, autofocus: true %>
+  <%= f.input :styles, collection: @styles, input_html: {class: 'multiselectuser', multiple: true}, required: true, autofocus: true %>
   <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
   <%= f.input :password_confirmation, required: true %>
   </div>
