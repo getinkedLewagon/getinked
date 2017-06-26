@@ -2,17 +2,18 @@
 
 
 <% if  user_signed_in? %>
-  <h1> Hello <%= current_user.email %>, you're user</h1>
+  <h1> Hello <%= current_user.email %></h1>
 <% elsif artist_signed_in? %>
-  <h1> Hello <%= current_artist.email %>, you're user</h1>
+  <h1> Hello <%= current_artist.email %></h1>
   <% if current_artist.photos.count == 0 %>
 <%= render 'layouts/artist_pictures_select' %>
 
 <% end %>
-  <% else %>
-  <h1>
-    Please make an account
-  </h1>
+
 <% end %>
 
   <%= render partial: 'banner', locals: { cities: @cities, styles: @styles } %>
+
+  <%= render 'aboutgitinked' %>
+
+  <%= render 'featured_artist' %>

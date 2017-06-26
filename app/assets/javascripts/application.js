@@ -14,4 +14,3 @@
 //= require swipebox
 //= require_tree ./channels
 
-
