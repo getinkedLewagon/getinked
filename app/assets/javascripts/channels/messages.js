@@ -3,7 +3,8 @@ data = user.dataset;
 
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
-    $("#messages").removeClass('hidden')
+    $("#messages").removeClass('hidden');
+    $('#message_content').val('');
     return $('#messages').append(this.renderMessage(data));
   },
 

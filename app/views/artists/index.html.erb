@@ -15,9 +15,10 @@
 
 
 
- <%= image_tag artist.avatar, class: "profile-image img-circle" %>
+
 
   <% @artists.each do |artist| %>
+  <%= image_tag artist.avatar, class: "profile-image img-circle" %>
   <% if artist.city == params[:city]%>
 
  <h4> <%= link_to artist.name, artist_path(artist) %> </h4>
