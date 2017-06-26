@@ -1,0 +1,55 @@
+.photo-artist-show {
+  height: 180px;
+  width: 180px;
+}
+.img-artist-show {
+  width: 90px;
+  height: 90px;
+  // position: absolute;
+  // left: 50px;
+}
+
+.container-position-relative {
+  margin-right: 20px;
+  margin-left: 25px;
+}
+
+.reviews {
+  padding-top: 20px;
+}
+
+.row-photo {
+  padding-bottom: 5px;
+}
+
+.container-show {
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.artist-show-info a:visited {
+  text-decoration: none !important;
+}
+
+.links a:visited {
+  text-decoration: none !important;
+  color: white;
+}
+
+.row.no-gutter-artist {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  .col-xs-6 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  padding-bottom: 75px;
+}
+
+
