@@ -19,6 +19,18 @@ class ReviewsController < ApplicationController
 
   private
 
+  def avg_rating
+    @artist = Artist.find(params[:artist_id])
+    ratings = []
+    @artist.reviews.each do |review|
+      ratings << review.rating
+    end
+
+    @avg_rating = (ratings.inject(:+)/ratings.count).to_i
+    @artist.rating = @avg_rating
+    @artist.save
+  end
+
   def review_params
     params.require(:review).permit(:description, :rating)
   end
