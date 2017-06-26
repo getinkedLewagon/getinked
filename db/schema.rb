@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20170623112311) do
-=======
-ActiveRecord::Schema.define(version: 20170623130131) do
->>>>>>> a591360253a02c9ec1c527fcfa240f4567209a9b
-=======
-ActiveRecord::Schema.define(version: 20170623132355) do
->>>>>>> 9dd44ac7ca1226cc3bd3b453ada0fbbfdf6e7999
+ActiveRecord::Schema.define(version: 20170626003411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,12 +18,14 @@ ActiveRecord::Schema.define(version: 20170623132355) do
   create_table "appointments", force: :cascade do |t|
     t.string   "status"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "artist_id"
     t.string   "start_time"
     t.string   "end_time"
     t.string   "photo"
+    t.integer  "price_cents", default: 0, null: false
+    t.string   "sku"
     t.index ["artist_id"], name: "index_appointments_on_artist_id", using: :btree
     t.index ["user_id"], name: "index_appointments_on_user_id", using: :btree
   end
@@ -71,6 +65,7 @@ ActiveRecord::Schema.define(version: 20170623132355) do
     t.datetime "token_expiry"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "avatar"
     t.index ["email"], name: "index_artists_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_artists_on_reset_password_token", unique: true, using: :btree
   end
@@ -96,6 +91,16 @@ ActiveRecord::Schema.define(version: 20170623132355) do
     t.index ["appointment_id"], name: "index_messages_on_appointment_id", using: :btree
     t.index ["artist_id"], name: "index_messages_on_artist_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "state"
+    t.string   "appointment_sku"
+    t.integer  "amount_cents",    default: 0, null: false
+    t.json     "payment"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "id_appointment"
   end
 
   create_table "photos", force: :cascade do |t|

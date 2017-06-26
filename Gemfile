@@ -28,6 +28,8 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
 gem 'swipebox'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
+gem 'money-rails'
+gem 'stripe'
 
 
 

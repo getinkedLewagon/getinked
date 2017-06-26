@@ -6,32 +6,45 @@
 
 
 <p>You're having an appointment with <%= appointment.artist.email %></p>
-<p>Status: <%= appointment.status %></p>
+<% if appointment.status == "pending" %>
+  <p>Status: <%= appointment.status %></p>
+
+<% elsif appointment.status == "confirmed" %>
+
+  <p>Deposit: <%= humanized_money_with_symbol(appointment.price) %></p>
+  <%= form_tag orders_path do %>
+  <%= hidden_field_tag 'appointment_id', appointment.id %>
+  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+  <% end %>
+
+<% elsif appointment.status == "paid" %>
+  <p> This Appointment has already been paid </p>
+<% end %>
 
 
-  <p>Your Sketch: </p>
-  <%= cl_image_tag appointment.photo, height: 300, width: 400, crop: :fill %>
+<p>Your Sketch: </p>
+<%= cl_image_tag appointment.photo, height: 300, width: 400, crop: :fill %>
 
 <p>Messages:</p>
 <div class="container">
-<span id="messageslist">
+  <span id="messageslist">
 
-  <% appointment.messages.each do |message| %>
-  <% if message.from == 'user' %>
-  <div class="user-messages">
-    <%= render 'layouts/user_messages', user: message.user.email, message: message.content, position: "left" %>
-  </div>
-  <% end %>
+    <% appointment.messages.each do |message| %>
+    <% if message.from == 'user' %>
+    <div class="user-messages">
+      <%= render 'layouts/user_messages', user: message.user.email, message: message.content, position: "left" %>
+    </div>
+    <% end %>
 
 
-  <% if message.from == 'artist' %>
-  <div class="artist-messages">
-    <%= render 'layouts/user_messages', user: message.artist.email, message: message.content, position: "right" %>
-  </div>
-  <% end %>
+    <% if message.from == 'artist' %>
+    <div class="artist-messages">
+      <%= render 'layouts/user_messages', user: message.artist.email, message: message.content, position: "right" %>
+    </div>
+    <% end %>
 
-  <% end %>
-</span>
+    <% end %>
+  </span>
 </div>
 
 <%= simple_form_for :message, remote: true, method: :post do |f| %>
