@@ -11,7 +11,9 @@ class Artist < ApplicationRecord
   has_many :artist_styles
   has_many :appointments, dependent: :destroy
   has_many :messages
+  has_many :chatrooms, through: :messages
   has_many :availabilities, dependent: :destroy
+
   before_validation :check_email
 
 

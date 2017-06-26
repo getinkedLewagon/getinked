@@ -21,40 +21,11 @@
   <p> This Appointment has already been paid </p>
 <% end %>
 
-
-<p>Your Sketch: </p>
-<%= cl_image_tag appointment.photo, height: 300, width: 400, crop: :fill %>
+  <p>Your Sketch: </p>
+  <% if appointment.photo %><%= cl_image_tag appointment.photo, height: 300, width: 400, crop: :fill %>
+ <% end %>
 
 <p>Messages:</p>
-<div class="container">
-  <span id="messageslist">
+<p><%= appointment.message %></p>
 
-    <% appointment.messages.each do |message| %>
-    <% if message.from == 'user' %>
-    <div class="user-messages">
-      <%= render 'layouts/user_messages', user: message.user.email, message: message.content, position: "left" %>
-    </div>
-    <% end %>
-
-
-    <% if message.from == 'artist' %>
-    <div class="artist-messages">
-      <%= render 'layouts/user_messages', user: message.artist.email, message: message.content, position: "right" %>
-    </div>
-    <% end %>
-
-    <% end %>
-  </span>
-</div>
-
-<%= simple_form_for :message, remote: true, method: :post do |f| %>
-
-<%= hidden_field_tag "artist", appointment.artist.id %>
-<%= hidden_field_tag "user", appointment.user.id %>
-<%= hidden_field_tag "appointment", appointment.id %>
-<%= hidden_field_tag "from", 'user' %>
-<%= text_area_tag :content %>
-
-<%= f.button :submit %>
-<% end %>
 <% end %>

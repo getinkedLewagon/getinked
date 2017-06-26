@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'artists/omniauth_callbacks' }
     devise_for :users
 
+    mount ActionCable.server => '/cable'
+
     root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/about', to: 'pages#about'
@@ -15,32 +17,35 @@ Rails.application.routes.draw do
   get '/edit_profile', to: 'pages#edit_profile'
 
 
-  resources :artists, only: [:index, :show, :edit, :update] do
+
+    resources :messages, only: [:new, :create, :show]
+
+    resources :availabilities, only: [:new, :create, :destroy]
+
+    resources :artists, only: [:index, :show, :edit, :update] do
 
 
 
-   member do
-    post "upload_pictures", to: "artists#upload"
-  end
 
-  resources :reviews, only: [:new, :create]
-  resources :appointments, only: [:new, :create, :destroy, :show] do
-    member do
+      member do
+        post "upload_pictures", to: "artists#upload"
+      end
+
+      resources :reviews, only: [:new, :create]
+      resources :appointments, only: [:new, :create, :destroy, :show] do
+        resources :chatrooms, only: [:show]
+        member do
       get 'confirm'
       get 'deny'
       end
-
-    resources :messages, only: [:new, :create, :show]
-  end
-end
+      end
 
  resources :orders, only: [:create] do
  resources :payments, only: [:new, :create]
 
     end
 
-resources :availabilities, only: [:new, :create, :destroy]
 
 
-
-end
+    end
+  end

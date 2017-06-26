@@ -1,0 +1,20 @@
+You're chatting with <%= @chatroom.appointment.user.username %>
+<br>
+<div id="messages" data-user="artist">
+<% @chatroom.messages.each do |message| %>
+<% if message.from == 'artist' %>
+<p><strong>You: </strong> <%= message.content %></p>
+<% elsif message.from == 'user' %>
+<p><strong><%= message.user.username %>: </strong> <%= message.content %></p>
+<% end %>
+<% end %>
+</div>
+
+<%= form_for @message, remote: true, authenticity_token: true do |f| %>
+  <%= f.label :your_message %>:
+  <%= f.text_area :content, class: "form-control", data: {textarea: "message"} %>
+
+  <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
+  <%= f.hidden_field :from, value: 'artist' %>
+  <%= f.submit "send", class: "btn btn-primary", data: {send: "message"} %>
+<% end %>

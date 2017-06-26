@@ -7,7 +7,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'puma'
 gem 'rails', '5.0.3'
-gem 'redis'
+gem 'redis', '~>3.2'
 gem 'coffee-rails'
 gem 'autoprefixer-rails'
 gem 'jquery-rails'
@@ -30,7 +30,6 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'money-rails'
 gem 'stripe'
-
 
 
 group :development, :test do
