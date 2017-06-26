@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :appointments, dependent: :destroy
-  has_many :messages, dependent: :destroy
+  has_many :messages
+  has_many :chatrooms
+
   before_validation :check_email
   # stupid change for push
 

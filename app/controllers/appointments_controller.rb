@@ -18,10 +18,11 @@ class AppointmentsController < ApplicationController
     @appointment.end_time = params[:appointment][:end_time]
     @appointment.photo = params[:appointment][:photo]
     @appointment.status = "pending"
+    @appointment.message = params[:appointment][:message]
 
     if @appointment.save
-      @appointment.messages.create(content: params[:content],
-        user: current_user, artist: @appointment.artist, from: 'user')
+      @chatroom = Chatroom.create(appointment_id: @appointment.id,
+        user_id: @appointment.user.id, artist_id: @appointment.artist.id)
       redirect_to dashboard_path
     else
       render :new

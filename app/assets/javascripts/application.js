@@ -12,6 +12,6 @@
 
 //= require datepicker
 //= require swipebox
-//= require_tree .
+//= require_tree ./channels
 
 

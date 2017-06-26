@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623130131) do
+ActiveRecord::Schema.define(version: 20170624224920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170623130131) do
     t.string   "start_time"
     t.string   "end_time"
     t.string   "photo"
+    t.text     "message"
     t.index ["artist_id"], name: "index_appointments_on_artist_id", using: :btree
     t.index ["user_id"], name: "index_appointments_on_user_id", using: :btree
   end
@@ -77,16 +78,27 @@ ActiveRecord::Schema.define(version: 20170623130131) do
     t.index ["artist_id"], name: "index_availabilities_on_artist_id", using: :btree
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.string   "content"
+  create_table "chatrooms", force: :cascade do |t|
     t.integer  "appointment_id"
     t.integer  "user_id"
+    t.integer  "artist_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["appointment_id"], name: "index_chatrooms_on_appointment_id", using: :btree
+    t.index ["artist_id"], name: "index_chatrooms_on_artist_id", using: :btree
+    t.index ["user_id"], name: "index_chatrooms_on_user_id", using: :btree
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "artist_id"
     t.string   "from"
-    t.index ["appointment_id"], name: "index_messages_on_appointment_id", using: :btree
+    t.integer  "chatroom_id"
     t.index ["artist_id"], name: "index_messages_on_artist_id", using: :btree
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
   end
 
@@ -136,8 +148,11 @@ ActiveRecord::Schema.define(version: 20170623130131) do
   add_foreign_key "artist_styles", "artists"
   add_foreign_key "artist_styles", "styles"
   add_foreign_key "availabilities", "artists"
-  add_foreign_key "messages", "appointments"
+  add_foreign_key "chatrooms", "appointments"
+  add_foreign_key "chatrooms", "artists"
+  add_foreign_key "chatrooms", "users"
   add_foreign_key "messages", "artists"
+  add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
   add_foreign_key "photos", "artists"
   add_foreign_key "reviews", "artists"
