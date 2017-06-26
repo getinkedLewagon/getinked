@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     # @artist = Artist.first
     @artists = Artist.all
     @cities = get_cities
-    @styles = ["Traditional", "Watercolor", "Realism", "Tribal", "New School", "Neo Traditional", "Japanese", "Dotwork", "Geometric", "Script", "Illustrative"]
+    @styles = ["Choose a style", "Traditional", "Watercolor", "Realism", "Tribal", "New School", "Neo Traditional", "Japanese", "Dotwork", "Geometric", "Script", "Illustrative"]
   end
 
   def dashboard
@@ -51,7 +51,7 @@ class PagesController < ApplicationController
   private
 
   def get_cities
-    cities = []
+    cities = ["Choose a city"]
     @artists.each do |artist|
       cities << artist.city
     end
