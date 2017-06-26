@@ -2,3 +2,63 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+.info-padding{
+  padding: 15px;
+}
+
+.image-rectangle-small{
+  width: 100%;
+  height: 140px;
+}
+
+.row.no-gutter {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  .col-xs-4 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  padding-bottom: 50px;
+}
+
+
+.explore-art{
+  position: absolute;
+  top: 50px;
+  left: 3px;
+  width: 100%;
+}
+
+.font-white-small{
+  color: white;
+  font-size: 16px;
+  padding-top: 20px;
+  margin-bottom: 2px;
+}
+
+
+.btn-explore{
+  background-color: #7e57c2;
+  border: none;
+  font-family: 'Open Sans';
+  color: white;
+  font-weight: 500;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

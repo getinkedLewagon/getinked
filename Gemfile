@@ -30,6 +30,7 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'money-rails'
 gem 'stripe'
+gem 'font-awesome-sass'
 
 
 group :development, :test do
