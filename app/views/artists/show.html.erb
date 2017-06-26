@@ -1,10 +1,20 @@
-<div class="container">
-  <%= image_tag @artist.avatar, class: "profile-image img-circle img-artist-show" %>
-  <div class="artist-show-info"></div>
-  <h1><%= @artist.name %></h1>
-  <h3><%= @artist.city %></h3>
-  <%= link_to("http://maps.google.com/maps?q=#{@artist.latitude},#{@artist.longitude}") do %>
-  <i class="fa fa-map-marker" aria-hidden="true"> </i>  <%= @artist.address %>
+<div class="container-show">
+ <%= image_tag @artist.avatar, class: "profile-image img-circle img-artist-show" %>
+ <div class="artist-show-info">
+  <h3><%= @artist.name %></h3>
+  <ul class="list-inline">
+    <% if @artist.rating  %>
+      <% @artist.rating.times do  %>
+        <li><i class="fa fa-star" aria-hidden="true" style="color: black"></i></li>
+      <% end %>
+      <% (5 - @artist.rating).times do %>
+        <li><i class="fa fa-star-o" aria-hidden="true" style="color: black"></i></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <h4><%= @artist.city %></h4>
+  <%= link_to("http://maps.google.com/maps?q=#{@artist.latitude},#{@artist.longitude}", target: '_blank') do %>
+  <i class="fa fa-map-marker" aria-hidden="true"> </i><%= @artist.address %>
   <% end %>
   <p>Availabilty:</p>
   <% @artist.availabilities.each do |availability|%>
@@ -14,16 +24,21 @@
     <%= availability.end_time %>
   </ul>
   <% end %>
-<p>   <%= link_to "book me!", new_artist_appointment_path(@artist) %>
+  <ul class="links list-inline">
+    <li><%= link_to "Book me!", new_artist_appointment_path(@artist), class: "btn btn-artist-show btn-book" %></li>
+
+    <li><%= link_to "Reviews", '#reviews', class: "btn btn-artist-show btn-review", style: "text-decoration: none;" %></li>
+  </ul>
 </div>
 </div>
 
+
 <div class="container-position-relative">
-  <div class="row">
+  <div class="row no-gutter-artist">
    <!--  <div class="col-xs-6 col-xs-offset-2"> -->
    <% @artist.photos.each do |photo| %>
-   <div class="col-xs-6 col-lg-4">
-    <%= link_to photo.url, class: "swipebox " do %>
+   <div class="col-xs-6 col-lg-4 row-photo">
+    <%= link_to photo.url, class: "swipebox" do %>
     <%= image_tag photo.url, class: "photo-artist-show" %>
   </div>
   <% end %>
@@ -33,15 +48,25 @@
 </div>
 
 
-
-
-
-<%= link_to "Leave a review", new_artist_review_path(@artist) %>
-<h5>Reviews of <%= @artist.name %></h5>
-<% @artist.reviews.each do |review| %>
-<%= review.description %>
-<%= review.rating %>
-<% end %>
+<div class="text-center" id="reviews">
+  <h4>Reviews of <%=@artist.name  %></h4>
+  <%= link_to "Leave a Review", new_artist_review_path(@artist) %>
+<div>
+    <% @artist.reviews.each do |review| %>
+    <%= review.description %>
+    <ul class="list-inline">
+      <% review.rating.times do %>
+      <li><i class="fa fa-star" aria-hidden="true" style="color: black" ></i></li>
+      <% end %>
+      <% (5 - review.rating).times do %>
+      <li><i class="fa fa-star-o" aria-hidden="true" style="color: black"></i></li>
+      <% end %>
+      <br>
+      <br>
+    </ul>
+    <% end %>
+  </div>
+</div>
 
 
 
