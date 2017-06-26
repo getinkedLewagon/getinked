@@ -31,6 +31,7 @@ gem 'carrierwave', '~> 0.11.2'
 gem 'money-rails'
 gem 'stripe'
 gem "bootstrap-switch-rails"
+gem 'font-awesome-sass', '~> 4.7.0'
 
 
 group :development, :test do
@@ -39,8 +40,8 @@ group :development, :test do
   gem 'listen', '~> 3.0.5'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
+  # gem 'spring'
+  # gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 

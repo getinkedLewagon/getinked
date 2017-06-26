@@ -23,12 +23,36 @@
 .submit-edit-profile .btn {
   width: 100%;
   background-color: $primary;
+  margin-bottom: 1vh;
 }
 
 
 .submit-edit-profile .edit-profile-input {
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  box-shadow: none;
+  color: #333333;
 
-  border-top: none;
-  border-shadow: none;
-  color: pink;
+  &:focus {
+    border-bottom-color: #7E57C2;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    transition: 0.2s ease all;
+    border-left-color: transparent;
+    box-shadow: none;
+  }
+
 }
+
+
+
+
+
+
+// {
+//   border-left-color: transparent;
+//   border-right-color: transparent;
+//   border-top-color: transparent;
+// }
+
