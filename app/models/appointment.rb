@@ -1,5 +1,6 @@
 class Appointment < ApplicationRecord
   mount_uploader :photo, PhotoUploader
+  monetize :price_cents
 
   belongs_to :user
   belongs_to :artist

@@ -19,6 +19,7 @@ class AppointmentsController < ApplicationController
     @appointment.end_time = params[:appointment][:end_time]
     @appointment.photo = params[:appointment][:photo]
     @appointment.status = "pending"
+    @appointment.price_cents = @appointment.artist.start_fee * 100
 
     if @appointment.save
       @appointment.messages.create(content: params[:content],
