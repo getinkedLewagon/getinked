@@ -1,16 +1,16 @@
 <% render 'shared/navbar' %>
 
 
-<% if  user_signed_in? %>
-  <h1> Hello <%= current_user.email %></h1>
-<% elsif artist_signed_in? %>
-  <h1> Hello <%= current_artist.email %></h1>
-  <% if current_artist.photos.count == 0 %>
-<%= render 'layouts/artist_pictures_select' %>
+<%#if  user_signed_in? %>
+<!-- <h1> Hello --> <%#= current_user.email %><!-- </h1> -->
+<%# elsif artist_signed_in? %>
+<!-- <h1> Hello  --><%#= current_artist.email %><!-- </h1> -->
+<%# if current_artist.photos.count == 0 %>
+<%#= render 'layouts/artist_pictures_select' %>
 
-<% end %>
+<%# end %>
 
-<% end %>
+<%# end %>
 
   <%= render partial: 'banner', locals: { cities: @cities, styles: @styles } %>
 
