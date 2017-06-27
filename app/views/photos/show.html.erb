@@ -1,0 +1,20 @@
+<div class="text-center">
+  <%= link_to artist_path(@photo.artist) do%>
+    <%= image_tag @photo.url, class: "photo-show" %>
+  <% end %>
+</div>
+
+<div class= "photo-artist-info">
+ <div class="photo-artist-avatar">
+    <%= link_to artist_path(@photo.artist) do%>
+      <%= image_tag @photo.artist.avatar, class: "avatar-photo-show" %>
+    <% end  %>
+  </div>
+  <div class="photo-artist-name">
+    <%= link_to @photo.artist.name, artist_path(@photo.artist) %>
+  </div>
+  <div class="photo-artist-city">
+    <%= @photo.artist.city %>
+  </div>
+</div>
+
