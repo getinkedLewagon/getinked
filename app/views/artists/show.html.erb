@@ -39,7 +39,7 @@
    <% @artist.photos.each do |photo| %>
    <div class="col-xs-6 col-lg-4 row-photo">
     <%= link_to photo.url, class: "swipebox" do %>
-    <%= image_tag photo.url, class: "photo-artist-show" %>
+    <%= image_tag photo.url, class: "photo-artist-show swipebox" %>
   </div>
   <% end %>
   <% end %>
