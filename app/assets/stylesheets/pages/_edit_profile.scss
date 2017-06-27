@@ -65,7 +65,44 @@
   z-index: 1;
 }
 
+.picture-upload-checked {
+  width: 5vh;
+  height: 5vh;
 
+}
+
+.picture-cover {
+  background-image: black;
+  z-index: 1;
+}
+
+
+.wrapper-upload {
+  position: relative;
+}
+.disappear {
+  display: none;
+}
+
+.checked {
+  top: 102px;
+  left: 105px;
+  position: absolute;
+}
+
+
+.checked.disappear {
+  display: none;
+  transition: all 1s;
+}
+
+
+.upload-pictures.btn {
+  width: 80%;
+  background-color: $primary;
+  margin-bottom: 1vh;
+  margin-bottom: 1vh
+}
 
 
 // {

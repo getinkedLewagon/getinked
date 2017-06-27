@@ -10,7 +10,6 @@
 
 //= require bootstrap-datetimepicker
 
-//= require datepicker
 //= require swipebox
 //= require bootstrap-switch
 //= require jquery-ui

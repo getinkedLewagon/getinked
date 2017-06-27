@@ -1,5 +1,9 @@
-var user = document.querySelector('#messages'),
-data = user.dataset;
+
+var user = document.querySelector('#messages');
+
+if (user) {
+  var data = user.dataset;
+}
 
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
