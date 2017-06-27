@@ -1,0 +1,10 @@
+<div class="row no-gutter-artist-index">
+        <% artist.photos.each do |photo| %>
+          <div class="col-xs-4">
+            <%=link_to photo_path(photo) do %>
+              <%= image_tag photo.url, class: "img-responsive photo-artist-index" %>
+            <% end %>
+
+          </div>
+        <% end %>
+      </div>

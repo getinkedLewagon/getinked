@@ -113,7 +113,7 @@ new_school_artist_hash = { style: Style.find_by(name: "New School"),
 # F }etch Neo Traditional Tattooers from Instagram (7)
 
 neo_traditional_artist_hash = { style: Style.find_by(name: "Neo Traditional"),
-                                 artists: ['shio1red', 'carlykroll',
+                                 artists: ['Denis', 'carlykroll',
                                            'haydntattoo', 'samanthamoth13',
                                            'causalitytattoo', 'motar_ink'] }
 
