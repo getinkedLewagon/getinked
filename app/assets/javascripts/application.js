@@ -13,5 +13,7 @@
 //= require datepicker
 //= require swipebox
 //= require bootstrap-switch
+//= require jquery-ui
 //= require check_box
-//= require_tree ./channels
+//= require_tree .
+

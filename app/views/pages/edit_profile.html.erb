@@ -1,7 +1,6 @@
-
 <div class="wrapper">
   <div class="row">
-    <div-col-xs-12>
+    <div class='col-xs-12'>
       <div class="artist-edit-background">
         <div class="artist-edit-welcome">
           <h3>Welcome to GetInked, <%= current_artist.extract_from_instagram[:artist_name] %>! </h3>
@@ -10,7 +9,7 @@
         </div>
       </div>
       <%#= image_tag  %>
-    </div-col-xs-12>
+    </div>
 
     <div class="container-fluid artist-edit-data">
 
@@ -25,7 +24,7 @@
      <% @styles.each do |style| %>
      <p> <span class="style-checkbox">
         <label for="artist_styles_<%= style.id %>">
-          <input class="check_boxes required multiselectuser" autofocus="autofocus" required="required" aria-required="true" selected="selected" type="checkbox" value="<%= style.id %>" name="artist[styles][]" id="artist_styles_<%= style.id %>" data-size="small" data-on-color='success' data-on-text='yes' data-off-text='no' />
+          <input class="cool check_boxes required multiselectuser" autofocus="autofocus" required="required" aria-required="true" selected="selected" type="checkbox" value="<%= style.id %>" name="artist[styles][]" id="artist_styles_<%= style.id %>" data-size="small" data-on-color='success' data-on-text='yes' data-off-text='no' />
           <%= style.name %>
         </label>
       </span> </p>
