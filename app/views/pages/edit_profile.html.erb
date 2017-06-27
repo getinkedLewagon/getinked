@@ -35,9 +35,12 @@
       <%#= f.input :styles, label: false, collection: @styles, selected: @artist.styles.map(&:id),  input_html: {class: 'multiselectuser' }, required:true, autofocus: true, as: :check_boxes ,:data => { :size=>'small', 'on-color'=>'success', 'on-text'=>'p', 'off-text'=>'N' } %>
 
 
+    <div class="container-fluid">
 
       <%= f.input :info, label: "Your GetInked bio, fetched from Instagram", required: true, placeholder: "Tell us about you", input_html: {style: 'width: 100%; height: 10vh;', rows: 5, class: 'edit-profile-input'}, as: :text %>
-      <%= f.button :submit, "Update", class: 'btn btn-primary' %>
+      <%= f.button :submit, "Update", class: 'upload-pictures btn btn-primary' %>
+
+      </div>
 
     </div>
 

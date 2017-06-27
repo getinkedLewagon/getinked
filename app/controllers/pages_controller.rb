@@ -28,10 +28,10 @@ class PagesController < ApplicationController
   private
 
   def get_cities
-    cities = ["Choose a city"]
+    @cities = ["Choose a city"]
     @artists.each do |artist|
-      cities << artist.city
+      @cities << artist.city
     end
-    cities.uniq
+    @cities.uniq
   end
 end
