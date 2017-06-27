@@ -1,0 +1,58 @@
+
+
+.artist-edit-background {
+  background-image: url('badass_oldie.png');
+  background-size: cover;
+  background-position: center;
+  height: 30vh;
+  position: relative;
+  margin-bottom: 3vh;
+}
+
+.artist-edit-welcome {
+  color: white;
+  position: absolute;
+  top: 12vh;
+  left: 5vh;
+}
+
+.artist-edit-data {
+  width: 90%;
+}
+
+.submit-edit-profile .btn {
+  width: 100%;
+  background-color: $primary;
+  margin-bottom: 1vh;
+}
+
+
+.submit-edit-profile .edit-profile-input {
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  box-shadow: none;
+  color: #333333;
+
+  &:focus {
+    border-bottom-color: #7E57C2;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    transition: 0.2s ease all;
+    border-left-color: transparent;
+    box-shadow: none;
+  }
+
+}
+
+
+
+
+
+
+// {
+//   border-left-color: transparent;
+//   border-right-color: transparent;
+//   border-top-color: transparent;
+// }
+
