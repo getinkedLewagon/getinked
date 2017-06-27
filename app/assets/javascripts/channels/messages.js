@@ -1,13 +1,19 @@
-var user = document.querySelector('#messages'),
-data = user.dataset;
+
+var user = document.querySelector('#messages');
+
+if (user) {
+  var data = user.dataset;
+}
 
 
 
 App.messages = App.cable.subscriptions.create('MessagesChannel', {
   received: function(data) {
-    $("#messages").removeClass('hidden');
-    $('#messages').append(this.renderMessage(data));
-    return $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+    // if (data.message.trim() !== "" && data.message !== null) {
+      $("#messages").removeClass('hidden');
+      $('#messages').append(this.renderMessage(data));
+      return $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+    // }
   },
 
   renderMessage: function(data) {

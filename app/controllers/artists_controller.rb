@@ -32,12 +32,16 @@ class ArtistsController < ApplicationController
 
 
   def upload
-    pictures = params[:select_pictures][:pictures_url].reject(&:empty?)
+    pictures = params[:select_pictures].reject(&:empty?)
+
+    current_artist.photos.destroy_all
+
     pictures.each do |pic|
       photo = Photo.new(url: pic)
       photo.artist = current_artist
       photo.save
     end
+
     redirect_to dashboard_path
   end
 
@@ -65,10 +69,13 @@ class ArtistsController < ApplicationController
   private
 
   def update_params
-
-     params.require(:artist).permit(:email, :address, :city, :info, :styles => [])
-
+     params.require(:artist).permit!
   end
+
+  def upload_params
+    params.require(:select_pictures).permit!
+  end
+
 
 end
 

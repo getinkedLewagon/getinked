@@ -1,7 +1,6 @@
 <div class="wrapper text-center">
 
   <div>
-    Browse our Database of curated artists
     <%= form_tag "/artists", method: "get", class: 'form-banner' do %>
     <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
     <%= submit_tag "Discover Art", class: 'btn-landing' %>
@@ -9,9 +8,7 @@
   </div>
   <br>
   <br>
-
 <% @artists.each do |artist| %>
-    <!-- if city is specified and style is not specified -->
   <% style_match = artist.styles.select {|style| style.name == params[:style]} %>
     <% if
       (params[:city] == artist.city && params[:style] == "Choose a style")        ||
