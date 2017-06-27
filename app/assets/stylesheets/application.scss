@@ -1,5 +1,12 @@
 // Graphical variables
 @import "config/variables";
+
+// Bootstrap
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import 'bootstrap-datetimepicker';
+
+
 @import "config/small_rules";
 
 // External libraries
@@ -12,13 +19,7 @@
 @import "components/index";
 @import "pages/index";
 
-// Bootstrap
-@import "bootstrap-sprockets";
-@import "bootstrap";
 
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
-@import 'bootstrap-datetimepicker';
 @import 'swipebox';
 @import "bootstrap3-switch";
 
