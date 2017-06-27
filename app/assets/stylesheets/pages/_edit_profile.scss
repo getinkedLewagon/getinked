@@ -46,6 +46,24 @@
 }
 
 
+.style-checkbox .bootstrap-switch-wrapper.bootstrap-switch-small.bootstrap-switch-focused {
+  outline: none;
+  border-color: #cccccc;
+  box-shadow: none;
+}
+
+.picture-upload {
+  height: 20vh;
+  width: 20vh;
+}
+
+
+.picture-selected {
+  box-shadow: 0px 0px 2px 3px $primary;
+  transition: 0.1s ease;
+  background-image: url(http://www.freeiconspng.com/uploads/success-icon-10.png);
+  z-index: 1;
+}
 
 
 
