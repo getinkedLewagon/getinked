@@ -41,10 +41,19 @@ class ArtistsController < ApplicationController
 
   def update
     @artist = Artist.find(params[:id])
-    @artist.email = update_params["email"]
+    @artist.email = update_params[:email]
     @artist.address = update_params["address"]
     @artist.city = update_params["city"]
     @artist.info = update_params["info"]
+
+    @artist.artist_styles.destroy_all
+
+    update_params["styles"].each do |style_id|
+      ArtistStyle.create(style_id: style_id, artist_id: @artist.id)
+      # @artist.artist_styles.create(style_id: style_id)
+    end
+
+    # @artist.styles = update_params["styles"]
     @artist.save
     redirect_to dashboard_path
   end
@@ -54,7 +63,8 @@ class ArtistsController < ApplicationController
   private
 
   def update_params
-    params.require(:artist).permit(:email, :address, :city, :info)
+
+     params.require(:artist).permit(:email, :address, :city, :info, :styles => [])
 
   end
 

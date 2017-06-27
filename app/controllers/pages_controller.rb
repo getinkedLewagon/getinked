@@ -18,6 +18,13 @@ class PagesController < ApplicationController
     end
   end
 
+  def edit_profile
+    @styles = Style.all
+    @artist = current_artist
+    @bio = current_artist.info
+  end
+
+
   private
 
   def get_cities
