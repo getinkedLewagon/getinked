@@ -2,13 +2,15 @@ class ArtistsController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
+
     @artists = Artist.all
 
      @l_array = ["choose a city"]
      @artists.each do |artist|
-      @l_array << artist.city
+     @l_array << artist.city
     end
-    @l_array = @l_array.uniq
+     @l_array = @l_array.uniq
+
 
   end
 
