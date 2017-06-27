@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
     resources :availabilities, only: [:new, :create, :destroy]
 
+    resources :photos, only: [:show]
+
     resources :artists, only: [:index, :show, :edit, :update] do
 
 
