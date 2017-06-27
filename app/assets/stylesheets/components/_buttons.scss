@@ -5,10 +5,39 @@
   font-family: 'Open Sans';
   color: white;
   font-weight: 500;
+  margin-left: 5px;
+  //border-radius: 4px;
 }
 
 .dropdown-style {
   height: 50px;
   background: white;
   font-family: 'Open Sans';
+}
+
+// .btn-purple {
+//   background-color: #7e57c2;
+//   border: none;
+//   height: 35px;
+//   font-family: 'Open Sans';
+//   color: white;
+//   font-weight: 500;
+
+// }
+
+.btn-artist-show {
+  background-color: #7e57c2;
+  border: none;
+  height: 35px;
+  font-family: 'Open Sans';
+  color: white;
+  font-weight: 500;
+
+}
+
+.btn-review {
+    position: absolute;
+    right: 27px;
+    bottom: 10px;
+    height: 37px;
 }

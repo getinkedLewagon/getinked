@@ -1,0 +1,43 @@
+.photo-show {
+  height: 420px;
+  width: 420px;
+  margin-top: 0px;
+}
+
+.avatar-photo-show {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+
+}
+
+.photo-artist-info {
+  margin-top: 20px;
+  margin-left: 15px;
+  position: relative;
+}
+
+.photo-artist-info a {
+  text-decoration: none !important;
+  color: black;
+}
+
+.photo-artist-name {
+  position: absolute;
+  left: 34px;
+  top: -11px;
+}
+
+.photo-artist-city {
+  font-size: 12px;
+  position: absolute;
+  left: 34px;
+  bottom: -23px;
+}
+
+.photo-artist-avatar {
+  position: absolute;
+  top: -9px;
+}
+
+

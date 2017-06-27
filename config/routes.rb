@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
     resources :availabilities, only: [:new, :create, :destroy]
 
+    resources :photos, only: [:show]
+
     resources :artists, only: [:index, :show, :edit, :update] do
 
 
@@ -39,13 +41,10 @@ Rails.application.routes.draw do
       get 'deny'
       end
       end
-
- resources :orders, only: [:create] do
- resources :payments, only: [:new, :create]
-
     end
 
-
+     resources :orders, only: [:create] do
+  resources :payments, only: [:new, :create]
 
     end
   end
