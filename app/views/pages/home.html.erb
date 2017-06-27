@@ -1,10 +1,11 @@
 <% render 'shared/navbar' %>
 
 
-
+<% if current_artist %>
 <% if current_artist.photos.count == 0 %>
-<%= render 'layouts/artist_pictures_select' %>
+<%#= render 'layouts/artist_pictures_select' %>
 
+<% end %>
 <% end %>
 
 
