@@ -1,7 +1,6 @@
 <div class="wrapper text-center">
 
   <div>
-    Browse our Database of curated artists
     <%= form_tag "/artists", method: "get", class: 'form-banner' do %>
     <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
     <%= submit_tag "Discover Art", class: 'btn-landing' %>
@@ -12,7 +11,16 @@
 
   <% @artists.each do |artist| %>
 
-  <% if params[:city] != nil  %>
+  <% if params[:city] != nil && artist.city != params[:city] %>
+
+            <% artist.photos.each do |photo| %>
+      <div class="col-xs-4">
+        <%=link_to photo_path(photo) do %>
+          <%= image_tag photo.url, class: "img-responsive photo-artist-index" %>
+        <% end %>
+
+      </div>
+      <% end %>
 
     <% if artist.city == params[:city]%>
     <div class="row no-gutter-artist-index">
@@ -30,8 +38,15 @@
 
   <% end %>
 
-  <% elsif params[:city] == nil   %>
+  <% elsif params[:city] == nil %>
+        <% artist.photos.each do |photo| %>
+      <div class="col-xs-4">
+        <%=link_to photo_path(photo) do %>
+          <%= image_tag photo.url, class: "img-responsive photo-artist-index" %>
+        <% end %>
 
+      </div>
+      <% end %>
 
 
 
