@@ -1,3 +1,5 @@
 
 
-  $('.carousel').carousel()
+  $('.carousel').carousel();
+
+  $('html, body').animate({scrollTop:$(document).height()}, 'slow');
