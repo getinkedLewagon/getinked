@@ -1,20 +1,42 @@
-You're chatting with <%= @chatroom.appointment.user.username %>
-<br>
-<div id="messages" data-user="artist">
-<% @chatroom.messages.each do |message| %>
-<% if message.from == 'artist' %>
-<p><strong>You: </strong> <%= message.content %></p>
-<% elsif message.from == 'user' %>
-<p><strong><%= message.user.username %>: </strong> <%= message.content %></p>
-<% end %>
-<% end %>
+<div class="chat-header navbar-fixed-top">
+  <div class="col-xs-2">
+    <h3><strong><%= link_to '<', dashboard_path, class: 'no-text-decoration' %></strong></h3>
+  </div>
+  <div class='col-xs-8 text-center'>
+  <h3><%= @chatroom.appointment.user.username %></h3>
+  </div>
+  <div class='col-xs-2'><%= image_tag @chatroom.appointment.artist.avatar , class: "img-circle img-responsive img-chat" %>
+  </div>
+</div>
 </div>
 
-<%= form_for @message, remote: true, authenticity_token: true do |f| %>
-  <%= f.label :your_message %>:
-  <%= f.text_area :content, class: "form-control", data: {textarea: "message"} %>
+<div class="chat-body">
+  <div id="messages" data-user="artist">
+    <% @chatroom.messages.each do |message| %>
+    <% if message.from == 'artist' %>
+    <div class="row margin-0">
+      <div class="col-xs-8 text-left padding-0">
+        <p class="chat-bubble my-message"><%= message.content %></p>
+      </div>
+    </div>
+    <% elsif message.from == 'user' %>
+    <div class="row margin-0">
+      <div class="col-xs-8 col-xs-offset-4 text-left padding-0">
+        <p class="chat-bubble user-message"><%= message.content %></p>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+  <div class="navbar-fixed-bottom chat-input">
+    <%= form_for @message, remote: true, authenticity_token: true do |f| %>
+    <%= f.text_area :content, class: "form-control chat-input", data: {textarea: "message"} %>
 
-  <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
-  <%= f.hidden_field :from, value: 'artist' %>
-  <%= f.submit "send", class: "btn btn-primary", data: {send: "message"} %>
-<% end %>
+    <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
+    <%= f.hidden_field :from, value: 'user' %>
+    <%= f.submit "send", class: "btn btn-primary", style: "display: none", data: {send: "message"} %>
+    <% end %>
+  </div>
+</div>
+
+
