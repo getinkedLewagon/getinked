@@ -1,11 +1,41 @@
 <div class="wrapper text-center">
-  <h3> Go Select your work, <%= current_artist %> </h3>
-<%= simple_form_for :select_pictures, url: upload_pictures_artist_path(current_artist), method: :post do |f|%>
-    <%= f.input_field :pictures_url,
-     :collection => current_artist.recent_media.map {|img| [image_tag(img["images"]["low_resolution"]["url"]).html_safe,img["images"]["low_resolution"]["url"]] },
-     as: :check_boxes
-  %>
-  <%= f.submit "Upload Pictures" %>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3> Tap to upload your work, <%= current_artist.name %> </h3>
+    </div>
+
+    <%= simple_form_for :select_pictures, url: upload_pictures_artist_path(current_artist), method: :post do |f|%>
+
+
+
+    <% current_artist.recent_media.each do |media| %>
+    <div class="col-xs-6 padded">  <span class="style-checkbox">
+      <label> <%= image_tag media["images"]["low_resolution"]["url"], class:"picture-upload" %>
+        <input class="check_boxes required multiselectuser" style="display: none;" autofocus="autofocus" required="required" aria-required="true" selected="selected" type="checkbox" value="<%= media["images"]["low_resolution"]["url"] %>"  data-size="small" data-on-color='success' data-on-text='yes' data-off-text='no' />
+      </label>
+
+    </span> </p> </div>
+    <% end %>
+
+
+
+    <%= f.submit "Upload Pictures" %>
+    <% end %>
+  </div>
+</div>
+</div>
+
+
+<% content_for(:after_js) do  %>
+    <%= javascript_tag do %>
+    $(".picture-upload").click(function() {
+      $(this).toggleClass("picture-selected");
+    });
+  <% end %>
 <% end %>
 
-</div>
+
+
+
+
+

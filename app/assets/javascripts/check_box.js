@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('input:checkbox').bootstrapSwitch('onColor', 'success');
+    $('input:checkbox.cool').bootstrapSwitch('onColor', 'success');
   });
 
   $(function() {
@@ -13,7 +13,7 @@ $(document).ready(function() {
       "New York",
     ];
 
-    $('#artist-edit-search').autoComplete({
+    $('#artist-edit-search').autocomplete({
       source: availableCities
     });
   } );

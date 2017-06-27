@@ -1,5 +1,12 @@
 
 .stripe-button-el {
-  background-color: $primary;
-  width: 100%
+  background-image: none !important;
+  box-shadow: none !important;
+  span {
+    background: $primary !important;
+    background-image: none !important;
+    width: 100%;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
 }

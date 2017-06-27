@@ -46,6 +46,18 @@
 }
 
 
+.style-checkbox .bootstrap-switch-wrapper.bootstrap-switch-small.bootstrap-switch-focused {
+  outline: none;
+  border-color: #cccccc;
+  box-shadow: none;
+}
+
+
+.picture-selected {
+  box-shadow: 10px 10px 5px 0px rgba(230,97,230,1);
+  transition: 0.1s ease;
+
+}
 
 
 
