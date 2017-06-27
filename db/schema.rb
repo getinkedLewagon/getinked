@@ -24,9 +24,9 @@ ActiveRecord::Schema.define(version: 20170626162036) do
     t.string   "start_time"
     t.string   "end_time"
     t.string   "photo"
+    t.text     "message"
     t.integer  "price_cents", default: 0, null: false
     t.string   "sku"
-    t.text     "message"
     t.index ["artist_id"], name: "index_appointments_on_artist_id", using: :btree
     t.index ["user_id"], name: "index_appointments_on_user_id", using: :btree
   end
@@ -94,14 +94,12 @@ ActiveRecord::Schema.define(version: 20170626162036) do
 
   create_table "messages", force: :cascade do |t|
     t.string   "content"
-    t.integer  "appointment_id"
     t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "artist_id"
     t.string   "from"
     t.integer  "chatroom_id"
-    t.index ["appointment_id"], name: "index_messages_on_appointment_id", using: :btree
     t.index ["artist_id"], name: "index_messages_on_artist_id", using: :btree
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id", using: :btree
     t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
@@ -166,7 +164,6 @@ ActiveRecord::Schema.define(version: 20170626162036) do
   add_foreign_key "chatrooms", "appointments"
   add_foreign_key "chatrooms", "artists"
   add_foreign_key "chatrooms", "users"
-  add_foreign_key "messages", "appointments"
   add_foreign_key "messages", "artists"
   add_foreign_key "messages", "chatrooms"
   add_foreign_key "messages", "users"
