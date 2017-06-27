@@ -4,6 +4,8 @@
       <h3> Tap to upload your work, <%= current_artist.name %> </h3>
     </div>
 
+
+
     <%= simple_form_for :select_pictures, url: upload_pictures_artist_path(current_artist), method: :post do |f|%>
 
 
