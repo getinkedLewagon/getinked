@@ -33,7 +33,7 @@
     <%= f.text_area :content, class: "form-control chat-input", data: {textarea: "message"} %>
 
     <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
-    <%= f.hidden_field :from, value: 'user' %>
+    <%= f.hidden_field :from, value: 'artist' %>
     <%= f.submit "send", class: "btn btn-primary", style: "display: none", data: {send: "message"} %>
     <% end %>
   </div>
