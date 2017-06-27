@@ -16,7 +16,9 @@
 
 
 
+
   <% @artists.each do |artist| %>
+  <%= image_tag artist.avatar, class: "profile-image img-circle" %>
   <% if artist.city == params[:city]%>
 
    <%= image_tag artist.avatar, class: "profile-image img-circle" %>
@@ -75,7 +77,6 @@
       </div>
     </div>
     <% end %>
-
     <!-- Controls -->
     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -86,14 +87,15 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-
   </div>
-
-
-
   </div>
 </div>
   <% end %>
+
+
+
+
+
 <% end %>
 </div>
 

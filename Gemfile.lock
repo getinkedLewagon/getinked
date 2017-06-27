@@ -282,7 +282,8 @@ DEPENDENCIES
   devise
   faker
   figaro
-  font-awesome-sass (~> 4.7.0)
+
+  font-awesome-sass
   geocoder
   gmaps4rails
   instagram

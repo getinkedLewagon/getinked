@@ -31,8 +31,7 @@ gem 'carrierwave', '~> 0.11.2'
 gem 'money-rails'
 gem 'stripe'
 gem "bootstrap-switch-rails"
-gem 'font-awesome-sass', '~> 4.7.0'
-
+gem 'font-awesome-sass'
 
 group :development, :test do
   gem 'better_errors'
