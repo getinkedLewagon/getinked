@@ -1,0 +1,21 @@
+.photo-artist-index {
+   height: 130px !important;
+   width: 130px;
+  /* margin-bottom: 3%; */
+  padding: 1px;
+}
+
+.row.no-gutter-artist-index {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  padding: 12px;
+  position: relative;
+  .col-xs-4 {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  padding-bottom: 0px;
+}
+
