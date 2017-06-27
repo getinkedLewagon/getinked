@@ -7,17 +7,17 @@ class MessagesController < ApplicationController
     @message.artist = @message.chatroom.appointment.artist
     if @message.save && current_user
       ActionCable.server.broadcast 'messages',
-      message: @message.content,
-      user: @message.user.username,
-      from: 'user'
-      head :ok
+        message: @message.content,
+        user: @message.user.username,
+        from: 'user'
+        head :ok
     elsif @message.save && current_artist
      ActionCable.server.broadcast 'messages',
-     message: @message.content,
-     artist: @message.artist.email,
-     from: 'artist'
-     head :ok
-   end
+       message: @message.content,
+       artist: @message.artist.email,
+       from: 'artist'
+       head :ok
+     end
  end
 
  private

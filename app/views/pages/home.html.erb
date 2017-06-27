@@ -1,13 +1,6 @@
 <% render 'shared/navbar' %>
 
 
-
-<% if current_artist.photos.count == 0 %>
-<%= render 'layouts/artist_pictures_select' %>
-
-<% end %>
-
-
   <%= render partial: 'banner', locals: { cities: @cities, styles: @styles } %>
 
   <%= render 'aboutgitinked' %>
