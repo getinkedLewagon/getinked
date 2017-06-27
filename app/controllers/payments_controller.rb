@@ -1,8 +1,10 @@
 class PaymentsController < ApplicationController
   before_action :set_order
   before_action :set_appointment
+  before_action :set_artist
 
   def new
+
   end
 
   def create
@@ -37,6 +39,11 @@ private
   def set_appointment
     @appointment = Appointment.find(@order.id_appointment)
   end
+
+  def set_artist
+    @artist = @appointment.artist
+  end
+
 
 end
 

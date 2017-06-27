@@ -54,6 +54,9 @@ class Artist < ApplicationRecord
     else
       artist = Artist.new(artist_params)
       artist.password = Devise.friendly_token[0,20]  # Fake password for validation
+      artist.info = artist.extract_from_instagram[:artist_bio]
+      artist.avatar = artist.extract_from_instagram[:avatar_image]
+      artist.name = artist.extract_from_instagram[:artist_name]
       artist.save
     end
 

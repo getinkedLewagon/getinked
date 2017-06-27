@@ -12,5 +12,7 @@
 
 //= require datepicker
 //= require swipebox
+//= require bootstrap-switch
+//= require check_box
 //= require_tree ./channels
 
