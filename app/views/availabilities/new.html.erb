@@ -12,10 +12,10 @@
      <%= f.input :end_time, collection: @hours %>
 
 
-     <%= f.button :submit %>
+     <%= f.button :submit, class: 'btn btn-primary'%>
      <% end %>
 
-     <%= link_to "Back to artist dashboard", dashboard_path %>
+
 
      <h3>Your current availability:</h3>
      <% current_artist.availabilities.each do |availability| %>
