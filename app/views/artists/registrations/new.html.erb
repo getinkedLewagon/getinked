@@ -50,6 +50,26 @@
       </div>
 
 
+      <p> ------------------- </p>
+
+
+        <div class="form-inputs group" >
+
+          <input type="text" name="name" value="" required="true", autofocus="true" >
+          <span class="highlight"> </span>
+          <span class="bar"> </span>
+          <label> Name </label>
+        </div>
+        <%= f.input :name, label: false, placeholder: "your name", required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
+        <%= f.input :address, label: false, placeholder: "your address",  required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
+        <%= f.input :city, label: false, placeholder: "your city", required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
+        <%= f.input :info, label: false, placeholder: "a short bio about yourself", required: true, autofocus: true, input_html: {class: 'edit-profile-input' }, as: :text %>
+        <%= f.input :email, label: false, placeholder: "your email", required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
+        <%= f.input :password, label:false, placeholder: "your password - 6 characters minimum", required: true, input_html: {class: 'edit-profile-input' } %>
+        <%= f.input :password_confirmation, label: false, placeholder: "confirm your password", required: true, input_html: {class: 'edit-profile-input' } %>
+      </div>
+
+
       <div class="form-actions">
         <%= f.button :submit, "Sign up", class: 'upload-pictures btn btn-primary'%>
       </div>
