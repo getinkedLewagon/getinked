@@ -5,8 +5,8 @@ class Appointment < ApplicationRecord
   belongs_to :user
   belongs_to :artist
 
-  has_one :chatroom ,depdent: :destroy
-  has_one :review, depdent: :destroy
+  has_one :chatroom ,dependent: :destroy
+  has_one :review, dependent: :destroy
 
   def status_confirmed
     self.status = "confirmed"
