@@ -1,7 +1,9 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:home, :dashboard]
+
 
   def home
+    puts 'Home Page'
     @addresses = Artist.all.map {|a| a.city}.uniq
     # @artist = Artist.first
     @artists = Artist.all
@@ -10,12 +12,14 @@ class PagesController < ApplicationController
   end
 
   def dashboard
+    check_kind_user
     @addresses = Artist.all.map {|a| a.address}.uniq
     if current_user
       @appointments = current_user.appointments
     elsif current_artist
       @appointments = current_artist.appointments
     end
+
   end
 
   def edit_profile
@@ -26,7 +30,11 @@ class PagesController < ApplicationController
 
 
   private
-
+  def check_kind_user
+    unless current_user || current_artist
+      redirect_to root_path
+    end
+  end
   def get_cities
     @cities = ["Choose a city"]
     @artists.each do |artist|
