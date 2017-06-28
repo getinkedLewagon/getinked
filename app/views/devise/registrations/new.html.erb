@@ -1,19 +1,38 @@
-<h2>Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <div class="row">
+    <div class="col-xs-12">
+     <div class="artist-edit-background">
+       <div class="artist-edit-welcome">
+         <h3>Welcome to GetInked! </h3>
+       </div>
+     </div>
+   </div>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :username, required: true, autofocus: true %>
+   <div class="container-fluid">
 
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
+   <div class="col-xs-12 text-center">
+
+     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name))  do |f| %>
+     <%= f.error_notification %>
+
+     <div class="form-inputs submit-edit-profile">
+      <%= f.input :email, label: false, placeholder: "Your email" , required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
+      <%= f.input :username, label: false, placeholder: "Your username" , required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
+
+      <%= f.input :password, label: false, placeholder: "Your password - 6 characters min" , required: true, input_html: {class: 'edit-profile-input' } %>
+      <%= f.input :password_confirmation, label: false, placeholder: "Confirm your password" , required: true, input_html: {class: 'edit-profile-input' } %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up", class: 'upload-pictures btn btn-primary' %>
+    </div>
+    <% end %>
+
+
+
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+</div>
+

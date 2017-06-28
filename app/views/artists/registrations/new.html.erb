@@ -1,22 +1,70 @@
-<h2>Sign up</h2>
+  <div class="row">
+    <div class="col-xs-12">
+     <div class="artist-edit-background">
+       <div class="artist-edit-welcome">
+         <h3>Welcome </h3>
+         <h5>Welcome to the one-stop place for tattoos</h5>
+       </div>
+     </div>
+   </div>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+   <div class="container-fluid">
 
-  <div class="form-inputs">
-  <%= f.input :name, required: true, autofocus: true %>
-  <%= f.input :address, required: true, autofocus: true %>
-  <%= f.input :city, required: true, autofocus: true %>
-  <%= f.input :info, required: true, autofocus: true %>
-  <%= f.input :email, required: true, autofocus: true %>
-  <%= f.input :styles, collection: @styles, input_html: {class: 'multiselectuser', multiple: true}, required: true, autofocus: true %>
-  <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-  <%= f.input :password_confirmation, required: true %>
+     <div class="col-xs-12 text-center">
+
+       <br>
+
+       <%- if devise_mapping.omniauthable? %>
+        <%- resource_class.omniauth_providers.each do |provider| %>
+          <%= link_to omniauth_authorize_path(resource_name, provider), class: 'upload-pictures btn btn-primary'  do %>
+          <i class="fa fa-instagram"></i> <%=  "#{OmniAuth::Utils.camelize(provider)} Sign Up" %>
+            <% end %>
+          <% end -%>
+       <% end -%>
+
+       <br>
+
+       or
+
+       <h4> Enter your info </h4>
+
+     </div>
+   </div>
+
+   <div class="container-fluid">
+
+
+     <div class="col-xs-12 text-center">
+
+      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+
+      <div class="form-inputs submit-edit-profile">
+        <%= f.input :name, label: false, placeholder: "your name", required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
+        <%= f.input :address, label: false, placeholder: "your address",  required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
+        <%= f.input :city, label: false, placeholder: "your city", required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
+        <%= f.input :info, label: false, placeholder: "a short bio about yourself", required: true, autofocus: true, input_html: {class: 'edit-profile-input' }, as: :text %>
+        <%= f.input :email, label: false, placeholder: "your email", required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
+        <%= f.input :password, label:false, placeholder: "your password - 6 characters minimum", required: true, input_html: {class: 'edit-profile-input' } %>
+        <%= f.input :password_confirmation, label: false, placeholder: "confirm your password", required: true, input_html: {class: 'edit-profile-input' } %>
+      </div>
+
+
+      <div class="form-actions">
+        <%= f.button :submit, "Sign up", class: 'upload-pictures btn btn-primary'%>
+      </div>
+
+    </div>
+    <% end %>
+
+
+
+
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+</div>
 
-<%= render "artists/shared/links" %>
+
+
+
+
