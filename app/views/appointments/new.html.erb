@@ -3,6 +3,7 @@
     Book an appointment with </h4>
     <h5 class="text-center"><%= @artist.name %></h5>
 </div>
+<!-- put form in wrapper to center datetimepicker -->
   <div class="form-wrapper">
     <%= simple_form_for [@artist, @appointment], url: artist_appointments_path, method: :post do |f| %>
     <%= f.input :start_time, input_html: { id: 'datetimepicker'}%>
