@@ -1,28 +1,31 @@
 <div class="wrapper text-center">
-
-  <div>
-    <%= form_tag "/artists", method: "get", class: 'form-banner' do %>
-    <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home' %>
+<div class="search-artist-index">
+    <%= form_tag "/artists", method: "get", class: 'form-banner' do |f| %>
+    <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home dropdown-style' %>
+    <%= select_tag 'style', options_for_select(@styles), class: ' dropdown-style multiselectuser select-pages-home' %>
     <%= submit_tag "Discover Art", class: 'btn-landing' %>
     <% end %>
   </div>
+
+
+
   <br>
   <br>
-<% @artists.each do |artist| %>
+  <% @artists.each do |artist| %>
   <% style_match = artist.styles.select {|style| style.name == params[:style]} %>
-    <% if
-      (params[:city] == artist.city && params[:style] == "Choose a style")        ||
-      (params[:city] == "Choose a city" && params[:style] =="Choose a style")     ||
-      (params[:city] == artist.city && style_match.any?)                          ||
-      (params[:city] == "Choose a city" && style_match.any?)                      ||
-      (params)[:city] == nil
-     %>
-      <%= render 'artist_photo', artist: artist %>
+  <% if
+    (params[:city] == artist.city && params[:style] == "Choose a style")        ||
+    (params[:city] == "Choose a city" && params[:style] =="Choose a style")     ||
+    (params[:city] == artist.city && style_match.any?)                          ||
+    (params[:city] == "Choose a city" && style_match.any?)                      ||
+    (params)[:city] == nil
+    %>
+    <%= render 'artist_photo', artist: artist %>
 
     <% end   %>
-<% end  %>
+    <% end  %>
 
-</div>
+  </div>
 
 
 
