@@ -1,20 +1,28 @@
 <% if current_artist && current_artist.photos.count == 0 %>
+
 <div id="dashboard-artist">
-<%= render 'layouts/dashboard_artist', appointments: @appointments, current_artist: current_artist  %>
-<%= render 'layouts/artist_pictures_select' %>
+
+  <%= render 'layouts/dashboard_artist', appointments: @appointments, current_artist: current_artist  %>
+  <%= render 'layouts/artist_pictures_select' %>
 
 </div>
 
 <% elsif current_artist %>
+
 <div id="dashboard-artist">
-<%= render 'layouts/dashboard_artist'  %>
+
+  <%= render 'layouts/dashboard_artist' %>
+
+</div>
 
 
 <% else %>
-<div id="dashboard-user">
-  <%= render 'layouts/dashboard_user', appointments: @appointments, current_user: current_user %>
-</div>
 
+<div id="dashboard-user">
+
+  <%= render 'layouts/dashboard_user', appointments: @appointments, current_user: current_user %>
+
+</div>
 
 <% end %>
 
