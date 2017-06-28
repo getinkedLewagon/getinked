@@ -1,6 +1,6 @@
 class Review < ApplicationRecord
   belongs_to :artist
-
+  validates :rating, presence: true
   after_save :update_artist_rating, if: :rating_changed?
 
   def update_artist_rating

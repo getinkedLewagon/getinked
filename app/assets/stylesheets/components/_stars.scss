@@ -1,0 +1,28 @@
+.rating-stars-item {
+  position: relative;
+  color: #D8D8D8;
+  left: 50px;
+
+  i {
+    color: #D8D8D8;
+    transition: color 200ms ease;
+    font-size: 25px;
+  }
+  label > input {
+    visibility: hidden;
+  }
+  .radio_buttons {
+    margin-left: -20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: $gray;
+    .radio {
+      margin: 0;
+    }
+  }
+}
+
+#placeholder {
+  color: white;
+}
