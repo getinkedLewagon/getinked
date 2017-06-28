@@ -1,25 +1,26 @@
+<div class="booking-header">
+  <h4 class="text-center"> Book an appointment with <%= @artist.name %> </h4>
+</div>
+
+<div class="row">
+  <div class="col-xs-offset-3 col-xs-3">
+
+   <%= simple_form_for [@artist, @appointment], url: artist_appointments_path, method: :post do |f| %>
 
 
-<h3 class="text-center"> Book an appointment with <%= @artist.name %> </h3>
-  <div class="row">
-    <div class="col-xs-offset-3 col-xs-4">
-
-     <%= simple_form_for [@artist, @appointment], url: artist_appointments_path, method: :post do |f| %>
-
-
-     <%= f.input :start_time, input_html: {id: 'datetimepicker'}%>
-     <%= f.input :end_time, input_html: {id: 'datetimepicker2'} %>
-     <%#= f.input :sketch %>
-     <%= f.input :photo %>
-     <%= f.input :photo_cache, as: :hidden %>
-     <%= f.input :message %>
+   <%= f.input :start_time, input_html: {id: 'datetimepicker'}%>
+   <%= f.input :end_time, input_html: {id: 'datetimepicker2'} %>
+   <%#= f.input :sketch %>
+   <%= f.input :photo %>
+   <%= f.input :photo_cache, as: :hidden %>
+   <%= f.input :message %>
 
 
-     <%= f.button :submit %>
-     <% end %>
+   <%= f.button :submit %>
+   <% end %>
 
 
 
-   </div>
  </div>
+</div>
 </div>

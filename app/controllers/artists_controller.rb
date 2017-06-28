@@ -10,6 +10,7 @@ class ArtistsController < ApplicationController
      @l_array << artist.city
     end
      @l_array = @l_array.uniq
+     @styles = ["Choose a style", "Traditional", "Watercolor", "Realism", "Tribal", "New School", "Neo Traditional", "Japanese", "Dotwork", "Geometric", "Script", "Illustrative"]
 
 
   end
