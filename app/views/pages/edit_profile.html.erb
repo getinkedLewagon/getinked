@@ -62,6 +62,25 @@
 </div>
 
 
+<% content_for(:after_js) do  %>
+    <%= javascript_tag do %>
+   $(function() {
+    var availableCities = [
+      "Barcelona",
+      "Berlin",
+      "Rome",
+      "London",
+      "Benidorm",
+      "Badalona",
+      "New York",
+    ];
+
+    $('#artist-edit-search').autocomplete({
+      source: availableCities
+    });
+  } );
+  <% end %>
+<% end %>
 
 
 
