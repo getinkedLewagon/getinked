@@ -13,7 +13,7 @@ class PagesController < ApplicationController
     @addresses = Artist.all.map {|a| a.address}.uniq
     if current_user
       @appointments = current_user.appointments
-    else
+    elsif current_artist
       @appointments = current_artist.appointments
     end
   end
