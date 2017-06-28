@@ -44,6 +44,25 @@
 </div>
 
 
+<% content_for(:after_js) do  %>
+    <%= javascript_tag do %>
+   $(function() {
+    var availableCities = [
+      "Barcelona",
+      "Berlin",
+      "Rome",
+      "London",
+      "Benidorm",
+      "Badalona",
+      "New York",
+    ];
+
+    $('#artist-edit-search').autocomplete({
+      source: availableCities
+    });
+  } );
+  <% end %>
+<% end %>
 
 <%#= f.input :styles, label: false, collection: @styles, selected: @artist.styles.map(&:id),  input_html: {class: 'multiselectuser' }, required:true, autofocus: true, as: :check_boxes ,:data => { :size=>'small', 'on-color'=>'success', 'on-text'=>'p', 'off-text'=>'N' } %>
 
