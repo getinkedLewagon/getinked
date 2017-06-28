@@ -9,21 +9,23 @@ class MessagesController < ApplicationController
       ActionCable.server.broadcast 'messages',
         message: @message.content,
         user: @message.user.username,
+        time: @message.created_at.strftime("%H:%M"),
         from: 'user'
         head :ok
     elsif @message.save && current_artist
      ActionCable.server.broadcast 'messages',
        message: @message.content,
        artist: @message.artist.email,
+       time: @message.created_at.strftime("%H:%M"),
        from: 'artist'
        head :ok
      end
- end
+  end
 
- private
+  private
 
- def message_params
-  params.require(:message).permit(:content, :chatroom_id, :from)
-end
+  def message_params
+    params.require(:message).permit(:content, :chatroom_id, :from)
+  end
 end
 

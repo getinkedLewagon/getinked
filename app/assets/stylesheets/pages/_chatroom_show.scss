@@ -26,13 +26,29 @@
 }
 
 .chat-bubble {
+  border: 1px groove #cfeff0;
   margin: 7px;
-  border-radius: 6px;
-  padding: 6px;
+  border-radius: 7px;
+  padding: 8px;
+  height: 100%;
+  padding-right: 20%;
+  background-color: #dcf8c6;
+  display: inline-block;
 }
 
+.chat-bubble-user {
+  border: 1px groove #cfeff0;
+  margin: 7px;
+  border-radius: 7px;
+  padding: 8px;
+  height: 100%;
+  padding-right: 20%;
+  background-color: #f3f6f8;
+  display: inline-block;
+}
 .my-message {
  background-color: #dcf8c6;
+ // display: inline-block;
 }
 
 .user-message {
@@ -45,3 +61,15 @@
   border-radius: 5px;
 }
 
+.chat-relative {
+  position: relative;
+}
+
+.chat-absolute {
+  position: absolute;
+  right: 5px;
+  bottom: 3px;
+  color: grey;
+  font-size: 10px;
+  // display: inline-block;s
+}

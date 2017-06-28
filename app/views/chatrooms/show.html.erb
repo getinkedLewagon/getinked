@@ -3,3 +3,8 @@
 <% else %>
 <%= render 'artist_chatroom' %>
 <% end %>
+<% content_for(:after_js) do  %>
+<%= javascript_tag do %>
+$('.chat-background').animate({scrollTop:$(document).height()}, 'slow');
+<% end %>
+<% end %>
