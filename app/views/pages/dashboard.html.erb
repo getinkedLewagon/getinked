@@ -1,4 +1,5 @@
-<% if current_artist %>
+<% if current_artist && current_artist.photos == 0 %>
+<%= raise %>
 <div id="dashboard-artist">
 <%= render 'layouts/dashboard_artist', appointments: @appointments, current_artist: current_artist  %>
 <%= render 'layouts/artist_pictures_select' %>
