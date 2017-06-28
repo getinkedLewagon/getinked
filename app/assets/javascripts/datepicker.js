@@ -1,7 +1,9 @@
 $( document ).ready(function() {
+
     $('#datetimepicker').datetimepicker({
       enabledHours: false,
       disabledHours: false,
+      sideBySide: true
       // daysOfWeekDisabled: [0, 6],
       // disabledDates: window.DISABLE_DATES,
 
@@ -9,6 +11,11 @@ $( document ).ready(function() {
 
 
 
-     $('#datetimepicker2').datetimepicker();
+     $('#datetimepicker2').datetimepicker({
+      enabledHours: false,
+      disabledHours: false,
+      sideBySide: true
+
+      });
 
 });
