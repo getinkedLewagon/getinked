@@ -34,9 +34,11 @@
   text-decoration: none !important;
 }
 
-.links a:visited {
+.links-aritst-show a:visited {
   text-decoration: none !important;
   color: white;
+  margin-left: -5px;
+  margin-top: 10px;
 }
 
 .row.no-gutter-artist {
@@ -52,4 +54,7 @@
   padding-bottom: 75px;
 }
 
+.artist-location{
+  margin-bottom: 10px;
+}
 

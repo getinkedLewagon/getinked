@@ -9,10 +9,13 @@
 //= require moment
 
 //= require bootstrap-datetimepicker
+//= require bootstrap-select
+
 
 //= require swipebox
 //= require bootstrap-switch
 //= require jquery-ui
 //= require check_box
 //= require_tree .
+
 

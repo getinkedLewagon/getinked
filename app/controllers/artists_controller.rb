@@ -5,7 +5,7 @@ class ArtistsController < ApplicationController
 
     @artists = Artist.all
 
-     @l_array = ["choose a city"]
+     @l_array = ["Choose a city"]
      @artists.each do |artist|
      @l_array << artist.city
     end

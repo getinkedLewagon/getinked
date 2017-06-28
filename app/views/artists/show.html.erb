@@ -2,6 +2,7 @@
  <%= image_tag @artist.avatar, class: "profile-image img-circle img-artist-show" %>
  <div class="artist-show-info">
   <h3><%= @artist.name %></h3>
+  <h4><%= @artist.city %></h4>
   <ul class="list-inline">
     <% if @artist.rating  %>
     <% @artist.rating.times do  %>
@@ -12,10 +13,13 @@
     <% end %>
     <% end %>
   </ul>
-  <h4><%= @artist.city %></h4>
-  <%= link_to("http://maps.google.com/maps?q=#{@artist.latitude},#{@artist.longitude}", target: '_blank') do %>
-  <i class="fa fa-map-marker" aria-hidden="true"> </i><%= @artist.address %>
-  <% end %>
+  <div class="artist-location">
+    <%= link_to("http://maps.google.com/maps?q=#{@artist.latitude},#{@artist.longitude}", target: '_blank') do %>
+    <i class="fa fa-map-marker" aria-hidden="true"> </i><%= @artist.address %>
+    <% end %>
+  </div>
+
+  <% if @artist.availabilities != [] %>
   <p>Availabilty:</p>
   <% @artist.availabilities.each do |availability|%>
   <ul>
@@ -24,7 +28,9 @@
     <%= availability.end_time %>
   </ul>
   <% end %>
-  <ul class="links list-inline">
+  <% end %>
+
+  <ul class="list-inline">
     <li><%= link_to "Book me!", new_artist_appointment_path(@artist), class: "btn btn-artist-show btn-book" %></li>
 
     <li><%= link_to "Reviews", '#reviews', class: "btn btn-artist-show btn-review", style: "text-decoration: none;" %></li>
