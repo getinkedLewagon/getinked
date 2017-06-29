@@ -33,7 +33,7 @@ gem 'stripe'
 gem "bootstrap-switch-rails"
 gem 'font-awesome-sass'
 gem 'jquery-ui-rails'
-gem 'bootstrap-select-rails'
+gem 'bootstrap-select-rails', git: 'Slashek/bootstrap-select-rails'
 
 
 group :development, :test do

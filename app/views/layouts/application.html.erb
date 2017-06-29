@@ -20,7 +20,8 @@
 
  <%= javascript_include_tag "application" %>
 
- <%= yield(:after_js) %>
+ <%= javascript_include_tag "https://unpkg.com/scrollreveal/dist/scrollreveal.min.js" %>
 
+ <%= yield(:after_js) %>
 </body>
 </html>
