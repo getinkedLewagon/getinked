@@ -80,6 +80,11 @@ class Artist < ApplicationRecord
     extract_recent_media
   end
 
+  def name
+    return super if super.present?
+    self.email.split("@").first
+  end
+
   def artist_name(parse)
   # fetches instagram user name from instagram
     parse["data"]["username"]
