@@ -1,3 +1,5 @@
+
+<div class="page-margin-bottom">
 <% if @appointments.any? %>
 <h3 class="text-center">Welcome, <%= current_user.username %>!</h3>
 
@@ -22,11 +24,11 @@
     <p class="card-text">Deposit: <%= humanized_money_with_symbol(appointment.price) %></p>
     <%= form_tag orders_path do %>
     <%= hidden_field_tag 'appointment_id', appointment.id %>
-    <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+    <%= submit_tag 'Pay deposit', class: 'btn btn-primary' %>
     <% end %>
 
     <% elsif appointment.status == "paid" %>
-    <p class="card-text"> This Appointment has already been paid </p>
+    <p class="card-text"> Deposit paid <i class="fa fa-check" aria-hidden="true"></i> </p>
     <% end %>
 
     <p class="card-text"><%= appointment.start_time %></p>
@@ -40,7 +42,7 @@
 
 
 
-
+</div>
 
 
 

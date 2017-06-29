@@ -1,5 +1,7 @@
-<div class="wrapper text-center">
-<div class="search-artist-index">
+<div class="wrapper text-center page-margin-bottom">
+<!-- <p>Search again</p>
+ -->
+ <div class="search-artist-index">
     <%= form_tag "/artists", method: "get", class: 'form-banner' do |f| %>
     <%= select_tag 'city', options_for_select(@l_array, selected: params["city"]), class: 'select-pages-home selectpicker' %>
     <%= select_tag 'style', options_for_select(@styles, selected: params["style"]), class: 'select-pages-home selectpicker' %>
