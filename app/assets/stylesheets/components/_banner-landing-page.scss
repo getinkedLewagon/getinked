@@ -23,6 +23,22 @@
   }
   .form-banner {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 170px;
+    button {
+      padding: 14px;
+      box-shadow: none;
+      border: none;
+    }
+    .btn-landing {
+      padding: 23px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
   }
 }
 

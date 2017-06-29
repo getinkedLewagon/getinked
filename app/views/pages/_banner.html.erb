@@ -12,11 +12,15 @@
 
   </div>
 
+
+<% if user_signed_in? || artist_signed_in? %>
+
+<% else %>
   <div class="call-to-action">
   <p><%= link_to "Artist Sign Up", new_artist_registration_path %> | <%= link_to "Artist Sign In", artist_session_path %>
     <p><%= link_to "User Sign Up", new_user_registration_path %> | <%= link_to "User Sign In", user_session_path %></p>
   </div>
-
+<% end %>
 
 </div>
 
