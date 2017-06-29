@@ -23,11 +23,21 @@
 
 .search-artist-index {
   margin-top: 20px;
-  width: 309px;
-  margin-left: 52px;
+  padding: 10px;
   .form-banner {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-direction: column;
+    .btn-landing {
+      width: 100%;
+      margin: 10px 0;
+    }
+    .btn-group {
+      width: 100% !important;
+      button {
+        margin: 10px 0;
+      }
+    }
   }
 }
