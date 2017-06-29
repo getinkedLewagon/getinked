@@ -1,3 +1,83 @@
+<div class="row">
+
+  <div class='col-xs-12'>
+    <div class="artist-edit-background margin-bottom">
+      <div class="artist-edit-welcome">
+        <h3>Welcome to GetInked, <%= current_artist.extract_from_instagram[:artist_name] %>! </h3>
+
+        <p> Finish your profile to become searchable </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12">
+
+    <div class="container-fluid artist-edit-data margin-bottom">
+
+
+
+      <%= simple_form_for current_artist, method: :put do |f| %>
+
+
+      <div class="form-inputs group" >
+        <input class="input-material" type="text", name="artist[email]", id="artist_email",  required="true", autofocus="true" >
+        <span class="bar"> </span>
+        <label class="label-material"> Your email </label>
+      </div>
+
+
+
+      <div class="form-inputs group" >
+        <input class="input-material" type="text", name="artist[address]", id="artist_address",  required="true", autofocus="true" >
+        <span class="bar"> </span>
+        <label class="label-material"> Your address </label>
+      </div>
+
+
+      <div class="form-inputs group" >
+        <input class="input-material" type="text", name="artist[city]", id="artist_city",  required="true", autofocus="true" >
+        <span class="bar"> </span>
+        <label class="label-material"> Your city </label>
+      </div>
+
+    <div class="margin-bottom">
+      <p> Select Your Tattoo Styles </p>
+      <% @styles.each do |style| %>
+      <p> <span class="style-checkbox">
+        <label for="artist_styles_<%= style.id %>">
+          <input class="cool check_boxes required multiselectuser" autofocus="autofocus" required="required" aria-required="true" selected="selected" type="checkbox" value="<%= style.id %>" name="artist[styles][]" id="artist_styles_<%= style.id %>" data-size="small" data-on-color='success' data-on-text='yes' data-off-text='no' />
+          <%= style.name %>
+
+        </label>
+      </span> </p>
+      <% end %>
+
+
+    </div>
+    <%#= f.input :styles, label: false, collection: @styles, selected: @artist.styles.map(&:id),  input_html: {class: 'multiselectuser' }, required:true, autofocus: true, as: :check_boxes ,:data => { :size=>'small', 'on-color'=>'success', 'on-text'=>'p', 'off-text'=>'N' } %>
+
+
+    <div class="container-fluid text-center">
+
+      <div class="form-inputs group" >
+        <textarea class="textarea-material", name="info", name="artist[info]", id="artist_info", required="true", autofocus="true" > <%= current_artist.info %> </textarea>
+        <label class="label-material"> "Your GetInked bio, fetched from Instagram" </label>
+        <span class="bar"> </span>
+      </div>
+    </div>
+
+    <div class="text-center">
+    <%= f.button :submit, "Update", class: 'upload-pictures btn btn-primary' %>
+
+    <% end %>
+    </div>
+    </div>
+    </div>
+
+
+    </div>
+  </div>
+=======
 <div class="wrapper">
   <div class="container-fluid">
     <div class="row">
@@ -67,5 +147,9 @@
 <%#= f.input :styles, label: false, collection: @styles, selected: @artist.styles.map(&:id),  input_html: {class: 'multiselectuser' }, required:true, autofocus: true, as: :check_boxes ,:data => { :size=>'small', 'on-color'=>'success', 'on-text'=>'p', 'off-text'=>'N' } %>
 
 
+
+</div>
+</div>
+</div>
 
 

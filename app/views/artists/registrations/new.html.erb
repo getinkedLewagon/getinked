@@ -1,4 +1,4 @@
-  <div class="row">
+<div class="row">
     <div class="col-xs-12">
      <div class="artist-edit-background">
        <div class="artist-edit-welcome">
@@ -15,11 +15,11 @@
        <br>
 
        <%- if devise_mapping.omniauthable? %>
-        <%- resource_class.omniauth_providers.each do |provider| %>
-          <%= link_to omniauth_authorize_path(resource_name, provider), class: 'upload-pictures btn btn-primary'  do %>
-          <i class="fa fa-instagram"></i> <%=  "#{OmniAuth::Utils.camelize(provider)} Sign Up" %>
-            <% end %>
-          <% end -%>
+       <%- resource_class.omniauth_providers.each do |provider| %>
+       <%= link_to omniauth_authorize_path(resource_name, provider), class: 'upload-pictures btn btn-primary'  do %>
+       <i class="fa fa-instagram"></i> <%=  "#{OmniAuth::Utils.camelize(provider)} Sign Up" %>
+       <% end %>
+       <% end -%>
        <% end -%>
 
        <br>
@@ -39,30 +39,83 @@
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
 
-      <div class="form-inputs submit-edit-profile">
-        <%= f.input :name, label: false, placeholder: "your name", required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
-        <%= f.input :address, label: false, placeholder: "your address",  required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
-        <%= f.input :city, label: false, placeholder: "your city", required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
-        <%= f.input :info, label: false, placeholder: "a short bio about yourself", required: true, autofocus: true, input_html: {class: 'edit-profile-input' }, as: :text %>
-        <%= f.input :email, label: false, placeholder: "your email", required: true, autofocus: true, input_html: {class: 'edit-profile-input' } %>
-        <%= f.input :password, label:false, placeholder: "your password - 6 characters minimum", required: true, input_html: {class: 'edit-profile-input' } %>
-        <%= f.input :password_confirmation, label: false, placeholder: "confirm your password", required: true, input_html: {class: 'edit-profile-input' } %>
+
+      <div class="form-inputs group" >
+        <input class="input-material" type="text", name="artist[name]", id="artist_name",  required="true", autofocus="true" >
+        <span class="bar"> </span>
+        <label class="label-material"> Name </label>
       </div>
 
+      <div class="form-inputs group" >
+        <input class="input-material", type="email", name="artist[email]", id="artist_email",  required="true", autofocus="true" >
+        <span class="bar"> </span>
+        <label class="label-material"> Your email </label>
+      </div>
+
+      <div class="form-inputs group" >
+        <input class="input-material" type="text", name="artist[address]", id="artist_address", required="true", autofocus="true" >
+        <span class="bar"> </span>
+        <label class="label-material"> Your Address </label>
+      </div>
+
+      <div class="form-inputs group" >
+        <input class="input-material" type="text", name="artist[city]", id="artist_city",  required="true", autofocus="true" >
+        <span class="bar"> </span>
+        <label class="label-material"> Your City </label>
+      </div>
+
+      <div class="form-inputs group" >
+        <textarea class="textarea-material", name="info", name="artist[info]", id="artist_info", required="true", autofocus="true" > </textarea>
+        <label class="label-material"> A short intro about yourself </label>
+        <span class="bar"> </span>
+      </div>
+
+      <div class="form-inputs group" >
+        <input class="input-material" type="password", name="artist[password]", id="artist_password"  required="true", autofocus="true" >
+        <span class="bar"> </span>
+        <label class="label-material"> Your password - 6 characters min </label>
+      </div>
+
+      <div class="form-inputs group" >
+        <input class="input-material" type="password", name="artist[password_confirmation]", id="password_confirmation" required="true", autofocus="true" >
+        <span class="bar"> </span>
+        <label class="label-material"> Confirm your password </label>
+      </div>
 
       <div class="form-actions">
         <%= f.button :submit, "Sign up", class: 'upload-pictures btn btn-primary'%>
       </div>
 
     </div>
-    <% end %>
 
 
 
 
   </div>
+  <% end %>
+
+
+  <% content_for(:after_js) do  %>
+  <%= javascript_tag do %>
+  $(".textarea-material").focus(function() {
+  $(this).siblings("label").addClass("moveitup");
+});
+$(".textarea-material").focusout(function() {
+<!-- $(this).siblings("label").toggleClass("moveitup");
+});
+-->
+
+
+
+<% end %>
+<% end %>
+
 
 </div>
+
+</div>
+
+
 
 
 
