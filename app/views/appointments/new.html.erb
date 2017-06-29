@@ -1,25 +1,17 @@
-
-
-<h3 class="text-center"> Book an appointment with <%= @artist.name %> </h3>
-  <div class="row">
-    <div class="col-xs-offset-3 col-xs-4">
-
-     <%= simple_form_for [@artist, @appointment], url: artist_appointments_path, method: :post do |f| %>
-
-
-     <%= f.input :start_time, input_html: {id: 'datetimepicker'}%>
-     <%= f.input :end_time, input_html: {id: 'datetimepicker2'} %>
-     <%#= f.input :sketch %>
-     <%= f.input :photo %>
-     <%= f.input :photo_cache, as: :hidden %>
-     <%= f.input :message %>
-
-
-     <%= f.button :submit %>
-     <% end %>
-
-
-
-   </div>
- </div>
+<div class="booking-header">
+  <h5 class="text-center">
+    Book an appointment with </h5>
+  <h5 class="text-center"><%= @artist.name %></h5>
 </div>
+<!-- put form in wrapper to center datetimepicker -->
+  <div class="form-wrapper">
+    <%= simple_form_for [@artist, @appointment], url: artist_appointments_path, method: :post do |f| %>
+    <%= f.input :start_time, input_html: { id: 'datetimepicker'}%>
+    <%= f.input :end_time, input_html: { id: 'datetimepicker2'} %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
+    <%= f.input :message %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+

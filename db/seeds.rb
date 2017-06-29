@@ -1,16 +1,23 @@
-require 'pry'
+
 #
 # Examples:
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Photo.destroy_all
-ArtistStyle.destroy_all
-Style.destroy_all
-Artist.destroy_all
+ Photo.destroy_all
+ ArtistStyle.destroy_all
+ Style.destroy_all
+ Artist.destroy_all
 
-User.destroy_all
+Review.destroy_all
+ Chatroom.destroy_all
+ Message.destroy_all
+ User.destroy_all
+ Appointment.destroy_all
+ Availability.destroy_all
+ Order.destroy_all
+ Photo.destroy_all
 
 
   styles = []

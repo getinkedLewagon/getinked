@@ -1,73 +1,59 @@
-<div class="wrapper text-center">
-  <div class="row">
-    <div class="col-xs-12">
-      <h3> Tap to upload your work, <%= current_artist.name %> </h3>
-    </div>
-
-
-
-    <%= simple_form_for :select_pictures, url: upload_pictures_artist_path(current_artist), method: :post do |f|%>
-
-
-<!-- <span class="style-checkbox"></span> -->
-    <% current_artist.recent_media.each_with_index do |media, index| %>
-    <div class="col-xs-4 picture">
-          <span class="style-checkbox">
-          <label>
-           <div class="wrapper-upload">
-
-
-          <%= image_tag media["images"]["low_resolution"]["url"], class: "picture-upload" %>
-
-           <div class="checked disappear picture-check">
-            <img class="picture-upload-checked" src='http://www.freeiconspng.com/uploads/success-icon-10.png' alt="">
-           </div>
-
-           <input class="check_boxes required multiselectuser to-hide"
-                  autofocus="autofocus"
-                  required="required multiselectuser"
-                  aria-required="true"
-                  selected="selected"
-                  type="checkbox"
-                  name= "select_pictures[]"
-                  id="select_pictures_<%= index %>"
-                  value="<%= media["images"]["low_resolution"]["url"] %>"
-                  style="display:none"
-                  data-size="small"
-                  data-on-color='success'
-                  data-on-text='yes'
-                  data-off-text='no' />
-                  </div>
-          </label>
+<div class="container">
+  <div class="wrapper">
+    <div class="row">
+      <div class="col-xs-12">
+        <h3>
+          Tap to upload your work, <%= current_artist.name %>
+        </h3>
+      </div>
+      <div class="col-xs-12">
+        <%= simple_form_for :select_pictures, url: upload_pictures_artist_path(current_artist), method: :post do |f|%>
+        <div class="row">
+          <% current_artist.recent_media.each_with_index do |media, index| %>
+          <div class="col-xs-4 picture">
+            <span class="style-checkbox" style="width: 100%;">
+              <label style="width: 100%;">
+               <div class="wrapper-upload" style="width: 100%;">
+                 <div class="picture-upload" style="background-image:url('<%= image_path media["images"]["low_resolution"]["url"] %>');">
+                 </div>
+                <div class="checked disappear picture-check">
+                  <img class="picture-upload-checked" src='http://www.freeiconspng.com/uploads/success-icon-10.png' alt="">
+                </div>
+                <input class="check_boxes required multiselectuser to-hide"
+                autofocus="autofocus"
+                required="required multiselectuser"
+                aria-required="true"
+                selected="selected"
+                type="checkbox"
+                name= "select_pictures[]"
+                id="select_pictures_<%= index %>"
+                value="<%= media["images"]["low_resolution"]["url"] %>"
+                style="display:none"
+                data-size="small"
+                data-on-color='success'
+                data-on-text='yes'
+                data-off-text='no' />
+              </div>
+            </label>
           </span>
-
-</div>
-    <% end %>
-
-
-
-
-
-
-
-  </div>
-
-  <div class="container">
-
-</button>
-   <%= f.submit "Upload Pictures" , class: "upload-pictures btn btn-primary" %>
-    <% end %>
+        </div>
+        <% end %>
+      </div>
     </div>
+    <%= f.submit "Upload Pictures" , class: "upload-pictures btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
 </div>
+
 
 
 <% content_for(:after_js) do  %>
-    <%= javascript_tag do %>
-    $(".picture-upload").on("click", function(e) {
-      $(this).parent().find(".picture-check").toggleClass("disappear");
-    });
-  <% end %>
+<%= javascript_tag do %>
+$(".picture-upload").on("click", function(e) {
+$(this).parent().find(".picture-check").toggleClass("disappear");
+});
+<% end %>
 <% end %>
 
 

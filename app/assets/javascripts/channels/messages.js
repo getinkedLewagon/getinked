@@ -1,4 +1,3 @@
-
 var user = document.querySelector('#messages');
 
 if (user) {
@@ -12,14 +11,14 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     // if (data.message.trim() !== "" && data.message !== null) {
       $("#messages").removeClass('hidden');
       $('#messages').append(this.renderMessage(data));
-      return $('html, body').animate({scrollTop:$(document).height()}, 'slow');
+      return $('.chat-background').animate({scrollTop:$(document).height()}, 'slow');
     // }
   },
 
   renderMessage: function(data) {
 
-    var myMessage = "<div class='row margin-0'><div class='col-xs-8 text-left padding-0'><p class='chat-bubble my-message'>" + data.message + "</p></div></div>";
-    var userMessage = "<div class='row margin-0'><div class='col-xs-8 col-xs-offset-4 text-left padding-0'><p class='chat-bubble user-message'>" + data.message + "</p></div></div>";
+    var myMessage = "<div class='row margin-0'><div class='col-xs-10 padding-0'><div class='chat-bubble chat-relative'><span clas='my-message'>" + data.message + "</span><span class='chat-absolute'>" + data.time + "</span></div></div>";
+    var userMessage = "<div class='row margin-0'><div class='col-xs-10 col-xs-offset-2 padding-0'><div class='chat-bubble-user pull-right chat-relative'><span clas='user-message'>" + data.message + "</span><span class='chat-absolute'>" + data.time + "</span></div></div>";
 
     if (user.dataset.user == 'user' &&  data.from == 'user') {
       return myMessage;

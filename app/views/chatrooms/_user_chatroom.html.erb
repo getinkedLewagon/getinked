@@ -15,14 +15,20 @@
       <% @chatroom.messages.each do |message| %>
       <% if message.from == 'user' %>
       <div class="row margin-0">
-        <div class="col-xs-8 text-left padding-0">
-          <p class="chat-bubble my-message"><%= message.content %></p>
+        <div class="col-xs-10 padding-0">
+          <div class="chat-bubble chat-relative">
+            <span clas=" my-message"><%= message.content %></span>
+            <span class="chat-absolute"><%= message.created_at.strftime("%H:%M") %></span>
+          </div>
         </div>
       </div>
       <% elsif message.from == 'artist' %>
       <div class="row margin-0">
-        <div class="col-xs-8 col-xs-offset-4 text-left padding-0">
-          <p class="chat-bubble user-message"><%= message.content %></p>
+        <div class="col-xs-10 col-xs-offset-2 padding-0">
+          <div class="chat-bubble-user pull-right chat-relative">
+            <span class="user-message"><%= message.content %></span>
+            <span class="chat-absolute"><%= message.created_at.strftime("%H:%M") %></span>
+          </div>
         </div>
       </div>
       <% end %>

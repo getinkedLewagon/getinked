@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
 
   def create
     @artist = Artist.find(params[:artist_id])
-    @review = Review.new(review_params)
+    @review = Review.new(clean_review_params)
     @review.artist = Artist.find(params[:artist_id])
     if @review.save
       redirect_to artist_path(@artist)
@@ -18,6 +18,12 @@ class ReviewsController < ApplicationController
 
 
   private
+
+  def clean_review_params
+    results = review_params
+    results["rating"] = results["rating"].to_i
+    results
+  end
 
   def avg_rating
     @artist = Artist.find(params[:artist_id])

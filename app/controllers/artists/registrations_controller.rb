@@ -1,6 +1,4 @@
 class Artists::RegistrationsController < Devise::RegistrationsController
-
-
   def new
     @styles = Style.all
     super
@@ -18,6 +16,10 @@ class Artists::RegistrationsController < Devise::RegistrationsController
       end
     end
 
+  end
+
+  def edit
+    @styles = Style.all
   end
 
 end

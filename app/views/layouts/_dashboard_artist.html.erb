@@ -1,62 +1,69 @@
 
-
-<div class="container-artist-dash">
-
-<div class="row">
-
-<div class="col-xs-6" style="padding-left: 55px; padding-top: 30px;">
-<h3>Hello <%= current_artist.name %></h3>
-</div>
-
-<div class="col-xs-6" style="padding-right: 50px; padding-top: 20px;">
-<div class="views">
-<p>Total Views</p>
-<i class="fa fa-eye" aria-hidden="true"></i>
-<p>451</p>
-</div>
-</div>
-
-<div class="row">
-
-<div class="col-xs-12" style="padding-left: 70px;">
-<h4>Your appointments:</h4>
-
-<% @appointments.each do |appointment| %>
-
-  <p>You have an upcoming appointment with <%= appointment.user %></p>
-  <p>Status: <%= appointment.status %></p>
-  <%= link_to "Confirm",  confirm_artist_appointment_path(current_artist, appointment) %>
-  <%= link_to "Deny", deny_artist_appointment_path(current_artist, appointment) %>
-
-
-
-<p>You're having an appointment with <%= appointment.user.username %></p>
-<p>Status: <%= appointment.status %></p>
- <p><%= appointment.user.username %> sketch: </p>
-  <%= cl_image_tag appointment.photo, height: 300, width: 400, crop: :fill %>
-<p>Message:</p>
-<p><%= appointment.message %></p>
-
-<% end %>
-</div>
-
-</div>
-
-
-<div class="row">
-<div class="col-xs-12" style="padding-left: 70px;">
-
-<h4>Your current availability:</h4>
-<% current_artist.availabilities.each do |availability| %>
-<ul>
-  <%= availability.day %>
-
-  <%= availability.start_time %> -
-  <%= availability.end_time %>
-</ul>
-<% end %>
-
-<%= link_to 'Edit Availability', new_availability_path, class: "btn btn-artist-show" %>
-</div>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6" style="padding-left: 55px; padding-top: 30px;">
+      <h3>
+        Hello <%= current_artist.name %>
+      </h3>
+    </div>
+    <div class="col-xs-6" style="padding-right: 50px; padding-top: 20px;">
+      <div class="views">
+        <p>
+          Total Views
+        </p>
+        <i class="fa fa-eye" aria-hidden="true"></i>
+        <p>
+          451
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="padding-left: 70px;">
+      <h4>
+        Your appointments:
+      </h4>
+      <% @appointments.each do |appointment| %>
+      <p>
+        You have an upcoming appointment with <%= appointment.user.username %>
+      </p>
+      <p>
+        Status: <%= appointment.status %>
+      </p>
+      <%= link_to "Confirm",  confirm_artist_appointment_path(current_artist, appointment) %>
+      <%= link_to "Deny", deny_artist_appointment_path(current_artist, appointment) %>
+      <p>
+        You're having an appointment with <%= appointment.user.username %>
+      </p>
+      <p>
+        Status: <%= appointment.status %>
+      </p>
+      <p>
+        <%= appointment.user.username %> sketch:
+      </p>
+      <%= cl_image_tag appointment.photo, height: 300, width: 400, crop: :fill %>
+      <p>
+        Message:
+      </p>
+      <p>
+        <%= appointment.message %>
+      </p>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" style="padding-left: 70px;">
+      <h4>
+        Your current availability:
+      </h4>
+      <% current_artist.availabilities.each do |availability| %>
+      <ul>
+        <%= availability.day %>
+        <%= availability.start_time %> -
+        <%= availability.end_time %>
+      </ul>
+      <% end %>
+      <%= link_to 'Edit Availability', new_availability_path, class: "btn btn-artist-show" %>
+    </div>
+  </div>
 </div>

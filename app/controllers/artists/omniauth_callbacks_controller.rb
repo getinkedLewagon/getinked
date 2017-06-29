@@ -4,14 +4,15 @@ class Artists::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     if artist.persisted? && artist.photos.count == 0
       sign_in artist, event: :authentication
-      redirect_to '/edit_profile'
+      redirect_to dashboard_url
 
       # set_flash_message(:notice, :success, kind: 'Facebook') if is_navigational_format?
     elsif artist.persisted?
       sign_in_and_redirect artist, event: :authentication
+      redirect_to dashboard_url
     else
       session['devise.instagram_data'] = request.env['omniauth.auth']
-      redirect_to new_artist_registration_url
+      redirect_to dashboard_url
     end
   end
 end

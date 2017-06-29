@@ -1,0 +1,18 @@
+  <div class="rating-stars-item">
+    <div class="form-group radio_buttons required review_rating" id="review_stars">
+      <input type="hidden" name="review[rating]" value="">
+      <% (1..5).to_a.each_with_index do |number, index| %>
+      <span class="radio star_rating_select">
+        <label for="review_rating_<%= number %>" id="<%= number %>" class="star-rating-display" data-target=".review_rating">
+          <input class="radio_buttons required" type="radio" value=<%= number %> name="review[rating]" id="review_rating_<%= number %>">
+          <i class="fa fa-star"></i>
+        </label>
+      </span>
+      <% end %>
+    </div>
+  </div>
+  <div class="orb marged-top-bottom">
+    <p id="placeholder">
+      0
+    </p>
+  </div>

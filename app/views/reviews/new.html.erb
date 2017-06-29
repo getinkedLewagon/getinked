@@ -2,7 +2,7 @@
 <div class="col-xs-offset-3 col-xs-4">
 <%= simple_form_for [@artist, @review] do |f| %>
 <%= f.input :description, :label=> "Review", required: true, input_html: {style: 'width: 200px; height: 10vh;', rows: 5}, as: :text, class: "review-form"  %>
-<%= f.input :rating, :label => "rating", :collection => [1, 2, 3, 4, 5], :selected => 1, required: true%>
+<%= render partial: "shared/stars" %>
 <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
 </div>

@@ -1,3 +1,8 @@
+OmniAuth::Strategies::Instagram.class_eval do
+  def query_string
+    ""
+  end
+end
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
@@ -7,7 +12,7 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '08db8a2c00e5ebbbb774a1fb4f412126f12c3f78efa25f725519881d1c17316e61b773199be3cde19c2d7977b819e00ceb396826ebe005cf8fa4d837eb93cafb'
-  config.omniauth :instagram, ENV['INSTAGRAM_APP_ID'], ENV['INSTAGRAM_APP_SECRET']
+  config.omniauth :instagram, ENV['INSTAGRAM_APP_ID'], ENV['INSTAGRAM_APP_SECRET'], scope: "public_content"
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
