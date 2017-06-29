@@ -11,7 +11,8 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     // if (data.message.trim() !== "" && data.message !== null) {
       $("#messages").removeClass('hidden');
       $('#messages').append(this.renderMessage(data));
-      return $('.chat-background').animate({scrollTop:$(document).height()}, 'slow');
+      // $('.chat-background').animate({scrollTop:$('.chat-background').height()}, 'slow');
+       return $('.chat-background').animate({scrollTop: 9999}, '10000');
     // }
   },
 
@@ -31,5 +32,4 @@ App.messages = App.cable.subscriptions.create('MessagesChannel', {
     }
   }
 });
-
 
