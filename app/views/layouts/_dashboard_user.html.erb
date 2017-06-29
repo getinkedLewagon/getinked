@@ -1,31 +1,59 @@
-<h1>This is user dashboard!</h1>
-<h1>Welcome, <%= current_user.username %>!</h1>
+<% if @appointments.any? %>
+<h3 class="text-center">Welcome, <%= current_user.username %>!</h3>
 
-<h3>Your upcoming appointments:</h3>
+<h4 class="text-center">Your upcoming appointments:</h4>
+
 <% @appointments.each do |appointment| %>
 
+<div class="card">
 
-<p>You're having an appointment with <%= appointment.artist.email %></p>
-<% if appointment.status == "pending" %>
-  <p>Status: <%= appointment.status %></p>
+   <% if appointment.photo %><%= cl_image_tag appointment.photo, class: 'card-img-top' %>
+   <% end %>
 
-<% elsif appointment.status == "confirmed" %>
+   <div class="card-block">
 
-  <p>Deposit: <%= humanized_money_with_symbol(appointment.price) %></p>
-  <%= form_tag orders_path do %>
-  <%= hidden_field_tag 'appointment_id', appointment.id %>
-  <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
-  <% end %>
+    <h4 class="card-title"><%= appointment.artist.email.split('@')[0] %></h4>
+    <p><%= appointment.message %></p>
 
-<% elsif appointment.status == "paid" %>
-  <p> This Appointment has already been paid </p>
+    <% if appointment.status == "pending" %>
+    <p class="card-text">Status: <%= appointment.status %></p>
+
+    <% elsif appointment.status == "confirmed" %>
+    <p class="card-text">Deposit: <%= humanized_money_with_symbol(appointment.price) %></p>
+    <%= form_tag orders_path do %>
+    <%= hidden_field_tag 'appointment_id', appointment.id %>
+    <%= submit_tag 'Purchase', class: 'btn btn-primary' %>
+    <% end %>
+
+    <% elsif appointment.status == "paid" %>
+    <p class="card-text"> This Appointment has already been paid </p>
+    <% end %>
+
+    <p class="card-text"><%= appointment.start_time %></p>
+    <p class="card-text"><%= appointment.end_time %></p>
+
+    <%= link_to "Chat with artist", artist_appointment_chatroom_path(appointment.id, appointment.id, appointment.chatroom.id), class: "btn btn-primary" %>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
 <% end %>
-
-  <p>Your Sketch: </p>
-  <% if appointment.photo %><%= cl_image_tag appointment.photo, height: 300, width: 400, crop: :fill %>
- <% end %>
-
-<p>Messages:</p>
-<p><%= appointment.message %></p>
-
+<% else %>
+<div class="no-appointments-container">
+  <h3 class="text-center">Welcome, <%= current_user.username %>!</h3>
+  <h4 class="text-center"> You have no appointments right now</h4>
+  <div class="container">
+    <%= link_to 'Check our art to book one', artists_path, class: 'center-block btn btn-primary btn-dashboard' %>
+  </div>
+</div>
 <% end %>

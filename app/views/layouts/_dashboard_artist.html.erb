@@ -25,7 +25,7 @@
       </h4>
       <% @appointments.each do |appointment| %>
       <p>
-        You have an upcoming appointment with <%= appointment.user %>
+        You have an upcoming appointment with <%= appointment.user.username %>
       </p>
       <p>
         Status: <%= appointment.status %>
