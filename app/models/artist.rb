@@ -57,6 +57,7 @@ class Artist < ApplicationRecord
       artist.info = artist.extract_from_instagram[:artist_bio]
       artist.avatar = artist.extract_from_instagram[:avatar_image]
       artist.name = artist.extract_from_instagram[:artist_name]
+      artist.email = "#{artist_params['uid']}@instagram.com"
       artist.save
     end
 
