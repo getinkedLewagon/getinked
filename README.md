@@ -5,4 +5,4 @@ Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/ra
 
 #comment
 #test2
-
+#test
