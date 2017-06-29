@@ -1,7 +1,13 @@
+<% if current_artist.availabilities.count == 0 %>
+
+ <h3> Your availability is not set, yet</h3>
+
+ <% else %>
 <% current_artist.availabilities.each do |availability| %>
   <%= availability.day %>
   <%= availability.start_time %>
   <%= availability.end_time %>
+<% end %>
 <% end %>
 
 <%= link_to 'Create Availability', new_availability_path %>
