@@ -14,7 +14,9 @@
 
    <div class="card-block">
 
-    <h4 class="card-title"><%= appointment.artist.email.split('@')[0] %></h4>
+    <h4 class="card-title">
+    <%= link_to appointment.artist.name, artist_path(appointment.artist) %>
+    </h4>
     <p><%= appointment.message %></p>
 
     <% if appointment.status == "pending" %>
