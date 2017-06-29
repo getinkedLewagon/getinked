@@ -1,11 +1,9 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :dashboard]
-
-
+  skip_before_action :authenticate_user!
   def home
     puts 'Home Page'
     @addresses = Artist.all.map {|a| a.city}.uniq
-    # @artist = Artist.first
+    @artist = Artist.first
     @artists = Artist.all
     @cities = get_cities
     @styles = ["Choose a style", "Traditional", "Watercolor", "Realism", "Tribal", "New School", "Neo Traditional", "Japanese", "Dotwork", "Geometric", "Script", "Illustrative"]
@@ -23,9 +21,13 @@ class PagesController < ApplicationController
   end
 
   def edit_profile
-    @styles = Style.all
-    @artist = current_artist
-    @bio = current_artist.info
+    if current_artist
+      @styles = Style.all
+      @artist = current_artist
+      @bio = current_artist.info
+    else
+      redirect_to root_path
+    end
   end
 
 
