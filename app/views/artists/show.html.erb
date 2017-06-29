@@ -62,7 +62,7 @@
 <div class="text-center" id="reviews">
   <h4>Reviews of <%=@artist.name  %></h4>
   <%= link_to "Leave a Review", new_artist_review_path(@artist), class: "btn btn-landing btn-review-margin" %>
-  <div style="margin-left:">
+  <div style="margin-left: 14px;">
     <% @artist.reviews.each do |review| %>
     <%= review.description %>
     <ul class="list-inline">
