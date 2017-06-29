@@ -36,7 +36,7 @@
   <% end %>
 
   <ul class="list-inline">
-    <li><%= link_to "Book me!", new_artist_appointment_path(@artist), class: "btn btn-artist-show btn-book" %></li>
+    <li><%= link_to "Book me", new_artist_appointment_path(@artist), class: "btn btn-artist-show btn-book" %></li>
 
     <li><%= link_to "Reviews", '#reviews', class: "btn btn-artist-show btn-review", style: "text-decoration: none;" %></li>
   </ul>
@@ -61,7 +61,7 @@
 
 <div class="text-center" id="reviews">
   <h4>Reviews of <%=@artist.name  %></h4>
-  <%= link_to "Leave a Review", new_artist_review_path(@artist) %>
+  <%= link_to "Leave a Review", new_artist_review_path(@artist), class: "btn btn-landing" %>
   <div>
     <% @artist.reviews.each do |review| %>
     <%= review.description %>
