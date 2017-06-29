@@ -1,6 +1,8 @@
 class ArtistsController < ApplicationController
   skip_before_action :authenticate_user!
 
+  #before_validation :authenticate_user!, only: [:artist_appointment]
+
   def index
 
     @artists = Artist.all
