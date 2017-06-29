@@ -57,6 +57,7 @@
       <p>
         <%= appointment.message %>
       </p>
+      <%= link_to "Chat with user", artist_appointment_chatroom_path(appointment.id, appointment.id, appointment.chatroom.id), class: "btn btn-primary" %>
       <% end %>
       <% end %>
     </div>

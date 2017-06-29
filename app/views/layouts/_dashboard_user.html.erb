@@ -33,8 +33,8 @@
     <p class="card-text"> Deposit paid <i class="fa fa-check" aria-hidden="true"></i> </p>
     <% end %>
 
-    <p class="card-text"><%= appointment.start_time %></p>
-    <p class="card-text"><%= appointment.end_time %></p>
+    <p class="card-text">Appointment starts at: <%= appointment.start_time %></p>
+    <p class="card-text">Appointment ends at: <%= appointment.end_time %></p>
 
     <%= link_to "Chat with artist", artist_appointment_chatroom_path(appointment.id, appointment.id, appointment.chatroom.id), class: "btn btn-primary" %>
 
