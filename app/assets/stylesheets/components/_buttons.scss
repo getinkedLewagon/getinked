@@ -1,12 +1,16 @@
 .btn-landing {
   background-color: #7e57c2;
   border: none;
-  height: 50px;
+  height: 36px;
   font-family: 'Open Sans';
   color: white;
   font-weight: 500;
   margin-left: 5px;
-  //border-radius: 4px;
+  border-radius: 4px;
+}
+
+.btn-index {
+  margin-top: 10px;
 }
 
 .dropdown-style {
@@ -38,8 +42,8 @@
 .btn-review {
     position: absolute;
     right: 27px;
-    bottom: 10px;
-    height: 37px;
+    bottom: 11px;
+    height: 35px;
 }
 
 

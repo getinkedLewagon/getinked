@@ -1,9 +1,9 @@
 <div class="wrapper text-center">
 <div class="search-artist-index">
     <%= form_tag "/artists", method: "get", class: 'form-banner' do |f| %>
-    <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home dropdown-style' %>
-    <%= select_tag 'style', options_for_select(@styles), class: ' dropdown-style multiselectuser select-pages-home' %>
-    <%= submit_tag "Discover Art", class: 'btn-landing' %>
+    <%= select_tag 'city', options_for_select(@l_array), class: 'select-pages-home selectpicker' %>
+    <%= select_tag 'style', options_for_select(@styles), class: 'select-pages-home selectpicker' %>
+    <%= submit_tag "Discover Art", class: 'btn-index btn-landing' %>
     <% end %>
   </div>
 

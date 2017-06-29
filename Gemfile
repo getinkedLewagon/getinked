@@ -33,6 +33,8 @@ gem 'stripe'
 gem "bootstrap-switch-rails"
 gem 'font-awesome-sass'
 gem 'jquery-ui-rails'
+gem 'bootstrap-select-rails'
+
 
 group :development, :test do
   gem 'better_errors'

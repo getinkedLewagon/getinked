@@ -5,6 +5,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+#Chatroom.destroy_all
+
  Photo.destroy_all
  ArtistStyle.destroy_all
  Style.destroy_all
@@ -18,6 +20,7 @@ Review.destroy_all
  Availability.destroy_all
  Order.destroy_all
  Photo.destroy_all
+
 
 
   styles = []
@@ -137,11 +140,11 @@ dotwork_artist_hash = { style: Style.find_by(name: "Dotwork"),
                                   'carloroffare','john_trad_tattoo',
                                   'alchemistsvalley'] }
 
+
 watercolor_artist_hash = { style: Style.find_by(name: "Watercolor"),
                            artists: ['rodrigotas', 'streettatoo', 'sashaunisex',
                                      'findyoursmile', 'jayfreestyle', 'carballocandelaria',
                                       'tattoojune'] }
-
 # script_artist_array = []
 
 # illustrative_artist_array = []
@@ -164,6 +167,7 @@ end
 
 
 def populate_style(style_hash)
+    artist_rating = [3, 4, 5]
   style_hash[:artists].each do |username|
     full_info = artist_full(username)
 
@@ -177,6 +181,7 @@ def populate_style(style_hash)
     new_artist.email = "#{username}@getinked.com"
     new_artist.styles = [style_hash[:style]]
     new_artist.start_fee = start_fee_array.sample
+    new_artist.rating = artist_rating.sample
 
     city = cities_hash.keys.sample
 

@@ -3,10 +3,22 @@
   <div class= form-home>
 
     <%= form_tag "/artists", method: "get", class: 'form-banner' do |f| %>
-    <%= select_tag 'city', options_for_select(cities), class: 'select-pages-home dropdown-style' %>
-    <%= select_tag 'style', options_for_select(styles), class: ' dropdown-style multiselectuser select-pages-home' %>
-    <%= submit_tag "Discover Art", class: 'btn-landing' %>
+    <%= select_tag 'city', options_for_select(cities), class: 'select-pages-home selectpicker' %>
+    <%= javascript_tag "$('.selectpicker').selectpicker();" %>
+    <%= select_tag 'style', options_for_select(styles), class: ' select-pages-home selectpicker' %>
+    <%= javascript_tag "$('.selectpicker').selectpicker();" %>
+    <%= submit_tag "Discover Art", class: 'btn-landing ' %>
     <% end %>
 
   </div>
+
+  <div class="call-to-action">
+  <p><%= link_to "Artist Sign Up", new_artist_registration_path %> | <%= link_to "Artist Sign In", artist_session_path %>
+    <p><%= link_to "User Sign Up", new_user_registration_path %> | <%= link_to "User Sign In", user_session_path %></p>
+  </div>
+
+
 </div>
+
+
+
