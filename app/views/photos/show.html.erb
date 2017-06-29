@@ -1,20 +1,32 @@
+
+<div class="back-photo-show">
+  <%= link_to request.referer.present? ? request.referer : default_path do %>
+    <i class="fa fa-long-arrow-left" aria-hidden="true"></i> Back
+  <% end %>
+</div>
+
 <div class="text-center">
   <%= link_to artist_path(@photo.artist) do%>
-    <%= image_tag @photo.url, class: "photo-show" %>
+  <%= image_tag @photo.url, class: "photo-show" %>
   <% end %>
 </div>
 
 <div class= "photo-artist-info">
  <div class="photo-artist-avatar">
-    <%= link_to artist_path(@photo.artist) do%>
-      <%= image_tag @photo.artist.avatar, class: "avatar-photo-show" %>
-    <% end  %>
-  </div>
-  <div class="photo-artist-name">
-    <%= link_to @photo.artist.name, artist_path(@photo.artist) %>
-  </div>
-  <div class="photo-artist-city">
-    <%= @photo.artist.city %>
-  </div>
+  <%= link_to artist_path(@photo.artist) do%>
+  <%= image_tag @photo.artist.avatar, class: "avatar-photo-show" %>
+  <% end  %>
+</div>
+<div class="photo-artist-name">
+  <%= link_to @photo.artist.name, artist_path(@photo.artist) %>
+</div>
+<div class="photo-artist-city">
+  <%= @photo.artist.city %>
+</div>
+
+<div class="see-more">
+  <%= link_to "See more from this artist", artist_path(@photo.artist), class: "btn btn-artist-show" %>
+</div>
+
 </div>
 
